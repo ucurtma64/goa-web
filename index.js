@@ -4,7 +4,6 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
-const path = require('path');
 require('./models/User'); //add use schema before using it in ./services/passport.js
 require('./services/passport'); //not assigned to a variable since we need this to run only once
 
@@ -25,8 +24,11 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 
+const path = require('path');
+//Express will serve up production assets like main.css and main.js files
 app.use(express.static(path.join(__dirname, 'client/build')));
 
+//Express will serve up the index.html file if it does not recognize the route
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
