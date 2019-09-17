@@ -35,7 +35,7 @@ class SurveyFormReview extends Component {
                     onClick={() => {
                         console.log(this.props.formValues)
                         console.log(this.props.history)
-                        actions.submitSurvey(this.props.formValues, this.props.history)}
+                        this.props.submitSurvey(this.props.formValues, this.props.history)}
                     }
                 >
                     Send Survey
