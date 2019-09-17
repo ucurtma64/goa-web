@@ -1,21 +1,45 @@
 //Shows SurveyForm and SurveyFormReview
+import _ from 'lodash';
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
 import SurveyForm from './SurveyForm';
 import SurveyFormReview from './SurveyFormReview';
+import formFields from './formFields';
 
 class SurveyNew extends Component {
-    state = { showFormReviev: false }
+    constructor(props) {
+        super(props);
+        // Don't call this.setState() here!
+        const formValues = {}
+
+        _.map(formFields, ({ name }) => {
+            formValues[name] = '';
+        });
+
+        console.log(Object.assign( { showFormReviev: false }, { formValues }));
+
+        this.state = Object.assign( { showFormReviev: false }, { formValues });
+    }
 
     renderContent() {
         if (this.state.showFormReviev) {
-            return <SurveyFormReview 
+            console.log(this.state);
+            return <SurveyFormReview formValues={this.state.formValues}
                 onCancel={() => this.setState({ showFormReviev: false })}
             />
         }
 
-        return <SurveyForm 
-            onSurveySubmit={() => this.setState({ showFormReviev: true })} 
+        return <SurveyForm formValues={this.state.formValues}
+            onSurveySubmit={(fields) => {
+                const formValues = {}
+
+                _.map(formFields, ({ name }) => {
+                    formValues[name] = fields[name];
+                });
+
+                console.log(Object.assign( { showFormReviev: false }, { formValues }));
+
+                this.setState(Object.assign( { showFormReviev: true }, { formValues }));
+            }}
         />
     }
 
@@ -28,6 +52,4 @@ class SurveyNew extends Component {
     }
 }
 
-export default reduxForm({
-    form: 'surveyForm'
-})(SurveyNew);
+export default SurveyNew;

@@ -1,12 +1,12 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
-import SurveyField from './SurveyField';
 import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
 
-class SurveyForm extends Component {
+/*class SurveyForm extends Component {
     renderFields() {
         return _.map(formFields, ({ label, name }) => {
             return <Field key={name} component={SurveyField} type="text" label={label} name={name} />
@@ -31,22 +31,50 @@ class SurveyForm extends Component {
             </div>
         )
     }
+}*/
+
+class SurveyForm extends Component {
+    renderFields(errors, status, touched) {
+        return _.map(formFields, ({ label, name }) => {
+            return (
+                <div className="form-group" key={name}>
+                    <label htmlFor={name}>{label}</label>
+                    <Field name={name} type="text" className={'form-control' + (errors[{name}] && touched[{name}] ? ' is-invalid' : '')} />
+                    <ErrorMessage name={name} component="div" className="invalid-feedback" />
+                </div>
+            )
+        })
+    }
+
+    render() {
+        const initialValuesMap = {};
+        const validationMap = {}
+
+        _.map(formFields, ({ name, yupValidation }) => {
+            initialValuesMap[name] = this.props.formValues[name];
+            validationMap[name] = yupValidation;
+        }); //load key - value pairs to validationMap from formFields
+
+        return (
+            <Formik
+                initialValues={initialValuesMap}
+                validationSchema={Yup.object().shape(validationMap)}
+                onSubmit={fields => {
+                    this.props.onSurveySubmit(fields);
+                }}
+                render={({ errors, status, touched }) => (
+                    <Form >
+                        { this.renderFields(errors, status, touched) }
+                        <div className="form-group" key="buttons">
+                            <button type="submit" className="btn btn-primary mr-2">Submit</button>
+                            <Link to="/surveys" className="btn btn-secondary">Cancel</Link>
+                            <button type="reset" className="btn btn-secondary">Reset</button>
+                        </div>
+                    </Form>
+                )}
+            />
+        )
+    }
 }
 
-function validate(values) {
-    const errors = {};
-
-    errors.recipients = validateEmails(values.recipients || '');
-
-    _.each(formFields, ({ name }) => {
-        if (!values[name]) errors[name] = 'You must provide ' + name;
-    });
-
-    return errors;
-}
-
-export default reduxForm({
-    validate: validate,
-    form: 'surveyForm',
-    destroyOnUnmount: false
-})(SurveyForm);
+export default SurveyForm;
