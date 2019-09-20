@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import Payments from './Payments';
+import { Navbar, Nav, NavDropdown, Spinner } from 'react-bootstrap';
 
 class Header extends Component {
     renderContent() {
         switch (this.props.auth) {
             case null:
-                return 'Loading';
+                return <Spinner animation="border" role="status">
+                        <span className="sr-only">Loading...</span>
+                    </Spinner>;
             case false:
-                return <li><a href="/auth/google">Login with google</a></li>;
+                return <Nav.Link href="/auth/google">Login with google</Nav.Link>;
             default:
                 return [
-                    <li key="1"><Payments /></li>,
-                    <li key="3" style={{ margin: '0px 10px' }}>
-                        Credits: { this.props.auth.credits }
-                    </li>,
-                    <li key="2"><a href="/api/logout">Logout</a></li>
+                    <Nav.Link key="1" as={Link} to="/store">Store</Nav.Link>,
+                    <Nav.Link key="3">Credits: { this.props.auth.credits }</Nav.Link>,
+                    <Nav.Link key="4" as={Link} to="/surveys">Surveys</Nav.Link>,
+                    <Nav.Link key="2" as={Link} to="/api/logout">Logout</Nav.Link>
                 ]
         }
     }
@@ -24,21 +25,27 @@ class Header extends Component {
     render() {
         console.log(this.props);
         return (
-            <nav>
-                <div className="nav-wrapper">
-                <Link 
-                    to={ this.props.auth ? '/surveys' : '/' }
-                    className="brand-logo"
-                >
-                    Emaily
-                </Link>
-                <ul id="nav-mobile" className="right">
-                    <li><a href="/auth/google">Static</a></li>
-                    
-                    { this.renderContent() }
-                </ul>
-                </div>
-            </nav>
+            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar.Brand as={Link} to={ '/' }>Emaily</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link href="#pricing">Pricing</Nav.Link>
+                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
+                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+              <Nav>
+                <Nav.Link href="#deets">More deets</Nav.Link>
+                { this.renderContent() }
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar>
         )
     }
 }

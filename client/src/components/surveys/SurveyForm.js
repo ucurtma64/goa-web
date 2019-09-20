@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
+import { Button } from 'react-bootstrap';
 
 /*class SurveyForm extends Component {
     renderFields() {
@@ -38,9 +39,9 @@ class SurveyForm extends Component {
         return _.map(formFields, ({ label, name }) => {
             return (
                 <div className="form-group" key={name}>
-                    <label htmlFor={name}>{label}</label>
-                    <Field name={name} type="text" className={'form-control' + (errors[{name}] && touched[{name}] ? ' is-invalid' : '')} />
-                    <ErrorMessage name={name} component="div" className="invalid-feedback" />
+                    <label for={name}>{label}</label>
+                    <Field rows="2" component="textarea" name={name} type="text" className={'form-control' + (errors[{name}] && touched[{name}] ? ' is-invalid' : '')} placeholder={label}/>
+                    <ErrorMessage name={name} className="invalid-feedback" render={msg => <div className="text-danger">{msg}</div>} />
                 </div>
             )
         })
@@ -63,14 +64,16 @@ class SurveyForm extends Component {
                     this.props.onSurveySubmit(fields);
                 }}
                 render={({ errors, status, touched }) => (
-                    <Form >
+                    <Form className="w-75 d-block mx-auto">
                         { this.renderFields(errors, status, touched) }
-                        <div className="form-group" key="buttons">
-                            <button type="submit" className="btn btn-primary mr-2">Submit</button>
-                            <Link to="/surveys" className="btn btn-secondary">Cancel</Link>
-                            <button type="reset" className="btn btn-secondary">Reset</button>
+                        
+                        <div className="form-group " key="buttons" style={{ margin: '2rem' }}>
+                            <Button className="float-right" variant="primary" type="submit">Submit</Button>
+                            <Button className="" style={{ marginLeft: '2rem' }} variant="secondary" type="reset">Reset</Button>
+                            <Button className="float-left" variant="secondary" as={Link} to="/surveys">Cancel</Button>
                         </div>
                     </Form>
+                    
                 )}
             />
         )

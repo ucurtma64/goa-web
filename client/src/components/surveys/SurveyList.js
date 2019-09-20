@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchSurveys } from '../../actions';
 import Pagination from "../util/Pagination";
+import { Card, ListGroup } from 'react-bootstrap';
 
 class SurveyList extends Component {
     state = {
@@ -44,41 +45,42 @@ class SurveyList extends Component {
           if (totalSurveys === 0) return null;
 
           return (
-            <Fragment>
-                <div className="row">
-                    <h3>
-                        <div className="total-records col s4 left-align">{totalSurveys}{" "}Surveys</div>
+            <Fragment className="container">
 
-                        <div className="col s4 center-align">
-                            <Pagination 
-                                totalRecords={totalSurveys}
-                                pageLimit={3}
-                                pageNeighbours={1}
-                                onPageChanged={this.onPageChanged}
-                            />
-                        </div>
+                <h3 className="row" style={{ margin: '1rem' }} align="center">
+                        <div className="total-records col">{totalSurveys}{" "}Surveys</div>
+
+                        <Pagination className="col"
+                            totalRecords={totalSurveys}
+                            pageLimit={4}
+                            pageNeighbours={1}
+                            onPageChanged={this.onPageChanged}
+                        />
 
                         {currentPage && (
-                            <div className="current-page col s4 right-align">
+                            <div className="current-page col">
                                 Page <span >{currentPage}/{totalPages}</span>
                             </div>
                         )}
-                    </h3>
-                </div>
+                </h3>
 
-                {currentSurveys.map(survey => (
-                    <div className="card z-depth-2" key={survey._id}>
-                        <div className="card-content">
-                            <span className="card-title">{survey.title}</span>
-                            <p>{survey.body}</p>
-                            <p className="right">Sent on: {new Date(survey.dateSent).toLocaleDateString()}</p>
-                        </div>
-                        <div className="card-action">
-                            <a href="#">Yes: {survey.yes}</a>
-                            <a href="#">No: {survey.no}</a>
-                        </div>
-                    </div>
-                ))}
+                <div className="row justify-content-center">
+                    {currentSurveys.map(survey => (
+                        <Card style={{ width: '18rem', margin: '2rem' }} key={survey._id}>
+                            <Card.Body>
+                            <Card.Title>{survey.title}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">Sent on: {new Date(survey.dateSent).toLocaleDateString()}</Card.Subtitle>
+                            <Card.Text>
+                                {survey.body}
+                            </Card.Text>
+                            <ListGroup variant="flush">
+                                <ListGroup.Item>Yes: {survey.yes}</ListGroup.Item>
+                                <ListGroup.Item>No: {survey.no}</ListGroup.Item>
+                            </ListGroup>
+                            </Card.Body>
+                        </Card>
+                    ))}
+                </div>
             </Fragment>
         );
     }
