@@ -7,39 +7,12 @@ import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
 import { Button } from 'react-bootstrap';
 
-/*class SurveyForm extends Component {
-    renderFields() {
-        return _.map(formFields, ({ label, name }) => {
-            return <Field key={name} component={SurveyField} type="text" label={label} name={name} />
-        })
-    }
-
-    render() {
-        return (
-            <div>
-                <form onSubmit={this.props.handleSubmit(this.props.onSurveySubmit)}>
-                    { this.renderFields() }
-
-                    <Link to="/surveys" className="red btn-flat white-text">
-                        Cancel
-                    </Link>
-
-                    <button type="submit" className="teal btn-flat right white-text">
-                        Next
-                        <i className="material-icons right">done</i>
-                    </button>
-                </form>
-            </div>
-        )
-    }
-}*/
-
 class SurveyForm extends Component {
     renderFields(errors, status, touched) {
         return _.map(formFields, ({ label, name }) => {
             return (
                 <div className="form-group" key={name}>
-                    <label for={name}>{label}</label>
+                    <label className="text-light" for={name}>{label}</label>
                     <Field rows="2" component="textarea" name={name} type="text" className={'form-control' + (errors[{name}] && touched[{name}] ? ' is-invalid' : '')} placeholder={label}/>
                     <ErrorMessage name={name} className="invalid-feedback" render={msg => <div className="text-danger">{msg}</div>} />
                 </div>
