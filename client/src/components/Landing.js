@@ -22,7 +22,7 @@ const Landing = () => {
             <Carousel.Item>
                 <img
                 className="d-block img-fluid mx-auto"
-                src="https://images.unsplash.com/photo-1466096115517-bceecbfb6fde?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=40"
+                src="https://images.unsplash.com/photo-1509085702214-9178b0941e25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=40"
                 alt="Third slide"
                 />
                 <Carousel.Caption>
@@ -33,7 +33,7 @@ const Landing = () => {
             <Carousel.Item>
                 <img
                 className="d-block img-fluid mx-auto"
-                src="https://images.unsplash.com/photo-1560867486-c5c696b93505?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=775&q=40"
+                src="https://images.unsplash.com/photo-1511771983947-d0a43a94f18b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1290&q=40"
                 alt="Third slide"
                 />
 
