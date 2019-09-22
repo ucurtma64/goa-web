@@ -1,7 +1,7 @@
 import './custom.scss';
-import 'jquery';
-import 'popper.js';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import $ from 'jquery';
+import 'popper.js/dist/popper.min.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';

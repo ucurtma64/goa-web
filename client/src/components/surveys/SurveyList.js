@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSurveys } from '../../actions';
 import Pagination from "../util/Pagination";
@@ -24,12 +24,9 @@ class SurveyList extends Component {
     
         const offset = (currentPage - 1) * pageLimit;
         const currentSurveys = allSurveysReversed.slice(offset, offset + pageLimit);
-
-        console.log(this.props.surveys);
-        console.log(offset);
     
         this.setState({ currentPage, currentSurveys, totalPages });
-    };
+    }
 
     render() {
         const {
@@ -39,49 +36,51 @@ class SurveyList extends Component {
             totalPages
         } = this.state;
 
-          const totalSurveys = allSurveysReversed.length;
+        const totalSurveys = allSurveysReversed.length;
 
-          if (totalSurveys === 0) return null;
+        if (totalSurveys === 0) return null;
 
-          return (
-            <Fragment>
-                <div className="container">
-                    <h3 className="row" style={{ margin: '1rem' }} align="center">
-                            <div className="total-records col text-light">{totalSurveys}{" "}Surveys</div>
+        const headerClass = ['text-light py-2 pr-4 m-0', currentPage ? 'border-gray border-right' : ''].join(' ').trim();
 
-                            <Pagination className="col"
-                                totalRecords={totalSurveys}
-                                pageLimit={4}
-                                pageNeighbours={1}
-                                onPageChanged={this.onPageChanged}
-                            />
+        return (
+            <div className="container mb-5">
+                <div className="row d-flex flex-row py-5">
+                    <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
+                        <div className="d-flex flex-row align-items-center">
 
-                            {currentPage && (
-                                <div className="current-page col text-light">
-                                    Page <span >{currentPage}/{totalPages}</span>
-                                </div>
-                            )}
-                    </h3>
+                        <h2 className={headerClass}>
+                            <strong className="text-light">{totalSurveys}</strong> Surveys
+                        </h2>
 
-                    <div className="row">
-                        {currentSurveys.map(survey => (
-                            <div className="card text-white bg-dark mb-3 col" style={{ maxWidth: '18rem', margin: '2rem' }}>
-                                <div className="card-header">
-                                    <h5 className="card-title">{survey.title}</h5>
-                                    <h6 className="card-subtitle mb-2 text-muted">Sent on: {new Date(survey.dateSent).toLocaleDateString()}</h6>
-                                </div>
-                                <div className="card-body">
-                                    <p className="card-text">{survey.body}</p>
-                                    <div className="card-text">
-                                        <p className="float-left">Yes: {survey.yes}</p>
-                                        <p className="float-right">No: {survey.no}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                        { currentPage && (
+                            <span className="current-page d-inline-block h-100 pl-4 text-light">
+                            Page <span className="font-weight-bold">{ currentPage }</span> / <span className="font-weight-bold">{ totalPages }</span>
+                            </span>
+                        ) }
+
+                        </div>
+
+                        <div className="d-flex flex-row py-4 align-items-center">
+                        <Pagination totalRecords={totalSurveys} pageLimit={3} pageNeighbours={1} onPageChanged={this.onPageChanged} />
+                        </div>
                     </div>
+
+                    { currentSurveys.map(survey => 
+                    <div key={survey.dateSent} className="card text-white bg-dark mb-3 col" style={{ maxWidth: '18rem', margin: '2rem' }}>
+                        <div className="card-header">
+                            <h5 className="card-title">{survey.title}</h5>
+                            <h6 className="card-subtitle mb-2 text-muted">Sent on: {new Date(survey.dateSent).toLocaleDateString()}</h6>
+                        </div>
+                        <div className="card-body">
+                            <p className="card-text">{survey.body}</p>
+                            <div className="card-text">
+                                <p className="float-left">Yes: {survey.yes}</p>
+                                <p className="float-right">No: {survey.no}</p>
+                            </div>
+                        </div>
+                    </div>) }
                 </div>
-            </Fragment>
+            </div>
         );
     }
 }
