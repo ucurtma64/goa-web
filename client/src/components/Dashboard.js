@@ -10,7 +10,7 @@ class Dashboard extends Component {
             <div>
                 <SurveyList />
 
-                <Link to="/surveys/new" class="btn btn-primary btn-lg float-right" type="button" style={{margin: "2%"}}>
+                <Link to="/surveys/new" className="btn btn-primary btn-lg float-right" type="button" style={{margin: "2%"}}>
                     <span><FontAwesomeIcon icon={faPlus} /></span>
                 </Link>
             </div>

@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { fetchSurveys } from '../../actions';
 import Pagination from "../util/Pagination";
-import { Card, ListGroup } from 'react-bootstrap';
 
 class SurveyList extends Component {
     state = {
@@ -45,41 +44,42 @@ class SurveyList extends Component {
           if (totalSurveys === 0) return null;
 
           return (
-            <Fragment className="container">
+            <Fragment>
+                <div className="container">
+                    <h3 className="row" style={{ margin: '1rem' }} align="center">
+                            <div className="total-records col text-light">{totalSurveys}{" "}Surveys</div>
 
-                <h3 className="row" style={{ margin: '1rem' }} align="center">
-                        <div className="total-records col">{totalSurveys}{" "}Surveys</div>
+                            <Pagination className="col"
+                                totalRecords={totalSurveys}
+                                pageLimit={4}
+                                pageNeighbours={1}
+                                onPageChanged={this.onPageChanged}
+                            />
 
-                        <Pagination className="col"
-                            totalRecords={totalSurveys}
-                            pageLimit={4}
-                            pageNeighbours={1}
-                            onPageChanged={this.onPageChanged}
-                        />
+                            {currentPage && (
+                                <div className="current-page col text-light">
+                                    Page <span >{currentPage}/{totalPages}</span>
+                                </div>
+                            )}
+                    </h3>
 
-                        {currentPage && (
-                            <div className="current-page col">
-                                Page <span >{currentPage}/{totalPages}</span>
+                    <div className="row">
+                        {currentSurveys.map(survey => (
+                            <div className="card text-white bg-dark mb-3 col" style={{ maxWidth: '18rem', margin: '2rem' }}>
+                                <div className="card-header">
+                                    <h5 className="card-title">{survey.title}</h5>
+                                    <h6 className="card-subtitle mb-2 text-muted">Sent on: {new Date(survey.dateSent).toLocaleDateString()}</h6>
+                                </div>
+                                <div className="card-body">
+                                    <p className="card-text">{survey.body}</p>
+                                    <div className="card-text">
+                                        <p className="float-left">Yes: {survey.yes}</p>
+                                        <p className="float-right">No: {survey.no}</p>
+                                    </div>
+                                </div>
                             </div>
-                        )}
-                </h3>
-
-                <div className="row justify-content-center">
-                    {currentSurveys.map(survey => (
-                        <Card style={{ width: '18rem', margin: '2rem' }} key={survey._id}>
-                            <Card.Body>
-                            <Card.Title>{survey.title}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">Sent on: {new Date(survey.dateSent).toLocaleDateString()}</Card.Subtitle>
-                            <Card.Text>
-                                {survey.body}
-                            </Card.Text>
-                            <ListGroup variant="flush">
-                                <ListGroup.Item>Yes: {survey.yes}</ListGroup.Item>
-                                <ListGroup.Item>No: {survey.no}</ListGroup.Item>
-                            </ListGroup>
-                            </Card.Body>
-                        </Card>
-                    ))}
+                        ))}
+                    </div>
                 </div>
             </Fragment>
         );

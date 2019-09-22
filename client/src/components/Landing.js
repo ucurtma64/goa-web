@@ -1,5 +1,4 @@
 import React from 'react';
-import { Carousel } from 'react-bootstrap';
 
 const Landing = () => {
     return (
@@ -7,56 +6,53 @@ const Landing = () => {
         <style type="text/css">
             {`
             .carousel-item {
-                height: 65vh;
+                height: 94vh;
                 min-height: 350px;
                 background: no-repeat center center scroll;
                 -webkit-background-size: cover;
                 -moz-background-size: cover;
                 -o-background-size: cover;
                 background-size: cover;
-                }
+              }
             `}
         </style>
 
-        <Carousel>
-            <Carousel.Item>
-                <img
-                className="d-block img-fluid mx-auto"
-                src="https://images.unsplash.com/photo-1509085702214-9178b0941e25?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=40"
-                alt="Third slide"
-                />
-                <Carousel.Caption>
-                <h3>First slide label</h3>
-                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                className="d-block img-fluid mx-auto"
-                src="https://images.unsplash.com/photo-1511771983947-d0a43a94f18b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1290&q=40"
-                alt="Third slide"
-                />
 
-                <Carousel.Caption>
-                <h3>Second slide label</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                className="d-block img-fluid mx-auto"
-                src="https://images.unsplash.com/photo-1459347268516-3ed71100e718?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=40"
-                alt="Third slide"
-                />
-
-                <Carousel.Caption>
-                <h3>Third slide label</h3>
-                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                </Carousel.Caption>
-            </Carousel.Item>
-        </Carousel>
-
-        <p class="text-center font-weight-normal text-light" style={{marginTop: "20px"}}>Center aligned text on all viewport sizes.</p>
+            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                <ol className="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div className="carousel-inner" role="listbox">
+                <div className="carousel-item active" style={{backgroundImage: "url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')"}}>
+                    <div className="carousel-caption d-none d-md-block">
+                    <h2 className="display-4">First Slide</h2>
+                    <p className="lead">This is a description for the first slide.</p>
+                    </div>
+                </div>
+                <div className="carousel-item" style={{backgroundImage: "url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')"}}>
+                    <div className="carousel-caption d-none d-md-block">
+                    <h2 className="display-4">Second Slide</h2>
+                    <p className="lead">This is a description for the second slide.</p>
+                    </div>
+                </div>
+                <div className="carousel-item" style={{backgroundImage: "url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')"}}>
+                    <div className="carousel-caption d-none d-md-block">
+                    <h2 className="display-4">Third Slide</h2>
+                    <p className="lead">This is a description for the third slide.</p>
+                    </div>
+                </div>
+                </div>
+                <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Previous</span>
+                </a>
+                <a className="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span className="sr-only">Next</span>
+                </a>
+            </div>
         </>
     )
 }

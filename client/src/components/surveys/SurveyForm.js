@@ -5,7 +5,6 @@ import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import validateEmails from '../../utils/validateEmails';
 import formFields from './formFields';
-import { Button } from 'react-bootstrap';
 
 class SurveyForm extends Component {
     renderFields(errors, status, touched) {
@@ -41,9 +40,9 @@ class SurveyForm extends Component {
                         { this.renderFields(errors, status, touched) }
                         
                         <div className="form-group " key="buttons" style={{ margin: '2rem' }}>
-                            <Button className="float-right" variant="primary" type="submit">Submit</Button>
-                            <Button className="" style={{ marginLeft: '2rem' }} variant="secondary" type="reset">Reset</Button>
-                            <Button className="float-left" variant="secondary" as={Link} to="/surveys">Cancel</Button>
+                            <button className="btn btn-primary float-right" variant="primary" type="submit">Submit</button>
+                            <button className="btn btn-secondary" style={{ marginLeft: '2rem' }} variant="secondary" type="reset">Reset</button>
+                            <Link className="btn btn-secondary float-left" variant="secondary" to="/surveys">Cancel</Link>
                         </div>
                     </Form>
                     

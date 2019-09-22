@@ -1,23 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Navbar, Nav, NavDropdown, Spinner } from 'react-bootstrap';
 
 class Header extends Component {
     renderContent() {
         switch (this.props.auth) {
             case null:
-                return <Spinner animation="border" role="status">
+                return <div className="spinner-border" role="status">
                         <span className="sr-only">Loading...</span>
-                    </Spinner>;
+                      </div>;
             case false:
-                return <Nav.Link href="/auth/google">Login with google</Nav.Link>;
+                return <li className="nav-item" key="4">
+                        <a className="nav-link" href="/auth/google">Login with google</a>
+                      </li>;
             default:
                 return [
-                    <Nav.Link key="1" as={Link} to="/store">Store</Nav.Link>,
-                    <Nav.Link key="3">Credits: { this.props.auth.credits }</Nav.Link>,
-                    <Nav.Link key="4" as={Link} to="/surveys">Surveys</Nav.Link>,
-                    <Nav.Link key="2" as={Link} to="/api/logout">Logout</Nav.Link>
+                    <li className="nav-item" key="1">
+                      <Link className="nav-link" to="/store">Store</Link>
+                    </li>,
+                    <li className="nav-item" key="3">
+                      <span className="navbar-text text-light">Credits: { this.props.auth.credits }</span>
+                    </li>,
+                    <li className="nav-item" key="4">
+                      <Link className="nav-link" to="/surveys">Surveys</Link>
+                    </li>,
+                    <li className="nav-item" key="2">
+                      <a className="nav-link" href="/api/logout">Logout</a>
+                    </li>
                 ]
         }
     }
@@ -25,27 +34,32 @@ class Header extends Component {
     render() {
         console.log(this.props);
         return (
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand as={Link} to={ '/' }>Emaily</Navbar.Brand>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-              <Nav className="mr-auto">
-                <Nav.Link href="#features">Features</Nav.Link>
-                <Nav.Link href="#pricing">Pricing</Nav.Link>
-                <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
-              <Nav>
-                <Nav.Link href="#deets">More deets</Nav.Link>
+          <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+            <Link className="navbar-brand" to={'/'}>Emaily</Link>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul className="navbar-nav mr-auto">
+                <li className="nav-item dropdown">
+                  <a href="#" className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a href="#" className="dropdown-item">Action</a>
+                    <a href="#" className="dropdown-item">Another action</a>
+                    <div className="dropdown-divider"></div>
+                    <a href="#" className="dropdown-item">Something else here</a>
+                  </div>
+                </li>
+              </ul>
+
+              <ul className="navbar-nav my-2 my-lg-0">
                 { this.renderContent() }
-              </Nav>
-            </Navbar.Collapse>
-          </Navbar>
+              </ul>
+            </div>
+          </nav>
         )
     }
 }

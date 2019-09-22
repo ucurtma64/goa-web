@@ -88,7 +88,7 @@ class Store extends Component {
                             <li className="text-muted"><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faTimes} /></span>Free Subdomain</li>
                             <li className="text-muted"><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faTimes} /></span>Monthly Status Reports</li>
                             </ul>
-                            <a href="#" className="btn btn-block btn-primary text-uppercase">Button</a>
+                            <button className="btn btn-block btn-primary text-uppercase">Button</button>
                         </div>
                         </div>
                     </div>
@@ -109,7 +109,7 @@ class Store extends Component {
                             <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Free Subdomain</li>
                             <li className="text-muted"><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faTimes} /></span>Monthly Status Reports</li>
                             </ul>
-                            <a href="#" className="btn btn-block btn-primary text-uppercase">Button</a>
+                            <button className="btn btn-block btn-primary text-uppercase">Button</button>
                         </div>
                         </div>
                     </div>
@@ -130,7 +130,7 @@ class Store extends Component {
                             <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span><strong>Unlimited</strong> Free Subdomains</li>
                             <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Monthly Status Reports</li>
                             </ul>
-                            <a href="#" className="btn btn-block btn-primary text-uppercase">Button</a>
+                            <button className="btn btn-block btn-primary text-uppercase">Button</button>
                         </div>
                         </div>
                     </div>

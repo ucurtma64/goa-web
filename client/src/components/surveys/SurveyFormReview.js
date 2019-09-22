@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import formFields from './formFields';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
-import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMailBulk } from '@fortawesome/free-solid-svg-icons';
 
@@ -28,18 +27,18 @@ class SurveyFormReview extends Component {
                 {reviewFields}
     
                 <div style={{ margin: '2rem' }}>
-                <Button className="float-right" variant="primary" type="submit" 
+                <button className="btn btn-primary float-right" variant="primary" type="submit" 
                 onClick={() => {
                     console.log(this.props.formValues)
                     console.log(this.props.history)
                     this.props.submitSurvey(this.props.formValues, this.props.history)}
                 }>
                     Send Survey <span><FontAwesomeIcon icon={faMailBulk} /></span>
-                </Button>
+                </button>
 
-                <Button className="float-left" variant="secondary" onClick={this.props.onCancel}>
+                <button className="btn btn-secondary float-left" variant="secondary" onClick={this.props.onCancel}>
                     Back
-                </Button>
+                </button>
                 </div>
             </div>
         )
