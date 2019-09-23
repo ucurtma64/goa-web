@@ -7,7 +7,7 @@ import Header from './Header';
 import Landing from './Landing';
 import Dashboard from './Dashboard';
 import SurveyNew from './surveys/SurveyNew';
-import Store from './merchant/Store';
+import PaymentNew from './merchant/PaymentNew';
 
 class App extends Component {
     componentDidMount() {
@@ -19,7 +19,7 @@ class App extends Component {
             <BrowserRouter>
                 <Header />
                 <Route exact path="/" component={Landing} />
-                <Route exact path="/store" component={Store} />
+                <Route exact path="/store" component={PaymentNew} />
                 <Route exact path="/surveys" component={Dashboard} />
                 <Route path="/surveys/new" component={SurveyNew} />
             </BrowserRouter>

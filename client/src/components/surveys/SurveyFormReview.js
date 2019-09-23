@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import formFields from './formFields';
 import { withRouter } from 'react-router-dom';
 import * as actions from '../../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,28 +8,38 @@ import { faMailBulk } from '@fortawesome/free-solid-svg-icons';
 
 class SurveyFormReview extends Component {
     render() {
-        const reviewFields = _.map(formFields, ({ name, label}) => {
-            return (
-                <div key={name}>
-                    <label className="text-light">{ label }</label>
-                    <p className="border font-weight-normal bg-white rounded-lg">
-                        {this.props.formValues[name]}
-                    </p>
-                </div>
-            );
-        });
-    
         return (
             <div className="w-75 d-block mx-auto">
                 <h5 className="text-success">Please confirm your entries</h5>
     
-                {reviewFields}
+                <div key="title">
+                    <label className="text-light">Survey title</label>
+                    <p className="border font-weight-normal bg-white rounded-lg">
+                        {this.props.formValues.title}
+                    </p>
+                </div>
+                <div key="subject">
+                    <label className="text-light">Subject Line</label>
+                    <p className="border font-weight-normal bg-white rounded-lg">
+                        {this.props.formValues.subject}
+                    </p>
+                </div>
+                <div key="body">
+                    <label className="text-light">Email body</label>
+                    <p className="border font-weight-normal bg-white rounded-lg">
+                        {this.props.formValues.body}
+                    </p>
+                </div>
+                <div key="recipients">
+                    <label className="text-light">Recipients list</label>
+                    <p className="border font-weight-normal bg-white rounded-lg">
+                        {this.props.formValues.recipients}
+                    </p>
+                </div>
     
                 <div style={{ margin: '2rem' }}>
                 <button className="btn btn-primary float-right" variant="primary" type="submit" 
                 onClick={() => {
-                    console.log(this.props.formValues)
-                    console.log(this.props.history)
                     this.props.submitSurvey(this.props.formValues, this.props.history)}
                 }>
                     Send Survey <span><FontAwesomeIcon icon={faMailBulk} /></span>

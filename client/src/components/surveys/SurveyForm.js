@@ -4,40 +4,54 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 import validateEmails from '../../utils/validateEmails';
-import formFields from './formFields';
 
 class SurveyForm extends Component {
-    renderFields(errors, status, touched) {
-        return _.map(formFields, ({ label, name }) => {
-            return (
-                <div className="form-group" key={name}>
-                    <label className="text-light" for={name}>{label}</label>
-                    <Field rows="2" component="textarea" name={name} type="text" className={'form-control' + (errors[{name}] && touched[{name}] ? ' is-invalid' : '')} placeholder={label}/>
-                    <ErrorMessage name={name} className="invalid-feedback" render={msg => <div className="text-danger">{msg}</div>} />
-                </div>
-            )
-        })
-    }
-
     render() {
-        const initialValuesMap = {};
-        const validationMap = {}
-
-        _.map(formFields, ({ name, yupValidation }) => {
-            initialValuesMap[name] = this.props.formValues[name];
-            validationMap[name] = yupValidation;
-        }); //load key - value pairs to validationMap from formFields
+        const initialValuesMap = {
+            title: this.props.formValues.title,
+            subject: this.props.formValues.subject,
+            body: this.props.formValues.body,
+            recipients: this.props.formValues.recipients
+        };
 
         return (
             <Formik
                 initialValues={initialValuesMap}
-                validationSchema={Yup.object().shape(validationMap)}
+                validationSchema={Yup.object().shape({
+                    title: Yup.string().required('Title is required'),
+                    subject: Yup.string().required('Subject is required'),
+                    body: Yup.string().min(6, 'Body must be at least 6 characters').required('Body is required'),
+                    recipients: Yup.string().email('Email is invalid').required('Email is required')
+                })}
                 onSubmit={fields => {
                     this.props.onSurveySubmit(fields);
                 }}
                 render={({ errors, status, touched }) => (
                     <Form className="w-75 d-block mx-auto">
-                        { this.renderFields(errors, status, touched) }
+                        <div className="form-row">
+                            <div className="form-group col" key="title">
+                                <label className="text-light" for="title">Survey Title</label>
+                                <Field rows="1" component="textarea" name="title" type="text" className={'form-control' + (errors.title && touched.title ? ' is-invalid' : '')} placeholder="Survey Title"/>
+                                <ErrorMessage name="title" className="invalid-feedback" render={msg => <div className="text-danger">{msg}</div>} />
+                            </div>
+
+                            <div className="form-group col" key="subject">
+                                <label className="text-light" for="subject">Subject Line</label>
+                                <Field rows="1" component="textarea" name="subject" type="text" className={'form-control' + (errors.subject && touched.subject ? ' is-invalid' : '')} placeholder="Subject Line"/>
+                                <ErrorMessage name="subject" className="invalid-feedback" render={msg => <div className="text-danger">{msg}</div>} />
+                            </div>
+                        </div>
+                        <div className="form-group" key="body">
+                            <label className="text-light" for="body">Email Body</label>
+                            <Field rows="1" component="textarea" name="body" type="text" className={'form-control' + (errors.body && touched.body ? ' is-invalid' : '')} placeholder="Email Body"/>
+                            <ErrorMessage name="body" className="invalid-feedback" render={msg => <div className="text-danger">{msg}</div>} />
+                        </div>
+
+                        <div className="form-group" key="recipients">
+                            <label className="text-light" for="recipients">Recipient List</label>
+                            <Field rows="2" component="textarea" name="recipients" type="text" className={'form-control' + (errors.recipients && touched.recipients ? ' is-invalid' : '')} placeholder="Recipient List"/>
+                            <ErrorMessage name="recipients" className="invalid-feedback" render={msg => <div className="text-danger">{msg}</div>} />
+                        </div>
                         
                         <div className="form-group " key="buttons" style={{ margin: '2rem' }}>
                             <button className="btn btn-primary float-right" variant="primary" type="submit">Submit</button>

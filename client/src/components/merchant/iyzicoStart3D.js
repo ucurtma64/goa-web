@@ -5,7 +5,7 @@ export default function() {
         "price": "10.91",
         "paidPrice": "12.91",
         "currency": "TRY",
-        "installment": 2,
+        "installment": 1,
         "paymentChannel": "WEB",
         "basketId": "siparisnumaranız2023",
         "paymentGroup": "OTHER",
@@ -48,7 +48,7 @@ export default function() {
                 "price": "10.91",
                 "name": "Genel Ürün İsmi",
                 "category1": "Genel Kategori İsmi",
-                "itemType": "PHYSICAL"
+                "itemType": "VIRTUAL"
             }
         ]
     }

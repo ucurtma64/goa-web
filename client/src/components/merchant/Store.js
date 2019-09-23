@@ -1,10 +1,32 @@
+import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTimes, faCheck } from '@fortawesome/free-solid-svg-icons'
+import products from './products';
 
 class Store extends Component {
+    renderProducts() {
+        return _.map(products, ({ id, label, name, price, description }) => {
+            return (
+                <div className="col-lg-4" key={name} style={{ marginBottom: '1rem' }}>
+                    <div className="card mb-5 mb-lg-0">
+                    <div className="card-body">
+                        <h5 className="card-title text-muted text-uppercase text-center">{label}</h5>
+                        <h6 className="card-price text-center">${price}<span className="period">/credits</span></h6>
+                        <hr/>
+
+                        {description}
+
+                        <button className="btn btn-block btn-primary text-uppercase" 
+                            onClick={() => this.props.onSurveySubmit(id)}>Purchase
+                        </button>
+                    </div>
+                    </div>
+                </div>
+            )
+        })
+    }
+
     render() {
         return (
             <>
@@ -70,70 +92,8 @@ class Store extends Component {
             </style>
             <section className="pricing py-5">
                 <div className="container">
-                    <div className="row">
-                    {/*<!-- Free Tier -->*/}
-                    <div className="col-lg-4">
-                        <div className="card mb-5 mb-lg-0">
-                        <div className="card-body">
-                            <h5 className="card-title text-muted text-uppercase text-center">Free</h5>
-                            <h6 className="card-price text-center">$0<span className="period">/month</span></h6>
-                            <hr/>
-                            <ul className="fa-ul">
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Single User</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>5GB Storage</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Unlimited Public Projects</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Community Access</li>
-                            <li className="text-muted"><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faTimes} /></span>Unlimited Private Projects</li>
-                            <li className="text-muted"><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faTimes} /></span>Dedicated Phone Support</li>
-                            <li className="text-muted"><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faTimes} /></span>Free Subdomain</li>
-                            <li className="text-muted"><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faTimes} /></span>Monthly Status Reports</li>
-                            </ul>
-                            <button className="btn btn-block btn-primary text-uppercase">Button</button>
-                        </div>
-                        </div>
-                    </div>
-                    {/*<!-- Plus Tier -->*/}
-                    <div className="col-lg-4">
-                        <div className="card mb-5 mb-lg-0">
-                        <div className="card-body">
-                            <h5 className="card-title text-muted text-uppercase text-center">Plus</h5>
-                            <h6 className="card-price text-center">$9<span className="period">/month</span></h6>
-                            <hr/>
-                            <ul className="fa-ul">
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span><strong>5 Users</strong></li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>50GB Storage</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Unlimited Public Projects</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Community Access</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Unlimited Private Projects</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Dedicated Phone Support</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Free Subdomain</li>
-                            <li className="text-muted"><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faTimes} /></span>Monthly Status Reports</li>
-                            </ul>
-                            <button className="btn btn-block btn-primary text-uppercase">Button</button>
-                        </div>
-                        </div>
-                    </div>
-                    {/*<!-- Pro Tier -->*/}
-                    <div className="col-lg-4">
-                        <div className="card">
-                        <div className="card-body">
-                            <h5 className="card-title text-muted text-uppercase text-center">Pro</h5>
-                            <h6 className="card-price text-center">$49<span className="period">/month</span></h6>
-                            <hr/>
-                            <ul className="fa-ul">
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span><strong>Unlimited Users</strong></li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>150GB Storage</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Unlimited Public Projects</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Community Access</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Unlimited Private Projects</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Dedicated Phone Support</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span><strong>Unlimited</strong> Free Subdomains</li>
-                            <li><span className="fa-li"><FontAwesomeIcon mask={['fas']} icon={faCheck} /></span>Monthly Status Reports</li>
-                            </ul>
-                            <button className="btn btn-block btn-primary text-uppercase">Button</button>
-                        </div>
-                        </div>
-                    </div>
+                    <div className="row card-deck">
+                        { this.renderProducts() }
                     </div>
                 </div>
             </section>
@@ -142,4 +102,4 @@ class Store extends Component {
     }
 }
 
-export default connect(null, actions)(Store);
+export default Store;

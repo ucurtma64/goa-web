@@ -65,20 +65,23 @@ class SurveyList extends Component {
                         </div>
                     </div>
 
-                    { currentSurveys.map(survey => 
-                    <div key={survey.dateSent} className="card text-white bg-dark mb-3 col" style={{ maxWidth: '18rem', margin: '2rem' }}>
-                        <div className="card-header">
-                            <h5 className="card-title">{survey.title}</h5>
-                            <h6 className="card-subtitle mb-2 text-muted">Sent on: {new Date(survey.dateSent).toLocaleDateString()}</h6>
-                        </div>
-                        <div className="card-body">
-                            <p className="card-text">{survey.body}</p>
-                            <div className="card-text">
-                                <p className="float-left">Yes: {survey.yes}</p>
-                                <p className="float-right">No: {survey.no}</p>
+                    <div class="card-deck">
+                        {currentSurveys.map(survey => 
+                            <div key={survey.dateSent} className="card text-dark border-light mb-3" style={{ width: '18rem', margin: '2rem' }}>
+                                <div className="card-header">
+                                    <h5 className="card-title">{survey.title}</h5>
+                                    <small className="card-subtitle mb-2 text-muted">Sent on: {new Date(survey.dateSent).toLocaleDateString()}</small>
+                                </div>
+                                <div className="card-body">
+                                    <p className="card-text">{survey.body}</p>
+                                </div>
+                                <div className="card-footer">
+                                    <small className="float-left">Yes: {survey.yes}</small >
+                                    <small className="float-right">No: {survey.no}</small >
+                                </div>
                             </div>
-                        </div>
-                    </div>) }
+                        )}
+                    </div>
                 </div>
             </div>
         );
