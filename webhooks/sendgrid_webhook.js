@@ -1,5 +1,8 @@
-var localtunnel = require('localtunnel');
+var localtunnel = require("localtunnel");
 
-localtunnel(5000, { subdomain: 'emaily123lix767645asdsda5384214' }, function(err, tunnel) {
-    console.log('LocalTunnel running')
+localtunnel(5000, { subdomain: "lix-emaily-1234567890" }, function(
+  err,
+  tunnel
+) {
+  console.log("LocalTunnel running");
 });
