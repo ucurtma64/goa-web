@@ -1,7 +1,8 @@
 const keys = require("../config/keys");
 const requireLogin = require("../middlewares/requireLogin");
-const crypto = require("crypto");
-var Iyzipay = require("iyzipay");
+const Iyzipay = require("iyzipay");
+const uuidv4 = require("uuid/v4");
+const atob = require("atob");
 
 var iyzipay = new Iyzipay({
   apiKey: keys.iyzipayPublishableKey,
@@ -16,31 +17,40 @@ module.exports = app => {
       req.body.buyer,
       req.body.paymentCard
     );
-    console.log(`iyzipayRequest`);
 
-    iyzipay.payment.create(iyzipayRequest, function(err, result) {
-      console.log(err, result);
+    iyzipay.threedsInitialize.create(iyzipayRequest, function(err, result) {
+      const htmlPage = atob(result.threeDSHtmlContent);
+      res.send(htmlPage);
     });
+  });
 
-    req.user.credits += 5;
-    const user = await req.user.save();
+  app.post("/api/iyzipay/callback", (req, res) => {
+    console.log("POST");
+    console.log(req.body);
 
-    res.send(user);
+    res.send("POST");
+  });
+
+  app.get("/api/iyzipay/callback", (req, res) => {
+    console.log("GET");
+    console.log(req.body);
+
+    res.send("GET");
   });
 };
 
 const iyzipayStart3D = (product, buyer, paymentCard) => {
   paymentCard.registerCard = 0;
 
-  const orderId = crypto.randomBytes(48, function(err, buffer) {
-    return buffer.toString("hex");
-  });
+  const orderId = uuidv4();
+
+  const price = String(product.price);
 
   return {
     locale: "TR",
     conversationId: orderId,
-    price: product.price,
-    paidPrice: product.price,
+    price: price,
+    paidPrice: price,
     currency: "TRY",
     installment: 1,
     paymentChannel: "WEB",
@@ -58,7 +68,7 @@ const iyzipayStart3D = (product, buyer, paymentCard) => {
     basketItems: [
       {
         id: product.id,
-        price: product.price,
+        price: price,
         name: product.label,
         category1: product.category,
         itemType: "VIRTUAL"

@@ -2,25 +2,68 @@ import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import * as actions from "../../actions";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import $ from "jquery";
+import axios from "axios";
 
 class PaymentForm extends Component {
+  constructor(props) {
+    super(props);
+    // Don't call this.setState() here!
+
+    this.state = { iyzipayHtml: "" };
+  }
+
   componentDidMount() {
     $('[data-toggle="tooltip"]').tooltip();
   }
 
+  onFormSubmit(fields) {
+    const product = this.props.formValues.product;
+
+    //remove unnecessary properties
+    delete product.description;
+
+    const buyer = {
+      id: this.props.auth._id,
+      name: this.props.auth.givenName,
+      surname: this.props.auth.familyName,
+      identityNumber: this.props.formValues.identityNumber,
+      email: this.props.auth.email,
+      registrationAddress: this.props.formValues.registrationAddress,
+      city: this.props.formValues.city,
+      country: this.props.formValues.country
+    };
+
+    const paymentCard = Object.assign(fields, { registerCard: 0 });
+
+    const token = Object.assign({ product }, { buyer }, { paymentCard });
+
+    this.startIyzipay3D(token);
+  }
+
+  async startIyzipay3D(token) {
+    const res = await axios.post("/api/iyzipay", token);
+
+    console.log(res.data);
+
+    const iyzipayHtml = res.data;
+
+    this.setState({ iyzipayHtml });
+
+    console.log(this.state);
+  }
+
   render() {
     const initialValuesMap = {
-      cardHolderName: this.props.formValues.cardHolderName || "",
-      cardNumber: this.props.formValues.cardNumber || "",
-      expireYear: this.props.formValues.expireYear || "",
-      expireMonth: this.props.formValues.expireMonth || "",
-      cvc: this.props.formValues.cvc || ""
+      cardHolderName: this.props.formValues.cardHolderName || "John Doe",
+      cardNumber: this.props.formValues.cardNumber || "5528790000000008",
+      expireYear: this.props.formValues.expireYear || "2030",
+      expireMonth: this.props.formValues.expireMonth || "12",
+      cvc: this.props.formValues.cvc || "123"
     };
 
     return (
@@ -102,30 +145,7 @@ class PaymentForm extends Component {
                 cvc: Yup.string().required("required")
               })}
               onSubmit={fields => {
-                const product = this.props.formValues.product;
-                delete product.description;
-
-                const buyer = {
-                  id: this.props.auth._id,
-                  name: this.props.auth.givenName,
-                  surname: this.props.auth.familyName,
-                  identityNumber: this.props.formValues.identityNumber,
-                  email: this.props.auth.email,
-                  registrationAddress: this.props.formValues
-                    .registrationAddress,
-                  city: this.props.formValues.city,
-                  country: this.props.formValues.country
-                };
-
-                const paymentCard = Object.assign(fields, { registerCard: 0 });
-
-                const token = Object.assign(
-                  { product },
-                  { buyer },
-                  { paymentCard }
-                );
-
-                this.props.iyzipayStart3D(token);
+                this.onFormSubmit(fields);
               }}
               render={({ errors, status, touched }) => (
                 <Form className="d-block mx-auto">
@@ -267,6 +287,8 @@ class PaymentForm extends Component {
                       className="btn btn-primary float-right"
                       variant="primary"
                       type="submit"
+                      data-toggle="modal"
+                      data-target="#exampleModal"
                     >
                       Submit
                     </button>
@@ -307,6 +329,28 @@ class PaymentForm extends Component {
               </div>
             </div>
           </div>
+
+          <div
+            className="modal fade"
+            id="exampleModal"
+            tabIndex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div className="modal-dialog modal-xl" role="document">
+              <div className="modal-content">
+                <div className="modal-body embed-responsive embed-responsive-16by9">
+                  <iframe
+                    className="embed-responsive-item"
+                    src={
+                      "data:text/html;charset=utf-8," + this.state.iyzipayHtml
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </>
     );
@@ -317,7 +361,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(
-  mapStateToProps,
-  actions
-)(withRouter(PaymentForm));
+export default connect(mapStateToProps)(withRouter(PaymentForm));

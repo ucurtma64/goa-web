@@ -6,10 +6,12 @@ import * as Yup from "yup";
 class BillingForm extends Component {
   render() {
     const initialValuesMap = {
-      identityNumber: this.props.formValues.identityNumber || "",
-      registrationAddress: this.props.formValues.registrationAddress || "",
-      city: this.props.formValues.city || "",
-      country: this.props.formValues.country || ""
+      identityNumber: this.props.formValues.identityNumber || "74300864791",
+      registrationAddress:
+        this.props.formValues.registrationAddress ||
+        "Burhaniye Mahallesi Atilla Sokak No:7 Üsküdar",
+      city: this.props.formValues.city || "Istanbul",
+      country: this.props.formValues.country || "Turkey"
     };
 
     return (

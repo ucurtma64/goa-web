@@ -7,7 +7,7 @@ export default [
     id: "1",
     label: "5 Emaily Credits",
     name: "five",
-    price: 5,
+    price: 5.0,
     category: "credits",
     description: (
       <ul className="fa-ul">
@@ -66,7 +66,7 @@ export default [
     id: "2",
     label: "10 Emaily Credits",
     name: "ten",
-    price: 10,
+    price: 10.0,
     category: "credits",
     description: (
       <ul className="fa-ul">
@@ -125,7 +125,7 @@ export default [
     id: "3",
     label: "20 Emaily Credits",
     name: "twenty",
-    price: 20,
+    price: 20.0,
     category: "credits",
     description: (
       <ul className="fa-ul">
