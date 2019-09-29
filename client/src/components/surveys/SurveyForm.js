@@ -8,10 +8,10 @@ import validateEmails from "../../utils/validateEmails";
 class SurveyForm extends Component {
   render() {
     const initialValuesMap = {
-      title: this.props.formValues.title,
-      subject: this.props.formValues.subject,
-      body: this.props.formValues.body,
-      recipients: this.props.formValues.recipients
+      title: this.props.formValues.title || "",
+      subject: this.props.formValues.subject || "",
+      body: this.props.formValues.body || "",
+      recipients: this.props.formValues.recipients || ""
     };
 
     return (
@@ -38,8 +38,6 @@ class SurveyForm extends Component {
                   Survey Title
                 </label>
                 <Field
-                  rows="1"
-                  component="textarea"
                   name="title"
                   type="text"
                   className={
@@ -60,8 +58,6 @@ class SurveyForm extends Component {
                   Subject Line
                 </label>
                 <Field
-                  rows="1"
-                  component="textarea"
                   name="subject"
                   type="text"
                   className={
@@ -82,7 +78,7 @@ class SurveyForm extends Component {
                 Email Body
               </label>
               <Field
-                rows="1"
+                rows="2"
                 component="textarea"
                 name="body"
                 type="text"
@@ -104,8 +100,6 @@ class SurveyForm extends Component {
                 Recipient List
               </label>
               <Field
-                rows="2"
-                component="textarea"
                 name="recipients"
                 type="text"
                 className={

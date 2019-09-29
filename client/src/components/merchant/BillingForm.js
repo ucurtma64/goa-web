@@ -1,18 +1,16 @@
 import _ from "lodash";
 import React, { Component } from "react";
-import { Formik, Field, Form, ErrorMessage, yupToFormErrors } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 class BillingForm extends Component {
   render() {
     const initialValuesMap = {
-      title: this.props.formValues.title,
-      subject: this.props.formValues.subject,
-      body: this.props.formValues.body,
-      recipients: this.props.formValues.recipients
+      identityNumber: this.props.formValues.identityNumber || "",
+      registrationAddress: this.props.formValues.registrationAddress || "",
+      city: this.props.formValues.city || "",
+      country: this.props.formValues.country || ""
     };
-
-    console.log(this.props.formValues.product);
 
     return (
       <>
@@ -83,8 +81,6 @@ class BillingForm extends Component {
               className="col-6"
               initialValues={initialValuesMap}
               validationSchema={Yup.object().shape({
-                name: Yup.string().required("Name is required"),
-                surname: Yup.string().required("Surname is required"),
                 identityNumber: Yup.string()
                   .min(5, "Identity number must be at least 5 characters")
                   .max(50, "Identity number must be at most 50 characters")
@@ -96,64 +92,15 @@ class BillingForm extends Component {
                 country: Yup.string().required("City is required")
               })}
               onSubmit={fields => {
-                this.props.iyzipayStart3D(this.props.formValues.productId);
+                this.props.onSurveySubmit(fields);
               }}
               render={({ errors, status, touched }) => (
                 <Form className="d-block mx-auto">
-                  <div className="form-row">
-                    <div className="form-group col" key="name">
-                      <label className="text-light" htmlFor="name">
-                        Name
-                      </label>
-                      <Field
-                        rows="1"
-                        component="textarea"
-                        name="name"
-                        type="text"
-                        className={
-                          "form-control" +
-                          (errors.name && touched.name ? " is-invalid" : "")
-                        }
-                        placeholder="Name"
-                      />
-                      <ErrorMessage
-                        name="name"
-                        className="invalid-feedback"
-                        render={msg => <div className="text-danger">{msg}</div>}
-                      />
-                    </div>
-
-                    <div className="form-group col" key="surname">
-                      <label className="text-light" htmlFor="surname">
-                        Surname
-                      </label>
-                      <Field
-                        rows="1"
-                        component="textarea"
-                        name="surname"
-                        type="text"
-                        className={
-                          "form-control" +
-                          (errors.surname && touched.surname
-                            ? " is-invalid"
-                            : "")
-                        }
-                        placeholder="Surname"
-                      />
-                      <ErrorMessage
-                        name="surname"
-                        className="invalid-feedback"
-                        render={msg => <div className="text-danger">{msg}</div>}
-                      />
-                    </div>
-                  </div>
                   <div className="form-group" key="identityNumber">
                     <label className="text-light" htmlFor="identityNumber">
                       Identity Number
                     </label>
                     <Field
-                      rows="1"
-                      component="textarea"
                       name="identityNumber"
                       type="text"
                       className={
@@ -176,7 +123,7 @@ class BillingForm extends Component {
                       Registration Address
                     </label>
                     <Field
-                      rows="2"
+                      rows="1"
                       component="textarea"
                       name="registrationAddress"
                       type="text"
@@ -201,8 +148,6 @@ class BillingForm extends Component {
                         City
                       </label>
                       <Field
-                        rows="1"
-                        component="textarea"
                         name="city"
                         type="text"
                         className={
@@ -223,8 +168,6 @@ class BillingForm extends Component {
                         Country
                       </label>
                       <Field
-                        rows="1"
-                        component="textarea"
                         name="country"
                         type="text"
                         className={

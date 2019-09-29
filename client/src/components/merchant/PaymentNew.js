@@ -1,8 +1,9 @@
-//Shows Store and BillingForm
+//Shows Store and BillingForm and PaymentForm
 import _ from "lodash";
 import React, { Component } from "react";
 import Store from "./Store";
 import BillingForm from "./BillingForm";
+import PaymentForm from "./PaymentForm";
 import HorizontalStepper from "../util/HorizontalStepper";
 
 class PaymentNew extends Component {
@@ -16,7 +17,15 @@ class PaymentNew extends Component {
 
   renderContent() {
     if (this.state.formStage === 2) {
-      return <h5>Payment??</h5>;
+      return (
+        <PaymentForm
+          formValues={this.state.formValues}
+          onCancel={() => {
+            this.setState({ formStage: 1 });
+            this.gotoPreviousStage();
+          }}
+        />
+      );
     }
 
     if (this.state.formStage === 1) {
@@ -28,10 +37,8 @@ class PaymentNew extends Component {
             this.gotoPreviousStage();
           }}
           onSurveySubmit={fields => {
-            const formValues = fields;
-
+            const formValues = Object.assign(this.state.formValues, fields);
             this.setState(Object.assign({ formStage: 2 }, { formValues }));
-
             this.gotoNextStage();
           }}
         />
@@ -45,9 +52,7 @@ class PaymentNew extends Component {
         onSurveySubmit={product => {
           const formValues = this.state.formValues;
           formValues.product = product;
-
           this.setState(Object.assign({ formStage: 1 }, { formValues }));
-
           this.gotoNextStage();
         }}
       />
