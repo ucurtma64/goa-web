@@ -1,8 +1,11 @@
 const keys = require("../config/keys");
+const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 const Iyzipay = require("iyzipay");
 const uuidv4 = require("uuid/v4");
 const atob = require("atob");
+
+const Order = mongoose.model("orders");
 
 var iyzipay = new Iyzipay({
   apiKey: keys.iyzipayPublishableKey,
@@ -19,16 +22,69 @@ module.exports = app => {
     );
 
     iyzipay.threedsInitialize.create(iyzipayRequest, function(err, result) {
-      console.log(result);
       const htmlPage = atob(result.threeDSHtmlContent);
       res.send(htmlPage);
     });
   });
 
-  app.post("/api/iyzipay/callback", (req, res) => {
-    console.log(req.body);
+  app.post("/api/iyzipay/callback", async (req, res) => {
+    const body = req.body;
 
-    res.send(req.body);
+    if (body.status != "success") {
+      res.send("status is: " + body.status);
+      return;
+    }
+
+    if (body.mdStatus != 1) {
+      res.send("mdStatus is: " + body.mdStatus);
+      return;
+    }
+
+    if (!(body.paymentId && body.conversationId)) {
+      res.send("invalid body");
+      return;
+    }
+
+    const iyzipayRequest = {
+      locale: "tr",
+      conversationId: body.conversationId,
+      paymentId: body.paymentId,
+      conversationData: body.conversationData
+    };
+
+    await iyzipay.threedsPayment.create(iyzipayRequest, function(err, result) {
+      if (result.status != "success") {
+        res.send("status is: " + result.status);
+        return;
+      }
+
+      if (result.conversationId != body.conversationId) {
+        res.send("conversationId does not match");
+        return;
+      }
+
+      if (result.paymentId && result.itemTransactions) {
+        const items = result.itemTransactions.map(
+          item =>
+            new Object({
+              itemId: item.itemId,
+              paymentTransactionId: item.paymentTransactionId
+            })
+        );
+
+        if (items && items.length) {
+          //successful payment
+          res.send("successful payment");
+          return;
+        }
+
+        res.send("invalid items");
+        return;
+      }
+
+      res.send("invalid body1");
+      return;
+    });
   });
 };
 
