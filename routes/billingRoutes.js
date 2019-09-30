@@ -19,23 +19,16 @@ module.exports = app => {
     );
 
     iyzipay.threedsInitialize.create(iyzipayRequest, function(err, result) {
+      console.log(result);
       const htmlPage = atob(result.threeDSHtmlContent);
       res.send(htmlPage);
     });
   });
 
   app.post("/api/iyzipay/callback", (req, res) => {
-    console.log("POST");
     console.log(req.body);
 
-    res.send("POST");
-  });
-
-  app.get("/api/iyzipay/callback", (req, res) => {
-    console.log("GET");
-    console.log(req.body);
-
-    res.send("GET");
+    res.send("post");
   });
 };
 
