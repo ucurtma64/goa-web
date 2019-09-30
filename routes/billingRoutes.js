@@ -28,7 +28,7 @@ module.exports = app => {
   app.post("/api/iyzipay/callback", (req, res) => {
     console.log(req.body);
 
-    res.send("post");
+    res.send(req.body);
   });
 };
 

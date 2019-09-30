@@ -25,6 +25,7 @@ class PaymentForm extends Component {
     const product = this.props.formValues.product;
 
     //remove unnecessary properties
+    const description = product.description;
     delete product.description;
 
     const buyer = {
@@ -43,6 +44,8 @@ class PaymentForm extends Component {
     const token = Object.assign({ product }, { buyer }, { paymentCard });
 
     this.startIyzipay3D(token);
+
+    product.description = description;
   }
 
   async startIyzipay3D(token) {
