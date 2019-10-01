@@ -1,4 +1,5 @@
 const keys = require("../config/keys");
+const { Path } = require("path-parser");
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 const Iyzipay = require("iyzipay");
@@ -27,8 +28,16 @@ module.exports = app => {
     });
   });
 
-  app.post("/api/iyzipay/callback", async (req, res) => {
+  app.post("/api/iyzipay/callback/:userId", async (req, res) => {
     const body = req.body;
+
+    const p = new Path("/api/iyzipay/callback/:userId");
+    const match = p.test(req.path);
+    if (!match) {
+      res.send("no match");
+      return;
+    }
+    const userId = match.userId;
 
     if (body.status != "success") {
       res.send("status is: " + body.status);
@@ -105,7 +114,7 @@ const iyzipayStart3D = (product, buyer, paymentCard) => {
     paymentChannel: "WEB",
     basketId: orderId,
     paymentGroup: "OTHER",
-    callbackUrl: keys.redirectDomain + "/api/iyzipay/callback",
+    callbackUrl: keys.redirectDomain + "/api/iyzipay/callback/" + buyer.id,
     paymentCard: paymentCard,
     buyer: buyer,
     billingAddress: {

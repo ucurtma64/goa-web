@@ -1,9 +1,9 @@
-//Shows Store and BillingForm and PaymentForm
+//Shows Store and BillingForm and CardForm
 import _ from "lodash";
 import React, { Component } from "react";
 import Store from "./Store";
 import BillingForm from "./BillingForm";
-import PaymentForm from "./PaymentForm";
+import CardForm from "./CardForm";
 import HorizontalStepper from "../util/HorizontalStepper";
 
 class PaymentNew extends Component {
@@ -18,7 +18,7 @@ class PaymentNew extends Component {
   renderContent() {
     if (this.state.formStage === 2) {
       return (
-        <PaymentForm
+        <CardForm
           formValues={this.state.formValues}
           onCancel={() => {
             this.setState({ formStage: 1 });
