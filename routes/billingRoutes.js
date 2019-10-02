@@ -24,6 +24,13 @@ module.exports = app => {
     );
 
     iyzipay.threedsInitialize.create(iyzipayRequest, function(err, result) {
+      console.log(result);
+
+      if (!result.threeDSHtmlContent) {
+        res.send(result);
+        return;
+      }
+
       const htmlPage = atob(result.threeDSHtmlContent);
       res.send(htmlPage);
     });
