@@ -24,10 +24,8 @@ module.exports = app => {
     );
 
     iyzipay.threedsInitialize.create(iyzipayRequest, function(err, result) {
-      console.log(result);
-
       if (!result.threeDSHtmlContent) {
-        res.send(result);
+        res.send(result.errorMessage);
         return;
       }
 
@@ -137,10 +135,34 @@ module.exports = app => {
   });
 };
 
+const products = [
+  {
+    id: "1",
+    price: 5.0
+  },
+  {
+    id: "2",
+    price: 10.0
+  },
+  {
+    id: "3",
+    price: 20.0
+  }
+];
+
 const onSuccessfulPayment = async (userId, items) => {
+  const prices = items.map(
+    item =>
+      products.find(product => {
+        return product.id == item.itemId;
+      }).price
+  );
+
+  const totalCost = prices.reduce((a, b) => a + b, 0);
+
   await User.findByIdAndUpdate(
     userId,
-    { $inc: { credits: 5 } },
+    { $inc: { credits: totalCost } },
     { useFindAndModify: false }
   );
 };

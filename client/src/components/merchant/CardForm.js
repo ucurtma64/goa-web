@@ -30,10 +30,10 @@ class CardForm extends Component {
 
     const buyer = {
       id: this.props.auth._id,
-      name: this.props.auth.givenName,
-      surname: this.props.auth.familyName,
+      name: this.props.formValues.givenName,
+      surname: this.props.formValues.familyName,
       identityNumber: this.props.formValues.identityNumber,
-      email: this.props.auth.email,
+      email: this.props.formValues.email,
       registrationAddress: this.props.formValues.registrationAddress,
       city: this.props.formValues.city,
       country: this.props.formValues.country
