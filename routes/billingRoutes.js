@@ -135,7 +135,7 @@ const onSuccessfulPayment = async (userId, items) => {
     userId,
     { $inc: { credits: 5 } },
     { useFindAndModify: false }
-  ).exec();
+  );
 };
 
 const iyzipayStart3D = (product, buyer, paymentCard) => {
