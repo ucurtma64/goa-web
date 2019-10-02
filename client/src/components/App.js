@@ -8,6 +8,7 @@ import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import SurveyNew from "./surveys/SurveyNew";
 import PaymentNew from "./merchant/PaymentNew";
+import PaymentCallback from "./merchant/PaymentCallback";
 
 class App extends Component {
   componentDidMount() {
@@ -20,6 +21,7 @@ class App extends Component {
         <Header />
         <Route exact path="/" component={Landing} />
         <Route exact path="/store" component={PaymentNew} />
+        <Route path="/store/callback" component={PaymentCallback} />
         <Route exact path="/surveys" component={Dashboard} />
         <Route path="/surveys/new" component={SurveyNew} />
       </BrowserRouter>

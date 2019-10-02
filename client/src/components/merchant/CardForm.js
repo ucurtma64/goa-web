@@ -227,7 +227,7 @@ class CardForm extends Component {
                     variant="primary"
                     type="submit"
                     data-toggle="modal"
-                    data-target="#exampleModal"
+                    data-target="#paymentModal"
                   >
                     Submit
                   </button>
@@ -271,10 +271,10 @@ class CardForm extends Component {
 
         <div
           className="modal fade"
-          id="exampleModal"
+          id="paymentModal"
           tabIndex="-1"
           role="dialog"
-          aria-labelledby="exampleModalLabel"
+          aria-labelledby="paymentModalLabel"
           aria-hidden="true"
         >
           <div className="modal-dialog modal-xl" role="document">

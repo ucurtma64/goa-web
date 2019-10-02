@@ -7,6 +7,7 @@ const uuidv4 = require("uuid/v4");
 const atob = require("atob");
 
 const Order = mongoose.model("orders");
+const User = mongoose.model("users");
 
 var iyzipay = new Iyzipay({
   apiKey: keys.iyzipayPublishableKey,
@@ -34,23 +35,26 @@ module.exports = app => {
     const p = new Path("/api/iyzipay/callback/:userId");
     const match = p.test(req.path);
     if (!match) {
-      res.send("no match");
+      res.send(
+        '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-9"</script></body></html>'
+      );
       return;
     }
     const userId = match.userId;
 
     if (body.status != "success") {
-      res.send("status is: " + body.status);
-      return;
-    }
-
-    if (body.mdStatus != 1) {
-      res.send("mdStatus is: " + body.mdStatus);
+      res.send(
+        '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-' +
+          body.mdStatus +
+          '"</script></body></html>'
+      );
       return;
     }
 
     if (!(body.paymentId && body.conversationId)) {
-      res.send("invalid body");
+      res.send(
+        '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-10"</script></body></html>'
+      );
       return;
     }
 
@@ -61,40 +65,77 @@ module.exports = app => {
       conversationData: body.conversationData
     };
 
-    await iyzipay.threedsPayment.create(iyzipayRequest, function(err, result) {
-      if (result.status != "success") {
-        res.send("status is: " + result.status);
-        return;
-      }
-
+    await iyzipay.threedsPayment.create(iyzipayRequest, async function(
+      err,
+      result
+    ) {
       if (result.conversationId != body.conversationId) {
-        res.send("conversationId does not match");
-        return;
-      }
-
-      if (result.paymentId && result.itemTransactions) {
-        const items = result.itemTransactions.map(
-          item =>
-            new Object({
-              itemId: item.itemId,
-              paymentTransactionId: item.paymentTransactionId
-            })
+        res.send(
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-11"</script></body></html>'
         );
-
-        if (items && items.length) {
-          //successful payment
-          res.send("successful payment");
-          return;
-        }
-
-        res.send("invalid items");
         return;
       }
 
-      res.send("invalid body1");
-      return;
+      if (!(result.paymentId && result.itemTransactions && result.status)) {
+        res.send(
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-12"</script></body></html>'
+        );
+        return;
+      }
+
+      const items = result.itemTransactions.map(
+        item =>
+          new Object({
+            itemId: item.itemId,
+            paymentTransactionId: item.paymentTransactionId
+          })
+      );
+
+      if (!(items && items.length)) {
+        res.send(
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/payment/callback/error-13"</script></body></html>'
+        );
+        return;
+      }
+
+      const itemsString = JSON.stringify(items);
+
+      const order = new Order({
+        conversationId: result.conversationId,
+        paymentId: result.paymentId,
+        items: itemsString,
+        status: result.status,
+        _user: userId,
+        dateSent: Date.now()
+      });
+
+      if (result.status != "success") {
+        res.send(
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-14"</script></body></html>'
+        );
+      } else {
+        //successful payment
+        //redirect parent page from iframe example: res.send('<html><body><p>Redirecting...</p><script>window.top.location.href="/"</script></body></html>');
+
+        await onSuccessfulPayment(userId, items);
+
+        res.send(
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/success"</script></body></html>'
+        );
+      }
+
+      //call database call after res.send so user does not wait
+      await order.save();
     });
   });
+};
+
+const onSuccessfulPayment = async (userId, items) => {
+  await User.findByIdAndUpdate(
+    userId,
+    { $inc: { credits: 5 } },
+    { useFindAndModify: false }
+  ).exec();
 };
 
 const iyzipayStart3D = (product, buyer, paymentCard) => {
