@@ -1,5 +1,4 @@
 //Shows SurveyForm and SurveyFormReview
-import _ from "lodash";
 import React, { Component } from "react";
 import SurveyForm from "./SurveyForm";
 import SurveyFormReview from "./SurveyFormReview";

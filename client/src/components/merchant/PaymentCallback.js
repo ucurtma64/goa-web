@@ -7,7 +7,7 @@ class PaymentCallback extends Component {
       ""
     );
 
-    if (status == "success") {
+    if (status === "success") {
       return (
         <div
           className="alert alert-success"

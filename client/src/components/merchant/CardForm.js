@@ -1,11 +1,10 @@
-import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import { faQuestionCircle, faCheck } from "@fortawesome/free-solid-svg-icons";
 import $ from "jquery";
 import axios from "axios";
 
@@ -51,13 +50,9 @@ class CardForm extends Component {
   async startIyzipay3D(token) {
     const res = await axios.post("/api/iyzipay", token);
 
-    console.log(res.data);
-
     const iyzipayHtml = res.data;
 
     this.setState({ iyzipayHtml });
-
-    console.log(this.state);
   }
 
   render() {
@@ -263,7 +258,16 @@ class CardForm extends Component {
                 </h6>
                 <hr />
 
-                {this.props.formValues.product.description}
+                <ul className="fa-ul">
+                  {this.props.formValues.product.description.map(line => (
+                    <li key={line}>
+                      <span className="fa-li">
+                        <FontAwesomeIcon mask={["fas"]} icon={faCheck} />
+                      </span>
+                      {line}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>
@@ -281,6 +285,7 @@ class CardForm extends Component {
             <div className="modal-content">
               <div className="modal-body embed-responsive embed-responsive-16by9">
                 <iframe
+                  title="paymentFrame"
                   className="embed-responsive-item"
                   src={"data:text/html;charset=utf-8," + this.state.iyzipayHtml}
                 />

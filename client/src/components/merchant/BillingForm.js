@@ -1,9 +1,10 @@
-import _ from "lodash";
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 class BillingForm extends Component {
   render() {
@@ -236,15 +237,23 @@ class BillingForm extends Component {
             <div className="card mb-5 mb-lg-0">
               <div className="card-body">
                 <h5 className="card-title text-muted text-uppercase text-center">
-                  {this.props.formValues.product.label}
+                  {this.props.formValues.product.name}
                 </h5>
                 <h6 className="card-price text-center">
                   ${this.props.formValues.product.price}
                   <span className="period">/credits</span>
                 </h6>
                 <hr />
-
-                {this.props.formValues.product.description}
+                <ul className="fa-ul">
+                  {this.props.formValues.product.description.map(line => (
+                    <li key={line}>
+                      <span className="fa-li">
+                        <FontAwesomeIcon mask={["fas"]} icon={faCheck} />
+                      </span>
+                      {line}
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           </div>

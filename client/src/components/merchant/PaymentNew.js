@@ -1,5 +1,4 @@
 //Shows Store and BillingForm and CardForm
-import _ from "lodash";
 import React, { Component } from "react";
 import Store from "./Store";
 import BillingForm from "./BillingForm";

@@ -1,9 +1,7 @@
-import _ from "lodash";
 import React, { Component } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
-import validateEmails from "../../utils/validateEmails";
 
 class SurveyForm extends Component {
   render() {

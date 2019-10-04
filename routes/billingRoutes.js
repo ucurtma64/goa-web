@@ -8,6 +8,7 @@ const atob = require("atob");
 
 const Order = mongoose.model("orders");
 const User = mongoose.model("users");
+const Product = mongoose.model("products");
 
 var iyzipay = new Iyzipay({
   apiKey: keys.iyzipayPublishableKey,
@@ -88,27 +89,27 @@ module.exports = app => {
         return;
       }
 
-      const items = result.itemTransactions.map(
-        item =>
+      const products = result.itemTransactions.map(
+        product =>
           new Object({
-            itemId: item.itemId,
-            paymentTransactionId: item.paymentTransactionId
+            productId: product.itemId,
+            paymentTransactionId: product.paymentTransactionId
           })
       );
 
-      if (!(items && items.length)) {
+      if (!(products && products.length)) {
         res.send(
           '<html><body><p>Redirecting...</p><script>window.top.location.href="/payment/callback/error-13"</script></body></html>'
         );
         return;
       }
 
-      const itemsString = JSON.stringify(items);
+      const productsString = JSON.stringify(products);
 
       const order = new Order({
         conversationId: result.conversationId,
         paymentId: result.paymentId,
-        items: itemsString,
+        products: productsString,
         status: result.status,
         _user: userId,
         dateSent: Date.now()
@@ -122,7 +123,7 @@ module.exports = app => {
         //successful payment
         //redirect parent page from iframe example: res.send('<html><body><p>Redirecting...</p><script>window.top.location.href="/"</script></body></html>');
 
-        await onSuccessfulPayment(userId, items);
+        await onSuccessfulPayment(userId, products);
 
         res.send(
           '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/success"</script></body></html>'
@@ -135,28 +136,12 @@ module.exports = app => {
   });
 };
 
-const products = [
-  {
-    id: "1",
-    price: 5.0
-  },
-  {
-    id: "2",
-    price: 10.0
-  },
-  {
-    id: "3",
-    price: 20.0
-  }
-];
+const onSuccessfulPayment = async (userId, requestProducts) => {
+  const productIds = requestProducts.map(product => product.productId);
 
-const onSuccessfulPayment = async (userId, items) => {
-  const prices = items.map(
-    item =>
-      products.find(product => {
-        return product.id == item.itemId;
-      }).price
-  );
+  const products = await Product.find({ productId: { $in: productIds } });
+
+  const prices = products.map(product => product.price);
 
   const totalCost = prices.reduce((a, b) => a + b, 0);
 
@@ -195,9 +180,9 @@ const iyzipayStart3D = (product, buyer, paymentCard) => {
     },
     basketItems: [
       {
-        id: product.id,
+        id: product.productId,
         price: price,
-        name: product.label,
+        name: product.name,
         category1: product.category,
         itemType: "VIRTUAL"
       }
