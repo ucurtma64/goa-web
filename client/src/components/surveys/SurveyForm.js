@@ -29,7 +29,7 @@ class SurveyForm extends Component {
           this.props.onSurveySubmit(fields);
         }}
         render={({ errors, status, touched }) => (
-          <Form className="w-75 d-block mx-auto">
+          <Form className="d-block mx-auto px-2">
             <div className="form-row">
               <div className="form-group col" key="title">
                 <label className="text-light" htmlFor="title">

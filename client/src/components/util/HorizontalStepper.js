@@ -112,7 +112,6 @@ class HorizontalStepper extends Component {
         <style type="text/css">
           {`
                 .mdl-card {
-                  width: 60rem;
                   min-height: 0;
                   margin: 10px auto;
                 }

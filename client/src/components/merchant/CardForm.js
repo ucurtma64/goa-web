@@ -84,7 +84,7 @@ class CardForm extends Component {
               this.onFormSubmit(fields);
             }}
             render={({ errors, status, touched }) => (
-              <Form className="d-block mx-auto">
+              <Form className="d-block mx-auto px-2">
                 <div className="form-row">
                   <div className="form-group col" key="cardHolderName">
                     <label className="text-light" htmlFor="cardHolderName">
@@ -250,7 +250,7 @@ class CardForm extends Component {
             <div className="card mb-5 mb-lg-0">
               <div className="card-body">
                 <h5 className="card-title text-muted text-uppercase text-center">
-                  {this.props.formValues.product.label}
+                  {this.props.formValues.product.name}
                 </h5>
                 <h6 className="card-price text-center">
                   ${this.props.formValues.product.price}
