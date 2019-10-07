@@ -36,6 +36,11 @@ class Header extends Component {
               Surveys
             </Link>
           </li>,
+          <li className="nav-item" key="5">
+            <Link className="nav-link" to="/profile">
+              Profile
+            </Link>
+          </li>,
           <li className="nav-item" key="2">
             <a className="nav-link" href="/api/logout">
               Logout
