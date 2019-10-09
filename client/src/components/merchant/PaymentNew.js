@@ -1,7 +1,8 @@
 //Shows Store and BillingForm and CardForm
 import React, { Component } from "react";
 import Store from "./Store";
-import BillingForm from "./BillingForm";
+import BillingForm from "../commonForms/BillingForm";
+import ProfileForm from "../commonForms/ProfileForm";
 import CardForm from "./CardForm";
 import HorizontalStepper from "../util/HorizontalStepper";
 
@@ -15,13 +16,30 @@ class PaymentNew extends Component {
   }
 
   renderContent() {
-    if (this.state.formStage === 2) {
+    if (this.state.formStage === 3) {
       return (
         <CardForm
           formValues={this.state.formValues}
           onCancel={() => {
+            this.setState({ formStage: 2 });
+            this.gotoPreviousStage();
+          }}
+        />
+      );
+    }
+
+    if (this.state.formStage === 2) {
+      return (
+        <BillingForm
+          formValues={this.state.formValues}
+          onCancel={() => {
             this.setState({ formStage: 1 });
             this.gotoPreviousStage();
+          }}
+          onSurveySubmit={fields => {
+            const formValues = Object.assign(this.state.formValues, fields);
+            this.setState(Object.assign({ formStage: 3 }, { formValues }));
+            this.gotoNextStage();
           }}
         />
       );
@@ -29,7 +47,7 @@ class PaymentNew extends Component {
 
     if (this.state.formStage === 1) {
       return (
-        <BillingForm
+        <ProfileForm
           formValues={this.state.formValues}
           onCancel={() => {
             this.setState({ formStage: 0 });
@@ -73,6 +91,7 @@ class PaymentNew extends Component {
           ref="horizontalStepper"
           stages={[
             { title: "Select Product", optional: "Required" },
+            { title: "Profile", optional: "Required" },
             { title: "Billing Info", optional: "Required" },
             { title: "Payment", optional: "Required" }
           ]}

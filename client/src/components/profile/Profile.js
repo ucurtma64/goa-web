@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import ProfileForm from "../commonForms/ProfileForm";
+import BillingForm from "../commonForms/BillingForm";
 
 class Profile extends Component {
   render() {
@@ -31,9 +30,18 @@ class Profile extends Component {
     };
 
     return (
-      <div className="container">
+      <div className="container mt-5">
         <div className="row">
           <div className="col-3">
+            <div class="text-light text-center pb-2">
+              <img
+                src="https://data.whicdn.com/images/313295970/original.jpg"
+                class="rounded-circle w-50 pb-1"
+                alt=""
+              />
+              <div>little jean</div>
+              <div className="period mt-n1">writer</div>
+            </div>
             <div
               className="nav flex-column nav-pills"
               id="v-pills-tab"
@@ -49,7 +57,7 @@ class Profile extends Component {
                 aria-controls="v-pills-home"
                 aria-selected="true"
               >
-                Home
+                Profile
               </a>
               <a
                 className="nav-link text-light"
@@ -60,7 +68,7 @@ class Profile extends Component {
                 aria-controls="v-pills-profile"
                 aria-selected="false"
               >
-                Profile
+                Billing
               </a>
               <a
                 className="nav-link text-light"
@@ -94,7 +102,11 @@ class Profile extends Component {
                 role="tabpanel"
                 aria-labelledby="v-pills-home-tab"
               >
-                ...1
+                <ProfileForm
+                  onSurveySubmit={fields => {
+                    //save profile
+                  }}
+                />
               </div>
               <div
                 className="tab-pane fade"
@@ -102,7 +114,11 @@ class Profile extends Component {
                 role="tabpanel"
                 aria-labelledby="v-pills-profile-tab"
               >
-                ...2
+                <BillingForm
+                  onSurveySubmit={fields => {
+                    //save profile billing
+                  }}
+                />
               </div>
               <div
                 className="tab-pane fade"

@@ -77,3 +77,8 @@ hr {
   -o-background-size: cover;
   background-size: cover;
 }
+
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  background-color: #212529;
+}
