@@ -36,6 +36,7 @@ require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
 require("./routes/surveyRoutes")(app);
 require("./routes/productRoutes")(app);
+require("./routes/profileRoutes")(app);
 
 const path = require("path");
 //Express will serve up production assets like main.css and main.js files

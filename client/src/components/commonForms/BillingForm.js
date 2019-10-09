@@ -12,12 +12,13 @@ class BillingForm extends Component {
       initialValuesMap = {
         identityNumber:
           this.props.formValues.identityNumber ||
-          this.props.auth.identityNumber,
+          this.props.auth.billing.identityNumber,
         registrationAddress:
           this.props.formValues.registrationAddress ||
-          this.props.auth.registrationAddress,
-        city: this.props.formValues.city || this.props.auth.city,
-        country: this.props.formValues.country || this.props.auth.country
+          this.props.auth.billing.registrationAddress,
+        city: this.props.formValues.city || this.props.auth.billing.city,
+        country:
+          this.props.formValues.country || this.props.auth.billing.country
       };
     } else {
       initialValuesMap = {
