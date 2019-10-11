@@ -22,10 +22,10 @@ class BillingForm extends Component {
       };
     } else {
       initialValuesMap = {
-        identityNumber: this.props.auth.identityNumber,
-        registrationAddress: this.props.auth.registrationAddress,
-        city: this.props.auth.city,
-        country: this.props.auth.country
+        identityNumber: this.props.auth.billing.identityNumber,
+        registrationAddress: this.props.auth.billing.registrationAddress,
+        city: this.props.auth.billing.city,
+        country: this.props.auth.billing.country
       };
     }
 
