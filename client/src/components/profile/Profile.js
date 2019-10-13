@@ -5,6 +5,14 @@ import BillingForm from "../commonForms/BillingForm";
 import * as actions from "../../actions";
 
 class Profile extends Component {
+  async onFormSubmit(fields) {
+    this.props.notifyModal(true, "secondary", "Please wait");
+
+    await this.props.updateUser(fields);
+
+    this.props.notifyModal(true, "success", "Changes saved");
+  }
+
   render() {
     switch (this.props.auth) {
       case null:
@@ -26,10 +34,10 @@ class Profile extends Component {
           <div className="container mt-5">
             <div className="row">
               <div className="col-3">
-                <div class="text-light text-center pb-2">
+                <div className="text-light text-center pb-2">
                   <img
                     src="https://data.whicdn.com/images/313295970/original.jpg"
-                    class="rounded-circle w-50 pb-1"
+                    className="rounded-circle w-50 pb-1"
                     alt=""
                   />
                   <div>little jean</div>
@@ -97,7 +105,7 @@ class Profile extends Component {
                   >
                     <ProfileForm
                       onSurveySubmit={fields => {
-                        this.props.updateUser(fields);
+                        this.onFormSubmit(fields);
                       }}
                     />
                   </div>
@@ -109,7 +117,7 @@ class Profile extends Component {
                   >
                     <BillingForm
                       onSurveySubmit={fields => {
-                        this.props.updateUser(fields);
+                        this.onFormSubmit(fields);
                       }}
                     />
                   </div>

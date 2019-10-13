@@ -10,6 +10,7 @@ import Profile from "./profile/Profile";
 import SurveyNew from "./surveys/SurveyNew";
 import PaymentNew from "./merchant/PaymentNew";
 import PaymentCallback from "./merchant/PaymentCallback";
+import NotificationModal from "./NotificationModal";
 
 class App extends Component {
   componentDidMount() {
@@ -26,6 +27,7 @@ class App extends Component {
         <Route path="/store/callback" component={PaymentCallback} />
         <Route exact path="/surveys" component={Dashboard} />
         <Route path="/surveys/new" component={SurveyNew} />
+        <NotificationModal />
       </BrowserRouter>
     );
   }
