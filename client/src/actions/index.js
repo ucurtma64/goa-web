@@ -3,6 +3,7 @@ import {
   FETCH_USER,
   FETCH_SURVEYS,
   FETCH_PRODUCTS,
+  FETCH_POSTS,
   NOTIFICATION_MODAL
 } from "./types";
 
@@ -35,6 +36,12 @@ export const fetchProducts = () => async dispatch => {
   const res = await axios.get("/api/products");
 
   dispatch({ type: FETCH_PRODUCTS, payload: res.data });
+};
+
+export const fetchPosts = () => async dispatch => {
+  const res = await axios.get("/api/posts");
+
+  dispatch({ type: FETCH_POSTS, payload: res.data });
 };
 
 export const notifyModal = (isVisible, type, message) => async dispatch => {
