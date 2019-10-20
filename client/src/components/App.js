@@ -6,6 +6,7 @@ import * as actions from "../actions";
 import Header from "./Header";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
+import AdminDashboard from "./admin/AdminDashboard";
 import Profile from "./profile/Profile";
 import SurveyNew from "./surveys/SurveyNew";
 import PaymentNew from "./merchant/PaymentNew";
@@ -26,6 +27,7 @@ class App extends Component {
         <Route exact path="/store" component={PaymentNew} />
         <Route path="/store/callback" component={PaymentCallback} />
         <Route exact path="/surveys" component={Dashboard} />
+        <Route exact path="/admin" component={AdminDashboard} />
         <Route path="/surveys/new" component={SurveyNew} />
         <NotificationModal />
       </BrowserRouter>

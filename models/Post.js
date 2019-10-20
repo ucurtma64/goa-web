@@ -5,6 +5,7 @@ const postSchema = new Schema({
   title: String,
   text: String,
   author: String,
+  image: String,
   dateSent: Date
 });
 

@@ -8,7 +8,8 @@ const userSchema = new Schema({
   givenName: String,
   familyName: String,
   credits: { type: Number, default: 0 },
-  billing: BillingSchema
+  billing: BillingSchema,
+  role: { type: String, default: "user" }
 });
 
 mongoose.model("users", userSchema);

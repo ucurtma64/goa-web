@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 
 class Post extends Component {
+  renderImage() {
+    if (this.props.image) {
+      return (
+        <img class="card-img-top" src={this.props.image} alt="Card image cap" />
+      );
+    }
+  }
+
   render() {
     return (
       <div class="card mb-4">
-        <img
-          class="card-img-top"
-          src="http://placehold.it/750x300"
-          alt="Card image cap"
-        />
+        {this.renderImage()}
+
         <div class="card-body">
           <h2 class="card-title">{this.props.title}</h2>
           <p class="card-text">{this.props.text}</p>
@@ -17,7 +22,8 @@ class Post extends Component {
           </a>
         </div>
         <div class="card-footer text-muted">
-          Posted on {this.props.date} by {this.props.author}
+          Posted on {new Date(this.props.date).toLocaleDateString()} by{" "}
+          {this.props.author}
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProfileForm from "../commonForms/ProfileForm";
 import BillingForm from "../commonForms/BillingForm";
-import * as actions from "../../actions";
+import { notifyModal, updateUser } from "../../actions";
 
 class Profile extends Component {
   async onFormSubmit(fields) {
@@ -152,5 +152,5 @@ function mapStateToProps({ auth }) {
 
 export default connect(
   mapStateToProps,
-  actions
+  { notifyModal, updateUser }
 )(Profile);

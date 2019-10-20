@@ -59,6 +59,7 @@ class PostsHome extends Component {
             text={post.text}
             date={post.dateSent}
             author={post.author}
+            image={post.image}
           />
         ))}
 

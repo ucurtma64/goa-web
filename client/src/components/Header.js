@@ -20,7 +20,7 @@ class Header extends Component {
           </li>
         );
       default:
-        return [
+        const header = [
           <li className="nav-item" key="1">
             <Link className="nav-link" to="/store">
               Store
@@ -47,6 +47,18 @@ class Header extends Component {
             </a>
           </li>
         ];
+
+        if (this.props.auth.role === "admin") {
+          header.push(
+            <li className="nav-item" key="6">
+              <Link className="nav-link" to="/admin">
+                Admin
+              </Link>
+            </li>
+          );
+        }
+
+        return header;
     }
   }
 

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import * as actions from "../../actions";
+import { submitSurvey } from "../../actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMailBulk } from "@fortawesome/free-solid-svg-icons";
 
@@ -69,5 +69,5 @@ class SurveyFormReview extends Component {
 
 export default connect(
   null,
-  actions
+  { submitSurvey }
 )(withRouter(SurveyFormReview));

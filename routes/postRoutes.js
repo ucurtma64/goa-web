@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const requireLogin = require("../middlewares/requireLogin");
+const requireAdmin = require("../middlewares/requireAdmin");
 
 const Post = mongoose.model("posts");
 
@@ -10,5 +12,21 @@ module.exports = app => {
     console.log(posts);
 
     res.send(posts);
+  });
+
+  app.post("/api/posts", requireLogin, requireAdmin, async (req, res) => {
+    const body = req.body;
+
+    const post = new Post({
+      title: body.title,
+      text: body.text,
+      author: body.author,
+      image: body.image,
+      dateSent: Date.now()
+    });
+
+    await post.save();
+
+    res.send({});
   });
 };
