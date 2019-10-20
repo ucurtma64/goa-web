@@ -107,7 +107,7 @@ class PostsHome extends Component {
               <TwitterTimelineEmbed
                 theme="dark"
                 sourceType="profile"
-                screenName="UCURTMAM"
+                screenName="loykAd"
                 options={{ height: 480 }}
                 lang="en"
               />
