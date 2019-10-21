@@ -27,7 +27,7 @@ class PostContent extends Component {
     if (this.state.image) {
       return (
         <img
-          class="img-fluid rounded mt-4 w-100"
+          className="img-fluid rounded mt-4 w-100"
           src={this.state.image}
           alt=""
         />
@@ -45,14 +45,14 @@ class PostContent extends Component {
     }
 
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
             {this.renderImage()}
 
-            <h2 class="mt-4">{this.state.title}</h2>
+            <h2 className="mt-4">{this.state.title}</h2>
 
-            <p class="lead mt-n2">
+            <p className="lead mt-n2">
               {" "}
               Posted on {new Date(
                 this.state.dateSent

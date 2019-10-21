@@ -4,13 +4,7 @@ import { Link } from "react-router-dom";
 class PostCard extends Component {
   renderImage() {
     if (this.props.image) {
-      return (
-        <img
-          className="card-img-top"
-          src={this.props.image}
-          alt="Card image cap"
-        />
-      );
+      return <img className="card-img-top" src={this.props.image} alt="" />;
     }
   }
 

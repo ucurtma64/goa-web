@@ -19,6 +19,7 @@ class AdminDashboard extends Component {
             </a>
           </li>
         );
+      default:
     }
 
     switch (this.props.auth.role) {

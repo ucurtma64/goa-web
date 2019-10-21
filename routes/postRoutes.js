@@ -30,8 +30,13 @@ module.exports = app => {
   app.post("/api/post", async (req, res) => {
     const postId = req.body.postId;
 
-    const result = await Post.findById(postId);
+    if (postId) {
+      const result = await Post.findById(postId);
 
-    res.send(result);
+      res.send(result);
+      return;
+    }
+
+    res.send({});
   });
 };

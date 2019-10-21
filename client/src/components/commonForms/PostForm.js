@@ -111,13 +111,6 @@ class PostForm extends Component {
               >
                 Submit
               </button>
-              <button
-                className="btn btn-secondary"
-                variant="secondary"
-                type="reset"
-              >
-                Reset
-              </button>
             </div>
           </Form>
         )}

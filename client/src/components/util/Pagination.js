@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 const LEFT_PAGE = "LEFT";
 const RIGHT_PAGE = "RIGHT";
@@ -154,30 +155,30 @@ class Pagination extends Component {
               if (page === LEFT_PAGE)
                 return (
                   <li key={index} className="page-item">
-                    <a
+                    <Link
                       className="page-link"
-                      href="#"
+                      to="#"
                       aria-label="Previous"
                       onClick={this.handleMoveLeft}
                     >
                       <span aria-hidden="true">&laquo;</span>
                       <span className="sr-only">Previous</span>
-                    </a>
+                    </Link>
                   </li>
                 );
 
               if (page === RIGHT_PAGE)
                 return (
                   <li key={index} className="page-item">
-                    <a
+                    <Link
                       className="page-link"
-                      href="#"
+                      to="#"
                       aria-label="Next"
                       onClick={this.handleMoveRight}
                     >
                       <span aria-hidden="true">&raquo;</span>
                       <span className="sr-only">Next</span>
-                    </a>
+                    </Link>
                   </li>
                 );
 
@@ -188,13 +189,13 @@ class Pagination extends Component {
                     currentPage === page ? " active" : ""
                   }`}
                 >
-                  <a
+                  <Link
                     className="page-link"
-                    href="#"
+                    to="#"
                     onClick={this.handleClick(page)}
                   >
                     {page}
-                  </a>
+                  </Link>
                 </li>
               );
             })}

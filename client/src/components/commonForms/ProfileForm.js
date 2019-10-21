@@ -5,6 +5,20 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 class ProfileForm extends Component {
+  renderBackButton() {
+    if (this.props.onCancel) {
+      return (
+        <button
+          className="btn btn-secondary"
+          variant="secondary"
+          onClick={this.props.onCancel}
+        >
+          Back
+        </button>
+      );
+    }
+  }
+
   render() {
     var initialValuesMap;
 
@@ -108,13 +122,7 @@ class ProfileForm extends Component {
                 </div>
 
                 <div className="form-group " key="buttons">
-                  <button
-                    className="btn btn-secondary"
-                    variant="secondary"
-                    onClick={this.props.onCancel}
-                  >
-                    Back
-                  </button>
+                  {this.renderBackButton()}
 
                   <button
                     className="btn btn-primary float-right"
