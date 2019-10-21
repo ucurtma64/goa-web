@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
-import Post from "./Post";
+import PostCard from "./PostCard";
 import { connect } from "react-redux";
 import { fetchPosts } from "../../actions";
 import Pagination from "../util/Pagination";
@@ -54,12 +54,14 @@ class PostsHome extends Component {
     return (
       <>
         {currentPosts.map(post => (
-          <Post
+          <PostCard
             title={post.title}
             text={post.text}
             date={post.dateSent}
             author={post.author}
             image={post.image}
+            _id={post._id}
+            key={post._id}
           />
         ))}
 
@@ -92,19 +94,19 @@ class PostsHome extends Component {
 
   render() {
     return (
-      <div class="container">
-        <div class="row">
-          <div class="col-md-8">
-            <h1 class="text-center m-5 font-weight-bold">Lastest Posts</h1>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8">
+            <h1 className="text-center m-5 font-weight-bold">Lastest Posts</h1>
 
             {this.renderPosts()}
           </div>
 
-          <div class="col-md-4">
-            <h1 class="text-center m-5 font-weight-bold">
+          <div className="col-md-4">
+            <h1 className="text-center m-5 font-weight-bold">
               <FontAwesomeIcon icon={faTwitter} />
             </h1>
-            <div class="h-75 mt-5">
+            <div className="h-75 mt-5">
               <TwitterTimelineEmbed
                 theme="dark"
                 sourceType="profile"

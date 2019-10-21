@@ -1,5 +1,5 @@
 import React from "react";
-import Posts from "./posts/PostsHome";
+import PostsHome from "./posts/PostsHome";
 
 const Landing = () => {
   return (
@@ -84,7 +84,7 @@ const Landing = () => {
         </a>
       </div>
 
-      <Posts />
+      <PostsHome />
     </div>
   );
 };

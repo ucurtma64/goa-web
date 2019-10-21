@@ -8,9 +8,6 @@ module.exports = app => {
   app.get("/api/posts", async (req, res) => {
     const posts = await Post.find({});
 
-    console.log("posts");
-    console.log(posts);
-
     res.send(posts);
   });
 
@@ -28,5 +25,13 @@ module.exports = app => {
     await post.save();
 
     res.send({});
+  });
+
+  app.post("/api/post", async (req, res) => {
+    const postId = req.body.postId;
+
+    const result = await Post.findById(postId);
+
+    res.send(result);
   });
 };

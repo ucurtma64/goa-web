@@ -11,6 +11,7 @@ import Profile from "./profile/Profile";
 import SurveyNew from "./surveys/SurveyNew";
 import PaymentNew from "./merchant/PaymentNew";
 import PaymentCallback from "./merchant/PaymentCallback";
+import PostContent from "./posts/PostContent";
 import NotificationModal from "./NotificationModal";
 
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/store" component={PaymentNew} />
         <Route path="/store/callback" component={PaymentCallback} />
+        <Route path="/post" component={PostContent} />
         <Route exact path="/surveys" component={Dashboard} />
         <Route exact path="/admin" component={AdminDashboard} />
         <Route path="/surveys/new" component={SurveyNew} />
