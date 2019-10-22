@@ -14,13 +14,9 @@ class PostContent extends Component {
   async componentDidMount() {
     const postId = this.props.history.location.pathname.replace("/post/", "");
 
-    const res = await axios.post("/api/post", { postId });
-
-    console.log("post");
-    console.log(res);
+    const res = await axios.get("/api/post?postId=" + postId);
 
     this.setState(res.data);
-    console.log(this.state);
   }
 
   renderImage() {

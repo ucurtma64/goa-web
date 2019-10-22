@@ -46,8 +46,6 @@ module.exports = app => {
       new: true
     });
 
-    console.log(mongoRes);
-
     res.send(mongoRes);
   });
 };

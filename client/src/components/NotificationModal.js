@@ -9,8 +9,6 @@ class NotificationModal extends Component {
   }
 
   render() {
-    console.log(this.props.notificationModal);
-
     switch (this.props.notificationModal) {
       case null:
         return <div />;

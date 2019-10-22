@@ -21,13 +21,16 @@ module.exports = app => {
       dateSent: Date.now()
     });
 
-    await post.save();
-
-    res.send({});
+    try {
+      await post.save();
+      res.send({});
+    } catch (e) {
+      res.status(500).json({ message: e.message });
+    }
   });
 
-  app.post("/api/post", async (req, res) => {
-    const postId = req.body.postId;
+  app.get("/api/post", async (req, res) => {
+    const postId = req.query.postId;
 
     if (postId) {
       const result = await Post.findById(postId);
