@@ -38,8 +38,10 @@ export const fetchProducts = () => async dispatch => {
   dispatch({ type: FETCH_PRODUCTS, payload: res.data });
 };
 
-export const fetchPosts = () => async dispatch => {
-  const res = await axios.get("/api/posts");
+export const fetchPosts = (page, limit) => async dispatch => {
+  const res = await axios.get("/api/posts?page=" + page + "&limit=" + limit);
+
+  console.log(res.data);
 
   dispatch({ type: FETCH_POSTS, payload: res.data });
 };

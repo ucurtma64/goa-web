@@ -9,38 +9,46 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
 class PostsHome extends Component {
   state = {
-    allPostsReversed: [],
+    totalPosts: 0,
+    totalPages: 0,
     currentPosts: [],
     currentPage: null,
-    totalPages: null
+    pageLimit: 2,
+    pageNeighbours: 1
   };
 
   async componentDidMount() {
-    await this.props.fetchPosts(); //wait for async method to complete so this.props.posts at next lines is not null
+    const { pageLimit } = this.state;
+    const currentPage = 1;
 
-    const allPostsReversed = this.props.posts.reverse(); //reverse array so it is new to old
-    this.setState({ allPostsReversed });
+    await this.props.fetchPosts(currentPage, pageLimit); //wait for async method to complete so this.props.posts at next lines is not null
+
+    const currentPosts = this.props.posts.currentResults;
+    const totalPosts = this.props.posts.totalResults;
+    this.setState({ totalPosts, currentPosts, currentPage });
   }
 
-  onPageChanged = data => {
-    const { allPostsReversed } = this.state;
-    const { currentPage, totalPages, pageLimit } = data;
+  onPageChanged = async data => {
+    const { totalPages, currentPage } = data;
+    const { pageLimit } = this.state;
 
-    const offset = (currentPage - 1) * pageLimit;
-    const currentPosts = allPostsReversed.slice(offset, offset + pageLimit);
+    await this.props.fetchPosts(currentPage, pageLimit);
 
-    this.setState({ currentPage, currentPosts, totalPages });
+    const currentPosts = this.props.posts.currentResults;
+    const totalPosts = this.props.posts.totalResults;
+
+    this.setState({ totalPosts, totalPages, currentPosts, currentPage });
   };
 
   renderPosts() {
     const {
-      allPostsReversed,
+      totalPosts,
+      totalPages,
       currentPosts,
       currentPage,
-      totalPages
+      pageLimit,
+      pageNeighbours
     } = this.state;
-
-    const totalPosts = allPostsReversed.length;
 
     if (totalPosts === 0) return null;
 
@@ -82,8 +90,8 @@ class PostsHome extends Component {
           <div className="d-flex flex-row py-4 align-items-center">
             <Pagination
               totalRecords={totalPosts}
-              pageLimit={2}
-              pageNeighbours={1}
+              pageLimit={pageLimit}
+              pageNeighbours={pageNeighbours}
               onPageChanged={this.onPageChanged}
             />
           </div>

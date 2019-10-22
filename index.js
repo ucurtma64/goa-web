@@ -14,7 +14,10 @@ if (!(process.env.NODE_ENV === "production")) {
   require("./webhooks/ngrok"); //use ngrok in development
 }
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 const app = express();
 
