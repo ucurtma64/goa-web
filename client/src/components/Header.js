@@ -3,7 +3,31 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 class Header extends Component {
-  renderContent() {
+  renderButtonsOnLeft() {
+    switch (this.props.auth) {
+      case null:
+        return;
+      case false:
+        return;
+      default:
+        const header = [
+          <li className="nav-item" key="1">
+            <Link className="nav-link" to="/store">
+              Store
+            </Link>
+          </li>,
+          <li className="nav-item" key="4">
+            <Link className="nav-link" to="/surveys">
+              Surveys
+            </Link>
+          </li>
+        ];
+
+        return header;
+    }
+  }
+
+  renderButtonsOnRight() {
     switch (this.props.auth) {
       case null:
         return (
@@ -21,20 +45,10 @@ class Header extends Component {
         );
       default:
         const header = [
-          <li className="nav-item" key="1">
-            <Link className="nav-link" to="/store">
-              Store
-            </Link>
-          </li>,
           <li className="nav-item" key="3">
             <span className="navbar-text text-light">
               Credits: {this.props.auth.credits}
             </span>
-          </li>,
-          <li className="nav-item" key="4">
-            <Link className="nav-link" to="/surveys">
-              Surveys
-            </Link>
           </li>,
           <li className="nav-item" key="5">
             <Link className="nav-link" to="/profile">
@@ -83,35 +97,11 @@ class Header extends Component {
         </button>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item dropdown">
-              <a
-                href="#"
-                className="nav-link dropdown-toggle"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a href="#" className="dropdown-item">
-                  Action
-                </a>
-                <a href="#" className="dropdown-item">
-                  Another action
-                </a>
-                <div className="dropdown-divider"></div>
-                <a href="#" className="dropdown-item">
-                  Something else here
-                </a>
-              </div>
-            </li>
-          </ul>
+          <ul className="navbar-nav mr-auto">{this.renderButtonsOnLeft()}</ul>
 
-          <ul className="navbar-nav my-2 my-lg-0">{this.renderContent()}</ul>
+          <ul className="navbar-nav my-2 my-lg-0">
+            {this.renderButtonsOnRight()}
+          </ul>
         </div>
       </nav>
     );

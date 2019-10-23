@@ -3,6 +3,7 @@ const requireLogin = require("../middlewares/requireLogin");
 const requireAdmin = require("../middlewares/requireAdmin");
 const paginateResults = require("../middlewares/paginateResults");
 
+const User = mongoose.model("users");
 const Post = mongoose.model("posts");
 
 module.exports = app => {
@@ -10,7 +11,7 @@ module.exports = app => {
     res.json(res.paginatedResults);
   });
 
-  app.post("/api/posts", requireLogin, requireAdmin, async (req, res) => {
+  app.post("/api/posts", requireLogin, requireAdmin(User), async (req, res) => {
     const body = req.body;
 
     const post = new Post({
