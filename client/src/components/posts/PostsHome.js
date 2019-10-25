@@ -114,7 +114,7 @@ class PostsHome extends Component {
             <h1 className="text-center m-5 font-weight-bold">
               <FontAwesomeIcon icon={faTwitter} />
             </h1>
-            <div className="h-75 mt-5">
+            <article className="h-75 mt-5">
               <TwitterTimelineEmbed
                 theme="dark"
                 sourceType="profile"
@@ -122,7 +122,7 @@ class PostsHome extends Component {
                 options={{ height: 480 }}
                 lang="en"
               />
-            </div>
+            </article>
           </div>
         </div>
       </div>

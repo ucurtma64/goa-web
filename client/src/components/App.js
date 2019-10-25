@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 
 import Header from "./Header";
+import Footer from "./Footer";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
 import AdminDashboard from "./admin/AdminDashboard";
@@ -22,16 +23,20 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Header />
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/profile" component={Profile} />
-        <Route exact path="/store" component={PaymentNew} />
-        <Route path="/store/callback" component={PaymentCallback} />
-        <Route path="/post" component={PostContent} />
-        <Route exact path="/surveys" component={Dashboard} />
-        <Route exact path="/admin" component={AdminDashboard} />
-        <Route path="/surveys/new" component={SurveyNew} />
-        <NotificationModal />
+        <div className="main-container">
+          <Header />
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/store" component={PaymentNew} />
+          <Route path="/store/callback" component={PaymentCallback} />
+          <Route path="/post" component={PostContent} />
+          <Route exact path="/surveys" component={Dashboard} />
+          <Route exact path="/admin" component={AdminDashboard} />
+          <Route path="/surveys/new" component={SurveyNew} />
+          <NotificationModal />
+        </div>
+
+        <Footer />
       </BrowserRouter>
     );
   }
