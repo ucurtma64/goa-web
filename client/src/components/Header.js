@@ -4,27 +4,30 @@ import { Link } from "react-router-dom";
 
 class Header extends Component {
   renderButtonsOnLeft() {
-    switch (this.props.auth) {
-      case null:
-        return;
-      case false:
-        return;
-      default:
-        const header = [
-          <li className="nav-item" key="1">
-            <Link className="nav-link" to="/store">
-              Store
-            </Link>
-          </li>,
-          <li className="nav-item" key="4">
-            <Link className="nav-link" to="/surveys">
-              Surveys
-            </Link>
-          </li>
-        ];
+    const header = [
+      <li className="nav-item" key="7">
+        <a
+          className="nav-link"
+          rel="noopener noreferrer"
+          href="https://www.google.com/"
+          target="_blank"
+        >
+          NewTab
+        </a>
+      </li>,
+      <li className="nav-item" key="8">
+        <Link className="nav-link" to="/store">
+          Store1
+        </Link>
+      </li>,
+      <li className="nav-item" key="1">
+        <Link className="nav-link" to="/store">
+          Store
+        </Link>
+      </li>
+    ];
 
-        return header;
-    }
+    return header;
   }
 
   renderButtonsOnRight() {
