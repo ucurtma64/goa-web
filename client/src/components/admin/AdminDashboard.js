@@ -35,7 +35,7 @@ class AdminDashboard extends Component {
                   aria-orientation="vertical"
                 >
                   <a
-                    className="nav-link active text-light"
+                    className="nav-link active text-dark"
                     id="v-pills-home-tab"
                     data-toggle="pill"
                     href="#v-pills-home"

@@ -173,7 +173,7 @@ class HorizontalStepper extends Component {
                   width: 3rem;
                   height: 3rem;
                   margin: 0 auto;
-                  background-color: #9E9E9E;
+                  background-color: #90a4ae;
                   border-radius: 50%;
                   text-align: center;
                   line-height: 2em;
@@ -182,15 +182,15 @@ class HorizontalStepper extends Component {
                 }
                 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-circle {
-                  background-color: #3498db;
+                  background-color: #a280ff;
                 }
                 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.step-done .mdl-stepper-circle {
-                    background-color:  #2ecc71;
+                    background-color:  #33beff;
                 }
 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle {
-                    background-color: #f1c40f;
+                    background-color: #90a4ae;
                 }
                 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle {
@@ -213,12 +213,10 @@ class HorizontalStepper extends Component {
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-title,
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-optional {
                   text-align: center;
-                  color: rgba(255, 255, 255, .48);
                 }
                 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-title {
                   font-weight: 500;
-                  color: rgba(255, 255, 255, .92);
                 }
                 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step.step-done .mdl-stepper-title,
@@ -230,16 +228,12 @@ class HorizontalStepper extends Component {
                   font-size: 1rem;
                 }
                 
-                .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-optional {
-                  color: rgba(255, 255, 255, .64);
-                }
-                
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-left,
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-right {
                   position: absolute;
                   top: 3rem;
                   height: 1px;
-                  border-top: 1px solid #BDBDBD;
+                  border-top: 1.5px solid #000000;
                 }
                 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step .mdl-stepper-bar-right {

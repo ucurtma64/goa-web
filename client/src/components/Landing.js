@@ -23,7 +23,7 @@ const Landing = () => {
             className="carousel-item active"
             style={{
               backgroundImage:
-                "url('https://source.unsplash.com/LAaSoL0LrYs/1920x1080')"
+                "url('https://i.postimg.cc/445Cwt3s/Optimized-2019-08-22-02-19-15.jpg')"
             }}
           >
             <div className="carousel-caption d-none d-md-block">
@@ -35,7 +35,7 @@ const Landing = () => {
             className="carousel-item"
             style={{
               backgroundImage:
-                "url('https://source.unsplash.com/bF2vsubyHcQ/1920x1080')"
+                "url('https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg')"
             }}
           >
             <div className="carousel-caption d-none d-md-block">
@@ -49,7 +49,7 @@ const Landing = () => {
             className="carousel-item"
             style={{
               backgroundImage:
-                "url('https://source.unsplash.com/szFUQoyvrxM/1920x1080')"
+                "url('https://i.postimg.cc/8kXCtswJ/Optimized-2019-08-22-02-31-21.jpg')"
             }}
           >
             <div className="carousel-caption d-none d-md-block">

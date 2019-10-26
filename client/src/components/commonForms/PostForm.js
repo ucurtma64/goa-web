@@ -35,7 +35,7 @@ class PostForm extends Component {
           <Form className="d-block mx-auto px-2">
             <div className="form-row">
               <div className="form-group col" key="title">
-                <label className="text-light" htmlFor="title">
+                <label className="text-dark" htmlFor="title">
                   Title
                 </label>
                 <Field
@@ -55,7 +55,7 @@ class PostForm extends Component {
               </div>
 
               <div className="form-group col" key="image">
-                <label className="text-light" htmlFor="image">
+                <label className="text-dark" htmlFor="image">
                   Image link
                 </label>
                 <Field
@@ -77,7 +77,7 @@ class PostForm extends Component {
 
             <div className="form-row">
               <div className="form-group col" key="text">
-                <label className="text-light" htmlFor="text">
+                <label className="text-dark" htmlFor="text">
                   Text
                 </label>
                 <Field

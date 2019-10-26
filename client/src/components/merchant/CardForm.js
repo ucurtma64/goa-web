@@ -87,7 +87,7 @@ class CardForm extends Component {
               <Form className="d-block mx-auto px-2">
                 <div className="form-row">
                   <div className="form-group col" key="cardHolderName">
-                    <label className="text-light" htmlFor="cardHolderName">
+                    <label className="text-dark" htmlFor="cardHolderName">
                       Name on card
                     </label>
                     <Field
@@ -109,7 +109,7 @@ class CardForm extends Component {
                   </div>
 
                   <div className="form-group col-md-2" key="expireMonth">
-                    <label className="text-light" htmlFor="expireMonth">
+                    <label className="text-dark" htmlFor="expireMonth">
                       Month
                     </label>
                     <Field
@@ -131,7 +131,7 @@ class CardForm extends Component {
                   </div>
 
                   <div className="form-group col-md-2" key="expireYear">
-                    <label className="text-light" htmlFor="expireYear">
+                    <label className="text-dark" htmlFor="expireYear">
                       Year
                     </label>
                     <Field
@@ -155,7 +155,7 @@ class CardForm extends Component {
 
                 <div className="form-row">
                   <div className="form-group col" key="cardNumber">
-                    <label className="text-light" htmlFor="cardNumber">
+                    <label className="text-dark" htmlFor="cardNumber">
                       Card number
                     </label>
                     <Field
@@ -176,7 +176,7 @@ class CardForm extends Component {
                     />
                   </div>
                   <div className="form-group col-md-2" key="cvc">
-                    <label className="text-light" htmlFor="cvc">
+                    <label className="text-dark" htmlFor="cvc">
                       Security
                     </label>
                     <div className="input-group">

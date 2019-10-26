@@ -9,15 +9,15 @@ class Header extends Component {
         <a
           className="nav-link"
           rel="noopener noreferrer"
-          href="https://www.google.com/"
+          href="https://guardiansofadelia.fandom.com/wiki/GuardiansOfAdelia_Wiki"
           target="_blank"
         >
-          NewTab
+          Wiki
         </a>
       </li>,
       <li className="nav-item" key="8">
-        <Link className="nav-link" to="/store">
-          Store1
+        <Link className="nav-link" to="/lore">
+          Lore
         </Link>
       </li>,
       <li className="nav-item" key="1">
@@ -49,7 +49,7 @@ class Header extends Component {
       default:
         const header = [
           <li className="nav-item" key="3">
-            <span className="navbar-text text-light">
+            <span className="navbar-text text-dark">
               Credits: {this.props.auth.credits}
             </span>
           </li>,
@@ -83,9 +83,12 @@ class Header extends Component {
     console.log(this.props.auth);
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <nav
+        className="navbar navbar-expand-lg navbar-light"
+        style={{ backgroundColor: "#fff" }}
+      >
         <Link className="navbar-brand" to={"/"}>
-          Emaily
+          Guardians of Adelia
         </Link>
         <button
           className="navbar-toggler"

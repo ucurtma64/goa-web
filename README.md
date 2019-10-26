@@ -1,5 +1,3 @@
-# learning-node.js
+# GoA-web
 
-My node.js learning project by following Stephen Grider's course(https://www.udemy.com/node-with-react-fullstack-web-development/).
-
-App name: Emaily
+App name: Guardians of Adelia

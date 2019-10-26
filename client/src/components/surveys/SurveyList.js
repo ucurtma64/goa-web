@@ -41,8 +41,8 @@ class SurveyList extends Component {
     if (totalSurveys === 0) return null;
 
     const headerClass = [
-      "text-light py-2 pr-4 m-0",
-      currentPage ? "border-gray border-right" : ""
+      "text-dark py-2 pr-4 m-0",
+      currentPage ? "border-dark border-right" : ""
     ]
       .join(" ")
       .trim();
@@ -53,11 +53,11 @@ class SurveyList extends Component {
           <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <h2 className={headerClass}>
-                <strong className="text-light">{totalSurveys}</strong> Surveys
+                <strong className="text-dark">{totalSurveys}</strong> Surveys
               </h2>
 
               {currentPage && (
-                <span className="current-page d-inline-block h-100 pl-4 text-light">
+                <span className="current-page d-inline-block h-100 pl-4 text-dark">
                   Page <span className="font-weight-bold">{currentPage}</span> /{" "}
                   <span className="font-weight-bold">{totalPages}</span>
                 </span>

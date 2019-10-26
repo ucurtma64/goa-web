@@ -12,25 +12,25 @@ class SurveyFormReview extends Component {
         <h5 className="text-success">Please confirm your entries</h5>
 
         <div key="title">
-          <label className="text-light">Survey title</label>
+          <label className="text-dark">Survey title</label>
           <p className="border font-weight-normal bg-white rounded-lg">
             {this.props.formValues.title}
           </p>
         </div>
         <div key="subject">
-          <label className="text-light">Subject Line</label>
+          <label className="text-dark">Subject Line</label>
           <p className="border font-weight-normal bg-white rounded-lg">
             {this.props.formValues.subject}
           </p>
         </div>
         <div key="body">
-          <label className="text-light">Email body</label>
+          <label className="text-dark">Email body</label>
           <p className="border font-weight-normal bg-white rounded-lg">
             {this.props.formValues.body}
           </p>
         </div>
         <div key="recipients">
-          <label className="text-light">Recipients list</label>
+          <label className="text-dark">Recipients list</label>
           <p className="border font-weight-normal bg-white rounded-lg">
             {this.props.formValues.recipients}
           </p>
