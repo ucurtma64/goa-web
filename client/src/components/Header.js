@@ -85,7 +85,9 @@ class Header extends Component {
     return (
       <nav
         className="navbar navbar-expand-lg navbar-light"
-        style={{ backgroundColor: "#fff" }}
+        style={{
+          backgroundColor: "transparent"
+        }}
       >
         <Link className="navbar-brand" to={"/"}>
           Guardians of Adelia

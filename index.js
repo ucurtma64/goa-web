@@ -5,7 +5,6 @@ const passport = require("passport");
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 require("./models/User"); //add use schema before using it in ./services/passport.js
-require("./models/Survey");
 require("./models/Order");
 require("./models/Product");
 require("./models/Post");
@@ -38,7 +37,6 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
-require("./routes/surveyRoutes")(app);
 require("./routes/productRoutes")(app);
 require("./routes/profileRoutes")(app);
 require("./routes/postRoutes")(app);

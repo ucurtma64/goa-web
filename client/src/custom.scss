@@ -1,13 +1,7 @@
 // Override default variables before the import
 body {
-  background: linear-gradient(
-    90deg,
-    rgba(255, 192, 149, 1) 0%,
-    rgba(255, 181, 149, 1) 25%,
-    rgba(255, 170, 149, 1) 50%,
-    rgba(255, 160, 149, 1) 75%,
-    rgba(255, 149, 149, 1) 100%
-  );
+  background-image: url("https://i.ibb.co/jRWx2tq/4.jpg");
+  background-repeat: no-repeat;
 }
 
 // Import Bootstrap and its default variables
@@ -103,7 +97,7 @@ hr {
 /* Carousel */
 
 .carousel-item {
-  height: 64vh;
+  height: 48vh;
   min-height: 350px;
   background: no-repeat center center scroll;
   -webkit-background-size: cover;
