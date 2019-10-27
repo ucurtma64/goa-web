@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
-class PaymentCallback extends Component {
+class AddCreditCallback extends Component {
   renderPaymentStatus() {
     const status = this.props.history.location.pathname.replace(
-      "/store/callback/",
+      "/addcredit/callback/",
       ""
     );
 
@@ -35,4 +35,4 @@ class PaymentCallback extends Component {
   }
 }
 
-export default PaymentCallback;
+export default AddCreditCallback;

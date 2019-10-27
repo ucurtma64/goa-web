@@ -42,7 +42,7 @@ module.exports = app => {
     const match = p.test(req.path);
     if (!match) {
       res.send(
-        '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-9"</script></body></html>'
+        '<html><body><p>Redirecting...</p><script>window.top.location.href="/addcredit/callback/error-9"</script></body></html>'
       );
       return;
     }
@@ -50,7 +50,7 @@ module.exports = app => {
 
     if (body.status != "success") {
       res.send(
-        '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-' +
+        '<html><body><p>Redirecting...</p><script>window.top.location.href="/addcredit/callback/error-' +
           body.mdStatus +
           '"</script></body></html>'
       );
@@ -59,7 +59,7 @@ module.exports = app => {
 
     if (!(body.paymentId && body.conversationId)) {
       res.send(
-        '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-10"</script></body></html>'
+        '<html><body><p>Redirecting...</p><script>window.top.location.href="/addcredit/callback/error-10"</script></body></html>'
       );
       return;
     }
@@ -77,14 +77,14 @@ module.exports = app => {
     ) {
       if (result.conversationId != body.conversationId) {
         res.send(
-          '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-11"</script></body></html>'
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/addcredit/callback/error-11"</script></body></html>'
         );
         return;
       }
 
       if (!(result.paymentId && result.itemTransactions && result.status)) {
         res.send(
-          '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-12"</script></body></html>'
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/addcredit/callback/error-12"</script></body></html>'
         );
         return;
       }
@@ -117,7 +117,7 @@ module.exports = app => {
 
       if (result.status != "success") {
         res.send(
-          '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/error-14"</script></body></html>'
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/addcredit/callback/error-14"</script></body></html>'
         );
       } else {
         //successful payment
@@ -126,7 +126,7 @@ module.exports = app => {
         await onSuccessfulPayment(userId, products);
 
         res.send(
-          '<html><body><p>Redirecting...</p><script>window.top.location.href="/store/callback/success"</script></body></html>'
+          '<html><body><p>Redirecting...</p><script>window.top.location.href="/addcredit/callback/success"</script></body></html>'
         );
       }
 

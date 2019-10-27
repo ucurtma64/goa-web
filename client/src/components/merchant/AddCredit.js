@@ -1,12 +1,12 @@
-//Shows Store and BillingForm and CardForm
+//Shows CreditSelection and BillingForm and CardForm
 import React, { Component } from "react";
-import Store from "./Store";
+import CreditSelection from "./CreditSelection";
 import BillingForm from "../commonForms/BillingForm";
 import ProfileForm from "../commonForms/ProfileForm";
 import CardForm from "./CardForm";
 import HorizontalStepper from "../util/HorizontalStepper";
 
-class PaymentNew extends Component {
+class AddCredit extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
@@ -36,7 +36,7 @@ class PaymentNew extends Component {
             this.setState({ formStage: 1 });
             this.gotoPreviousStage();
           }}
-          onSurveySubmit={fields => {
+          onFormSubmit={fields => {
             const formValues = Object.assign(this.state.formValues, fields);
             this.setState(Object.assign({ formStage: 3 }, { formValues }));
             this.gotoNextStage();
@@ -53,7 +53,7 @@ class PaymentNew extends Component {
             this.setState({ formStage: 0 });
             this.gotoPreviousStage();
           }}
-          onSurveySubmit={fields => {
+          onFormSubmit={fields => {
             const formValues = Object.assign(this.state.formValues, fields);
             this.setState(Object.assign({ formStage: 2 }, { formValues }));
             this.gotoNextStage();
@@ -64,9 +64,9 @@ class PaymentNew extends Component {
 
     //if (this.state.formStage === 0)
     return (
-      <Store
+      <CreditSelection
         formValues={this.state.formValues}
-        onSurveySubmit={product => {
+        onFormSubmit={product => {
           const formValues = this.state.formValues;
           formValues.product = product;
           this.setState(Object.assign({ formStage: 1 }, { formValues }));
@@ -103,4 +103,4 @@ class PaymentNew extends Component {
   }
 }
 
-export default PaymentNew;
+export default AddCredit;

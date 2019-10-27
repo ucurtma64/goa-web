@@ -63,10 +63,10 @@ class Header extends Component {
       default:
         const header = [
           <li className="nav-item active" key="3">
-            <span className="nav-link">
+            <Link className="nav-link" to="/addcredit">
               <FontAwesomeIcon className="mx-1" icon={faCoins} />
               Credits: {this.props.auth.credits}
-            </span>
+            </Link>
           </li>,
           <li className="nav-item active" key="5">
             <Link className="nav-link" to="/profile">

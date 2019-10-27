@@ -61,7 +61,7 @@ class BillingForm extends Component {
               country: Yup.string().required("City is required")
             })}
             onSubmit={fields => {
-              this.props.onSurveySubmit(fields);
+              this.props.onFormSubmit(fields);
             }}
             render={({ errors, status, touched }) => (
               <Form className="d-block mx-auto px-2">

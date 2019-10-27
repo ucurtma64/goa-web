@@ -142,12 +142,7 @@ class Pagination extends Component {
   };
 
   render() {
-    if (!this.totalRecords || this.totalPages === 1)
-      return (
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-      );
+    if (!this.totalRecords || this.totalPages === 1) return <div></div>;
 
     const { currentPage } = this.state;
     const pages = this.fetchPageNumbers();

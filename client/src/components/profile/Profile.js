@@ -36,12 +36,10 @@ class Profile extends Component {
               <div className="col-3">
                 <div className="text-dark text-center pb-2">
                   <img
-                    src="https://data.whicdn.com/images/313295970/original.jpg"
+                    src="https://i.ibb.co/hR60sKK/2018-04-12-19-08-26.png"
                     className="rounded-circle w-50 pb-1"
                     alt=""
                   />
-                  <div>little jean</div>
-                  <div className="period mt-n1">writer</div>
                 </div>
                 <div
                   className="nav flex-column nav-pills"
@@ -104,7 +102,7 @@ class Profile extends Component {
                     aria-labelledby="v-pills-home-tab"
                   >
                     <ProfileForm
-                      onSurveySubmit={fields => {
+                      onFormSubmit={fields => {
                         this.onFormSubmit(fields);
                       }}
                     />
@@ -116,7 +114,7 @@ class Profile extends Component {
                     aria-labelledby="v-pills-profile-tab"
                   >
                     <BillingForm
-                      onSurveySubmit={fields => {
+                      onFormSubmit={fields => {
                         this.onFormSubmit(fields);
                       }}
                     />

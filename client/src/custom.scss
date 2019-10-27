@@ -98,14 +98,10 @@ hr {
 
 /* Carousel */
 
-.carousel-item {
-  height: 48vh;
-  min-height: 350px;
-  background: no-repeat center center scroll;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+.carousel-control-next,
+.carousel-control-prev,
+.carousel-indicators {
+  filter: invert(100%);
 }
 
 /* Nav */

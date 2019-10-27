@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
-class Store extends Component {
+class CreditSelection extends Component {
   async componentDidMount() {
     await this.props.fetchProducts(); //wait for async method to complete so this.props.surveys at next lines is not null
   }
@@ -42,7 +42,7 @@ class Store extends Component {
 
               <button
                 className="btn btn-block btn-primary text-uppercase"
-                onClick={() => this.props.onSurveySubmit(product)}
+                onClick={() => this.props.onFormSubmit(product)}
               >
                 Purchase
               </button>
@@ -71,4 +71,4 @@ function mapStateToProps({ products }) {
 export default connect(
   mapStateToProps,
   { fetchProducts }
-)(Store);
+)(CreditSelection);

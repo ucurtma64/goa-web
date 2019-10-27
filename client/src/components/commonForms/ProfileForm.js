@@ -51,7 +51,7 @@ class ProfileForm extends Component {
                 .required("Email is required")
             })}
             onSubmit={fields => {
-              this.props.onSurveySubmit(fields);
+              this.props.onFormSubmit(fields);
             }}
             render={({ errors, status, touched }) => (
               <Form className="d-block mx-auto px-2">
