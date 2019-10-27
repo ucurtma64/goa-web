@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faQuestionCircle, faCheck } from "@fortawesome/free-solid-svg-icons";
 import $ from "jquery";
 import axios from "axios";
+import CreditSelectionCard from "./CreditSelectionCard";
 
 class CardForm extends Component {
   constructor(props) {
@@ -21,11 +22,7 @@ class CardForm extends Component {
   }
 
   onFormSubmit(fields) {
-    const product = this.props.formValues.product;
-
-    //remove unnecessary properties
-    const description = product.description;
-    delete product.description;
+    const product = this.props.formValues.creditSelection;
 
     const buyer = {
       id: this.props.auth._id,
@@ -43,8 +40,6 @@ class CardForm extends Component {
     const token = Object.assign({ product }, { buyer }, { paymentCard });
 
     this.startIyzipay3D(token);
-
-    product.description = description;
   }
 
   async startIyzipay3D(token) {
@@ -246,31 +241,15 @@ class CardForm extends Component {
             )}
           />
 
-          <div className="pricing" style={{ margin: "1rem" }}>
-            <div className="card mb-5 mb-lg-0">
-              <div className="card-body">
-                <h5 className="card-title text-muted text-uppercase text-center">
-                  {this.props.formValues.product.name}
-                </h5>
-                <h6 className="card-price text-center">
-                  ${this.props.formValues.product.price}
-                  <span className="period">/credits</span>
-                </h6>
-                <hr />
-
-                <ul className="fa-ul">
-                  {this.props.formValues.product.description.map(line => (
-                    <li key={line}>
-                      <span className="fa-li">
-                        <FontAwesomeIcon mask={["fas"]} icon={faCheck} />
-                      </span>
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+          <CreditSelectionCard
+            creditSelection={{
+              productId: this.props.formValues.creditSelection.productId,
+              price: this.props.formValues.creditSelection.price,
+              name: this.props.formValues.creditSelection.name,
+              description: this.props.formValues.creditSelection.description,
+              category: this.props.formValues.creditSelection.category
+            }}
+          />
         </div>
 
         <div

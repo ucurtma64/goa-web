@@ -8,7 +8,7 @@ const atob = require("atob");
 
 const Order = mongoose.model("orders");
 const User = mongoose.model("users");
-const Product = mongoose.model("products");
+const CreditSelection = mongoose.model("creditselection");
 
 var iyzipay = new Iyzipay({
   apiKey: keys.iyzipayPublishableKey,
@@ -18,6 +18,20 @@ var iyzipay = new Iyzipay({
 
 module.exports = app => {
   app.post("/api/iyzipay", requireLogin, async (req, res) => {
+    const creditSelReq = req.body.product;
+
+    const creditSelection = await CreditSelection.findOne({
+      productId: creditSelReq.productId
+    });
+
+    if (!creditSelection) {
+      return res.status(406).send({ error: "Bad request" });
+    }
+
+    if (creditSelection.price != creditSelReq.price) {
+      return res.status(406).send({ error: "Bad request" });
+    }
+
     const iyzipayRequest = iyzipayStart3D(
       req.body.product,
       req.body.buyer,
@@ -139,15 +153,19 @@ module.exports = app => {
 const onSuccessfulPayment = async (userId, requestProducts) => {
   const productIds = requestProducts.map(product => product.productId);
 
-  const products = await Product.find({ productId: { $in: productIds } });
+  const creditSelections = await CreditSelection.find({
+    productId: { $in: productIds }
+  });
 
-  const prices = products.map(product => product.price);
+  const credits = creditSelections.map(
+    creditSelection => creditSelection.credits
+  );
 
-  const totalCost = prices.reduce((a, b) => a + b, 0);
+  const totalCredits = credits.reduce((a, b) => a + b, 0);
 
   await User.findByIdAndUpdate(
     userId,
-    { $inc: { credits: totalCost } },
+    { $inc: { credits: totalCredits } },
     { useFindAndModify: false }
   );
 };

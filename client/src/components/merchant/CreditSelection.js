@@ -1,74 +1,93 @@
-import _ from "lodash";
-import { connect } from "react-redux";
-import { fetchProducts } from "../../actions";
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import CreditSelectionCard from "./CreditSelectionCard";
 
 class CreditSelection extends Component {
-  async componentDidMount() {
-    await this.props.fetchProducts(); //wait for async method to complete so this.props.surveys at next lines is not null
-  }
-
-  renderProducts() {
-    return _.map(this.props.products, product => {
-      const descriptionList = product.description.map(line => (
-        <li key={line}>
-          <span className="fa-li">
-            <FontAwesomeIcon mask={["fas"]} icon={faCheck} />
-          </span>
-          {line}
-        </li>
-      ));
-
-      return (
-        <div
-          className="col-lg-4"
-          key={product.name}
-          style={{ marginBottom: "1rem" }}
-        >
-          <div className="card mb-5 mb-lg-0">
-            <div className="card-body">
-              <h5 className="card-title text-muted text-uppercase text-center">
-                {product.name}
-              </h5>
-              <h6 className="card-price text-center">
-                ${product.price}
-                <span className="period">/credits</span>
-              </h6>
-              <hr />
-
-              <ul className="fa-ul">{descriptionList}</ul>
-
-              <button
-                className="btn btn-block btn-primary text-uppercase"
-                onClick={() => this.props.onFormSubmit(product)}
-              >
-                Purchase
-              </button>
-            </div>
-          </div>
-        </div>
-      );
-    });
+  rendercreditSelections() {
+    return (
+      <div className="row card-deck">
+        <CreditSelectionCard
+          creditSelection={{
+            productId: 1,
+            price: 1,
+            name: "50 credits",
+            description: "No bonus credits",
+            category: "credit"
+          }}
+          onFormSubmit={creditSelection =>
+            this.props.onFormSubmit(creditSelection)
+          }
+        />
+        <CreditSelectionCard
+          creditSelection={{
+            productId: 2,
+            price: 2,
+            name: "100 credits",
+            description: "+20 bonus credits",
+            category: "credit"
+          }}
+          onFormSubmit={creditSelection =>
+            this.props.onFormSubmit(creditSelection)
+          }
+        />
+        <CreditSelectionCard
+          creditSelection={{
+            productId: 3,
+            price: 5,
+            name: "250 credits",
+            description: "+80 bonus credits",
+            category: "credit"
+          }}
+          onFormSubmit={creditSelection =>
+            this.props.onFormSubmit(creditSelection)
+          }
+        />
+        <CreditSelectionCard
+          creditSelection={{
+            productId: 4,
+            price: 10,
+            name: "500 credits",
+            description: "+200 bonus credits",
+            category: "credit"
+          }}
+          onFormSubmit={creditSelection =>
+            this.props.onFormSubmit(creditSelection)
+          }
+        />
+        <CreditSelectionCard
+          creditSelection={{
+            productId: 5,
+            price: 15,
+            name: "750 credits",
+            description: "+350 bonus credits",
+            category: "credit"
+          }}
+          onFormSubmit={creditSelection =>
+            this.props.onFormSubmit(creditSelection)
+          }
+        />
+        <CreditSelectionCard
+          creditSelection={{
+            productId: 6,
+            price: 20,
+            name: "1000 credits",
+            description: "+700 bonus credits",
+            category: "credit"
+          }}
+          onFormSubmit={creditSelection =>
+            this.props.onFormSubmit(creditSelection)
+          }
+        />
+      </div>
+    );
   }
 
   render() {
     return (
       <section className="pricing py-5">
-        <div className="container">
-          <div className="row card-deck">{this.renderProducts()}</div>
-        </div>
+        <div className="container">{this.rendercreditSelections()}</div>
       </section>
     );
   }
 }
 
-function mapStateToProps({ products }) {
-  return { products };
-}
-
-export default connect(
-  mapStateToProps,
-  { fetchProducts }
-)(CreditSelection);
+export default CreditSelection;

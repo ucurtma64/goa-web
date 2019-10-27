@@ -66,9 +66,9 @@ class AddCredit extends Component {
     return (
       <CreditSelection
         formValues={this.state.formValues}
-        onFormSubmit={product => {
+        onFormSubmit={creditSelection => {
           const formValues = this.state.formValues;
-          formValues.product = product;
+          formValues.creditSelection = creditSelection;
           this.setState(Object.assign({ formStage: 1 }, { formValues }));
           this.gotoNextStage();
         }}
@@ -90,7 +90,7 @@ class AddCredit extends Component {
         <HorizontalStepper
           ref="horizontalStepper"
           stages={[
-            { title: "Select Product", optional: "Required" },
+            { title: "Select Credit", optional: "Required" },
             { title: "Profile", optional: "Required" },
             { title: "Billing Info", optional: "Required" },
             { title: "Payment", optional: "Required" }
