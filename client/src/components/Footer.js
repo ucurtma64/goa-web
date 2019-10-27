@@ -13,7 +13,7 @@ class Footer extends Component {
           </a>
         </div>
         <div className="text-dark text-right px-3">
-          <p>&copy; Copyright 2019, Emaily</p>
+          <p>&copy; Copyright 2019, Guardians of Adelia</p>
         </div>
       </footer>
     );

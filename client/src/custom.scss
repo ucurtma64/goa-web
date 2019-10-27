@@ -1,13 +1,15 @@
 // Override default variables before the import
-body {
-  background-image: url("https://i.ibb.co/jRWx2tq/4.jpg");
-  background-repeat: no-repeat;
-}
+$font-family-base: "Kalam", cursive !default;
 
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
 
 /* General */
+
+body {
+  background-image: url("https://i.ibb.co/jRWx2tq/4.jpg");
+  background-repeat: no-repeat;
+}
 
 .main-container {
   min-height: 90vh;
@@ -111,4 +113,8 @@ hr {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   background-color: #ffe6ff;
+}
+
+.nav-item {
+  font-size: 1.2rem;
 }
