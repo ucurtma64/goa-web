@@ -13,13 +13,13 @@ module.exports = app => {
 const startSocket = (minecraftUsername, selectedProduct) => {
   var net = require("net");
 
-  var client = net.connect(1010, "94.55.189.101");
+  var client = net.connect(25120, "94.55.189.101");
 
   const object = Object.assign(minecraftUsername, selectedProduct);
 
   client.write("hello serverr");
 
-  client.emit("hello serverr", object);
+  client.emit("myEvent", object);
 
   client.on("data", function(data) {
     console.log("Received: " + data);
