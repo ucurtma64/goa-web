@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Spinner from "../util/Spinner";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -21,11 +22,7 @@ class BillingForm extends Component {
 
   render() {
     if (!this.props.auth) {
-      return (
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-      );
+      return <Spinner />;
     }
 
     var initialValuesMap;
@@ -34,20 +31,22 @@ class BillingForm extends Component {
       initialValuesMap = {
         identityNumber:
           this.props.formValues.identityNumber ||
-          this.props.auth.billing.identityNumber,
+          this.props.auth.billing.identityNumber ||
+          "",
         registrationAddress:
           this.props.formValues.registrationAddress ||
-          this.props.auth.billing.registrationAddress,
-        city: this.props.formValues.city || this.props.auth.billing.city,
+          this.props.auth.billing.registrationAddress ||
+          "",
+        city: this.props.formValues.city || this.props.auth.billing.city || "",
         country:
-          this.props.formValues.country || this.props.auth.billing.country
+          this.props.formValues.country || this.props.auth.billing.country || ""
       };
     } else {
       initialValuesMap = {
-        identityNumber: this.props.auth.billing.identityNumber,
-        registrationAddress: this.props.auth.billing.registrationAddress,
-        city: this.props.auth.billing.city,
-        country: this.props.auth.billing.country
+        identityNumber: this.props.auth.billing.identityNumber || "",
+        registrationAddress: this.props.auth.billing.registrationAddress || "",
+        city: this.props.auth.billing.city || "",
+        country: this.props.auth.billing.country || ""
       };
     }
 

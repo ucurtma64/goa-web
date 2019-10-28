@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import Spinner from "../util/Spinner";
 import ProfileForm from "../commonForms/ProfileForm";
 import BillingForm from "../commonForms/BillingForm";
 import MinecraftForm from "../commonForms/MinecraftForm";
@@ -17,11 +18,7 @@ class Profile extends Component {
   render() {
     switch (this.props.auth) {
       case null:
-        return (
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        );
+        return <Spinner />;
       case false:
         return (
           <li className="nav-item" key="4">

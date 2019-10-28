@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Spinner from "../util/Spinner";
 import { connect } from "react-redux";
 import PostForm from "../commonForms/PostForm";
 
@@ -6,11 +7,7 @@ class AdminDashboard extends Component {
   render() {
     switch (this.props.auth) {
       case null:
-        return (
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        );
+        return <Spinner />;
       case false:
         return (
           <li className="nav-item" key="4">

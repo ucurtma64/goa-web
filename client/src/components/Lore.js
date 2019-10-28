@@ -8,11 +8,11 @@ class Lore extends Component {
       <div className="container">
         <img
           src="https://i.postimg.cc/445Cwt3s/Optimized-2019-08-22-02-19-15.jpg"
-          class="card-img-top"
+          className="card-img-top"
           alt="..."
         />
-        <div class="card-body">
-          <h5 class="card-title">Chapter 1: Soleis</h5>
+        <div className="card-body">
+          <h5 className="card-title">Chapter 1: Soleis</h5>
           <p>
             Before everything, even time, there was only one thing. Imos: owner
             of the universe. Nothing can happen out of it's will. But knowing
@@ -52,11 +52,11 @@ class Lore extends Component {
         </div>
         <img
           src="https://i.ibb.co/j5yLgb4/Optimized-2019-08-22-03-16-34.jpg"
-          class="card-img-top"
+          className="card-img-top"
           alt="..."
         />
-        <div class="card-body">
-          <h5 class="card-title">Chapter 2: Greed</h5>
+        <div className="card-body">
+          <h5 className="card-title">Chapter 2: Greed</h5>
           <p>
             Soleis, the Light of Life, enriched lands of Adelia giving hope to
             us, folks living on it. We built life from scracth. Farms, villages,
@@ -94,11 +94,11 @@ class Lore extends Component {
         </div>
         <img
           src="https://i.ibb.co/tpX1Fbd/Optimized-2019-08-22-02-31-21.jpg"
-          class="card-img-top"
+          className="card-img-top"
           alt="..."
         />
-        <div class="card-body">
-          <h5 class="card-title">Chapter 3: Hope</h5>
+        <div className="card-body">
+          <h5 className="card-title">Chapter 3: Hope</h5>
           <p>
             The Adelia bleeds, flogged by war. The battles are the gods' whip,
             chastisement for our sins! And within this darkness, the monsters
@@ -117,11 +117,11 @@ class Lore extends Component {
         </div>
         <img
           src="https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
-          class="card-img-top"
+          className="card-img-top"
           alt="..."
         />
-        <div class="card-body">
-          <h5 class="card-title">Chapter 4: Eternal Peace</h5>
+        <div className="card-body">
+          <h5 className="card-title">Chapter 4: Eternal Peace</h5>
           <p>
             Far away from the war at Adelia, there was a small elf village named
             Bera. The village folk were afraid but all they could do is hoping

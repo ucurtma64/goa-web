@@ -18,7 +18,8 @@ module.exports = app => {
       identityNumber,
       registrationAddress,
       city,
-      country
+      country,
+      minecraftUsername
     } = req.body;
 
     const billing = {
@@ -36,7 +37,8 @@ module.exports = app => {
       givenName: givenName,
       familyName: familyName,
       credits: credits,
-      billing: billing
+      billing: billing,
+      minecraftUsername: minecraftUsername
     };
 
     clean(profife);

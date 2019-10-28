@@ -52,11 +52,11 @@ class CardForm extends Component {
 
   render() {
     const initialValuesMap = {
-      cardHolderName: this.props.formValues.cardHolderName || "John Doe",
-      cardNumber: this.props.formValues.cardNumber || "5528790000000008",
-      expireYear: this.props.formValues.expireYear || "2030",
-      expireMonth: this.props.formValues.expireMonth || "12",
-      cvc: this.props.formValues.cvc || "123"
+      cardHolderName: this.props.formValues.cardHolderName || "",
+      cardNumber: this.props.formValues.cardNumber || "",
+      expireYear: this.props.formValues.expireYear || "",
+      expireMonth: this.props.formValues.expireMonth || "",
+      cvc: this.props.formValues.cvc || ""
     };
 
     return (

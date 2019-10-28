@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Spinner from "../util/Spinner";
 import axios from "axios";
 
 class PostContent extends Component {
@@ -33,11 +34,7 @@ class PostContent extends Component {
 
   render() {
     if (!this.state.title) {
-      return (
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-      );
+      return <Spinner />;
     }
 
     return (

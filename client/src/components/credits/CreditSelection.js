@@ -83,7 +83,7 @@ class CreditSelection extends Component {
 
   render() {
     return (
-      <section className="pricing py-5">
+      <section className="py-5">
         <div className="container">{this.rendercreditSelections()}</div>
       </section>
     );

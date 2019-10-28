@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Spinner from "../util/Spinner";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -21,27 +22,24 @@ class ProfileForm extends Component {
 
   render() {
     if (!this.props.auth) {
-      return (
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-      );
+      return <Spinner />;
     }
 
     var initialValuesMap;
 
     if (this.props.formValues) {
       initialValuesMap = {
-        givenName: this.props.formValues.givenName || this.props.auth.givenName,
+        givenName:
+          this.props.formValues.givenName || this.props.auth.givenName || "",
         familyName:
-          this.props.formValues.familyName || this.props.auth.familyName,
-        email: this.props.formValues.email || this.props.auth.email
+          this.props.formValues.familyName || this.props.auth.familyName || "",
+        email: this.props.formValues.email || this.props.auth.email || ""
       };
     } else {
       initialValuesMap = {
-        givenName: this.props.auth.givenName,
-        familyName: this.props.auth.familyName,
-        email: this.props.auth.email
+        givenName: this.props.auth.givenName || "",
+        familyName: this.props.auth.familyName || "",
+        email: this.props.auth.email || ""
       };
     }
 

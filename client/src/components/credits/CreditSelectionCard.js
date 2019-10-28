@@ -29,7 +29,7 @@ class CreditSelectionCard extends Component {
             <h1 className="card-price text-center">
               {this.props.creditSelection.name}
             </h1>
-            <p class="text-center font-italic">
+            <p className="text-center font-italic">
               {this.props.creditSelection.description}
             </p>
 

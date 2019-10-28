@@ -1,9 +1,8 @@
 //Shows CreditSelection and BillingForm and CardForm
 import React, { Component } from "react";
-import BillingForm from "../commonForms/BillingForm";
-import ProfileForm from "../commonForms/ProfileForm";
+import ProductConfirmation from "./ProductConfirmation";
+import ProductSelection from "./ProductSelection";
 import MinecraftForm from "../commonForms/MinecraftForm";
-import CardForm from "../credits/CardForm";
 import HorizontalStepper from "../util/HorizontalStepper";
 
 class Store extends Component {
@@ -18,16 +17,11 @@ class Store extends Component {
   renderContent() {
     if (this.state.formStage === 2) {
       return (
-        <BillingForm
+        <ProductConfirmation
           formValues={this.state.formValues}
           onCancel={() => {
             this.setState({ formStage: 1 });
             this.gotoPreviousStage();
-          }}
-          onFormSubmit={fields => {
-            const formValues = Object.assign(this.state.formValues, fields);
-            this.setState(Object.assign({ formStage: 3 }, { formValues }));
-            this.gotoNextStage();
           }}
         />
       );
@@ -35,14 +29,15 @@ class Store extends Component {
 
     if (this.state.formStage === 1) {
       return (
-        <ProfileForm
+        <ProductSelection
           formValues={this.state.formValues}
           onCancel={() => {
             this.setState({ formStage: 0 });
             this.gotoPreviousStage();
           }}
-          onFormSubmit={fields => {
-            const formValues = Object.assign(this.state.formValues, fields);
+          onFormSubmit={productSelection => {
+            const formValues = this.state.formValues;
+            formValues.productSelection = productSelection;
             this.setState(Object.assign({ formStage: 2 }, { formValues }));
             this.gotoNextStage();
           }}
@@ -54,9 +49,9 @@ class Store extends Component {
     return (
       <MinecraftForm
         formValues={this.state.formValues}
-        onFormSubmit={minecraftUsername => {
+        onFormSubmit={fields => {
           const formValues = this.state.formValues;
-          formValues.minecraftUsername = minecraftUsername;
+          formValues.minecraftUsername = fields.minecraftUsername;
           this.setState(Object.assign({ formStage: 1 }, { formValues }));
           this.gotoNextStage();
         }}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Spinner from "./util/Spinner";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,11 +47,7 @@ class Header extends Component {
   renderButtonsOnRight() {
     switch (this.props.auth) {
       case null:
-        return (
-          <div className="spinner-border" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-        );
+        return <Spinner />;
       case false:
         return (
           <li className="nav-item active" key="4">
@@ -108,7 +105,11 @@ class Header extends Component {
         }}
       >
         <Link className="navbar-brand" to={"/"}>
-          <img src="https://i.ibb.co/bPfdcsR/iconk.png" alt="" class="mr-1" />
+          <img
+            src="https://i.ibb.co/bPfdcsR/iconk.png"
+            alt=""
+            className="mr-1"
+          />
         </Link>
         <button
           className="navbar-toggler"

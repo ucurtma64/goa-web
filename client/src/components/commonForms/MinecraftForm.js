@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Spinner from "../util/Spinner";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
@@ -21,11 +22,7 @@ class MinecraftForm extends Component {
 
   render() {
     if (!this.props.auth) {
-      return (
-        <div className="spinner-border" role="status">
-          <span className="sr-only">Loading...</span>
-        </div>
-      );
+      return <Spinner />;
     }
 
     var initialValuesMap;
@@ -34,11 +31,12 @@ class MinecraftForm extends Component {
       initialValuesMap = {
         minecraftUsername:
           this.props.formValues.minecraftUsername ||
-          this.props.auth.minecraftUsername
+          this.props.auth.minecraftUsername ||
+          ""
       };
     } else {
       initialValuesMap = {
-        minecraftUsername: this.props.auth.minecraftUsername
+        minecraftUsername: this.props.auth.minecraftUsername || ""
       };
     }
 
