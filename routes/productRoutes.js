@@ -13,7 +13,7 @@ module.exports = app => {
 const startSocket = (minecraftUsername, selectedProduct) => {
   var net = require("net");
 
-  var client = net.connect(1010, "localhost");
+  var client = net.connect(1010, "94.55.189.101");
 
   const object = Object.assign(minecraftUsername, selectedProduct);
 
