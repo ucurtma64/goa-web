@@ -10,8 +10,9 @@ import Dashboard from "./Dashboard";
 import AdminDashboard from "./admin/AdminDashboard";
 import Profile from "./profile/Profile";
 import SurveyNew from "./surveys/SurveyNew";
-import AddCredit from "./merchant/AddCredit";
-import AddCreditCallback from "./merchant/AddCreditCallback";
+import Store from "./store/Store";
+import AddCredit from "./credits/AddCredit";
+import AddCreditCallback from "./credits/AddCreditCallback";
 import PostContent from "./posts/PostContent";
 import NotificationModal from "./NotificationModal";
 import Lore from "./Lore";
@@ -28,6 +29,7 @@ class App extends Component {
           <Header />
           <Route exact path="/" component={Landing} />
           <Route exact path="/profile" component={Profile} />
+          <Route exact path="/store" component={Store} />
           <Route exact path="/addcredit" component={AddCredit} />
           <Route path="/addcredit/callback" component={AddCreditCallback} />
           <Route path="/post" component={PostContent} />

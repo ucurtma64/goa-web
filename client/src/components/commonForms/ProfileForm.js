@@ -20,6 +20,14 @@ class ProfileForm extends Component {
   }
 
   render() {
+    if (!this.props.auth) {
+      return (
+        <div className="spinner-border" role="status">
+          <span className="sr-only">Loading...</span>
+        </div>
+      );
+    }
+
     var initialValuesMap;
 
     if (this.props.formValues) {

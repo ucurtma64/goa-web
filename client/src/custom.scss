@@ -59,6 +59,10 @@ hr {
   margin: 1.5rem 0;
 }
 
+.text-danger {
+  color: #f5b7b1 !important;
+}
+
 /* Button */
 
 .btn {
@@ -107,4 +111,10 @@ hr {
 
 .nav-item {
   font-size: 1.2rem;
+}
+
+/* Form */
+
+.form-control.is-invalid {
+  border-color: #ffe6ff;
 }

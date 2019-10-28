@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import ProfileForm from "../commonForms/ProfileForm";
 import BillingForm from "../commonForms/BillingForm";
+import MinecraftForm from "../commonForms/MinecraftForm";
 import { notifyModal, updateUser } from "../../actions";
 
 class Profile extends Component {
@@ -78,18 +79,7 @@ class Profile extends Component {
                     aria-controls="v-pills-messages"
                     aria-selected="false"
                   >
-                    Messages
-                  </a>
-                  <a
-                    className="nav-link text-dark"
-                    id="v-pills-settings-tab"
-                    data-toggle="pill"
-                    href="#v-pills-settings"
-                    role="tab"
-                    aria-controls="v-pills-settings"
-                    aria-selected="false"
-                  >
-                    Settings
+                    Minecraft
                   </a>
                 </div>
               </div>
@@ -125,15 +115,11 @@ class Profile extends Component {
                     role="tabpanel"
                     aria-labelledby="v-pills-messages-tab"
                   >
-                    ...3
-                  </div>
-                  <div
-                    className="tab-pane fade"
-                    id="v-pills-settings"
-                    role="tabpanel"
-                    aria-labelledby="v-pills-settings-tab"
-                  >
-                    ...4
+                    <MinecraftForm
+                      onFormSubmit={fields => {
+                        this.onFormSubmit(fields);
+                      }}
+                    />
                   </div>
                 </div>
               </div>

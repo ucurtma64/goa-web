@@ -9,7 +9,8 @@ const userSchema = new Schema({
   familyName: String,
   credits: { type: Number, default: 0 },
   billing: BillingSchema,
-  role: { type: String, default: "user" }
+  role: { type: String, default: "user" },
+  minecraftUsername: String
 });
 
 mongoose.model("users", userSchema);
