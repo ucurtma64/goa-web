@@ -27,7 +27,7 @@ class BillingForm extends Component {
 
     var initialValuesMap;
 
-    if (this.props.formValues) {
+    if (this.props.formValues && this.props.auth.billing) {
       initialValuesMap = {
         identityNumber:
           this.props.formValues.identityNumber ||
@@ -41,7 +41,14 @@ class BillingForm extends Component {
         country:
           this.props.formValues.country || this.props.auth.billing.country || ""
       };
-    } else {
+    } else if (this.props.formValues) {
+      initialValuesMap = {
+        identityNumber: this.props.formValues.identityNumber || "",
+        registrationAddress: this.props.formValues.registrationAddress || "",
+        city: this.props.formValues.city || "",
+        country: this.props.formValues.country || ""
+      };
+    } else if (this.props.auth.billing) {
       initialValuesMap = {
         identityNumber: this.props.auth.billing.identityNumber || "",
         registrationAddress: this.props.auth.billing.registrationAddress || "",
