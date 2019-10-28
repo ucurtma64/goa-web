@@ -90,10 +90,10 @@ class AddCredit extends Component {
         <HorizontalStepper
           ref="horizontalStepper"
           stages={[
-            { title: "Select Credit", optional: "Required" },
-            { title: "Profile", optional: "Required" },
-            { title: "Billing Info", optional: "Required" },
-            { title: "Payment", optional: "Required" }
+            { title: "Select Credit", optional: "" },
+            { title: "Profile", optional: "" },
+            { title: "Billing Info", optional: "" },
+            { title: "Payment", optional: "" }
           ]}
         />
 

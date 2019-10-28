@@ -73,9 +73,9 @@ class Store extends Component {
         <HorizontalStepper
           ref="horizontalStepper"
           stages={[
-            { title: "Minecraft Nickname", optional: "Required" },
-            { title: "Select Product", optional: "Required" },
-            { title: "Confirm Purchase", optional: "Required" }
+            { title: "Minecraft Username", optional: "" },
+            { title: "Select Product", optional: "" },
+            { title: "Confirm Purchase", optional: "" }
           ]}
         />
 

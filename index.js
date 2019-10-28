@@ -8,6 +8,7 @@ require("./models/User"); //add use schema before using it in ./services/passpor
 require("./models/Order");
 require("./models/CreditSelection");
 require("./models/Post");
+require("./models/Product");
 require("./services/passport"); //not assigned to a variable since we need this to run only once
 if (!(process.env.NODE_ENV === "production")) {
   require("./webhooks/ngrok"); //use ngrok in development
@@ -37,9 +38,9 @@ app.use(passport.session());
 
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/postRoutes")(app);
 require("./routes/productRoutes")(app);
 require("./routes/profileRoutes")(app);
-require("./routes/postRoutes")(app);
 
 const path = require("path");
 //Express will serve up production assets like main.css and main.js files

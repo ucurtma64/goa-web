@@ -10,7 +10,9 @@ class ProductSelection extends Component {
             productId: 1,
             credits: 1,
             name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis"
+            description: "lapis lapis ohh lapis",
+            image:
+              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -21,7 +23,9 @@ class ProductSelection extends Component {
             productId: 2,
             credits: 2,
             name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis"
+            description: "lapis lapis ohh lapis",
+            image:
+              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -32,7 +36,9 @@ class ProductSelection extends Component {
             productId: 3,
             credits: 5,
             name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis"
+            description: "lapis lapis ohh lapis",
+            image:
+              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -43,7 +49,9 @@ class ProductSelection extends Component {
             productId: 4,
             credits: 10,
             name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis"
+            description: "lapis lapis ohh lapis",
+            image:
+              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -54,7 +62,9 @@ class ProductSelection extends Component {
             productId: 5,
             credits: 15,
             name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis"
+            description: "lapis lapis ohh lapis",
+            image:
+              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -65,7 +75,9 @@ class ProductSelection extends Component {
             productId: 6,
             credits: 20,
             name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis"
+            description: "lapis lapis ohh lapis",
+            image:
+              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)

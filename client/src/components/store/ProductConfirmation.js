@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import ProductCard from "./ProductCard";
+import axios from "axios";
 
 class ProductConfirmation extends Component {
-  onConfirmation(formValues) {
+  async onConfirmation(formValues) {
     console.log(formValues);
+
+    await axios.post("/api/products", formValues);
   }
 
   render() {

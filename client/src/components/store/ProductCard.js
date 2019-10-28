@@ -35,11 +35,12 @@ class ProductCard extends Component {
         style={{ marginBottom: "1rem" }}
       >
         <div className="card">
+          {this.renderImage()}
           <div className="card-body">
             <h5 className="card-title text-center mt-2">
               {this.props.product.name}
             </h5>
-            <p className="text-center mt-n2">
+            <p className="text-center mt-n2 text-monospace">
               {this.props.product.credits} Credits
             </p>
             <p className="text-center font-italic mt-4">
