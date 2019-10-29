@@ -79,11 +79,18 @@ class BillingForm extends Component {
                 .min(5, "Identity number must be at least 5 characters")
                 .max(50, "Identity number must be at most 50 characters")
                 .required("Identity number is required"),
-              registrationAddress: Yup.string().required(
-                "Registration Address is required"
-              ),
-              city: Yup.string().required("City is required"),
-              country: Yup.string().required("City is required")
+              registrationAddress: Yup.string()
+                .min(5, "min 5 characters")
+                .max(120, "max 120 characters")
+                .required("Registration Address is required"),
+              city: Yup.string()
+                .min(2, "min 2 characters")
+                .max(25, "max 25 characters")
+                .required("City is required"),
+              country: Yup.string()
+                .min(2, "min 2 characters")
+                .max(25, "max 25 characters")
+                .required("City is required")
             })}
             onSubmit={fields => {
               this.props.onFormSubmit(fields);

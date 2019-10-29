@@ -30,6 +30,8 @@ class CardForm extends Component {
   }
 
   onFormSubmit(fields) {
+    fields.expireYear += 2000;
+
     const product = this.props.formValues.creditSelection;
 
     const buyer = {
@@ -69,11 +71,23 @@ class CardForm extends Component {
               cardHolderName: Yup.string()
                 .min(5, "cardHolderName must be at least 5 characters")
                 .max(50, "cardHolderName must be at most 50 characters")
-                .required("cardHolderName is required"),
-              cardNumber: Yup.string().required("cardNumber is required"),
-              expireYear: Yup.string().required("expireYear is required"),
-              expireMonth: Yup.string().required("expireMonth is required"),
-              cvc: Yup.string().required("required")
+                .required("required"),
+              cardNumber: Yup.number()
+                .min(1000000000000000, "This is not a valid card number")
+                .max(9999999999999999, "This is not a valid card number")
+                .required("required"),
+              expireYear: Yup.number()
+                .min(1, "Between 1-99")
+                .max(99, "Between 1-99")
+                .required("required"),
+              expireMonth: Yup.number()
+                .min(1, "Between 1-12")
+                .max(12, "Between 1-12")
+                .required("required"),
+              cvc: Yup.number()
+                .min(100, "Must be 3 digits")
+                .max(999, "Must be 3 digits")
+                .required("required")
             })}
             onSubmit={fields => {
               this.onFormSubmit(fields);

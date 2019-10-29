@@ -15,7 +15,7 @@ class ProfileForm extends Component {
       email: ""
     };
 
-    if (this.props.formValues) {
+    if (this.props.formValues && this.props.auth) {
       initialValuesMap = {
         givenName:
           this.props.formValues.givenName || this.props.auth.givenName || "",
@@ -60,8 +60,14 @@ class ProfileForm extends Component {
             className="col-6"
             initialValues={this.state.initialValuesMap}
             validationSchema={Yup.object().shape({
-              givenName: Yup.string().required("Name is required"),
-              familyName: Yup.string().required("Surname is required"),
+              givenName: Yup.string()
+                .min(2, "min 2 characters")
+                .max(25, "max 25 characters")
+                .required("Name is required"),
+              familyName: Yup.string()
+                .min(2, "min 2 characters")
+                .max(25, "max 25 characters")
+                .required("Surname is required"),
               email: Yup.string()
                 .email("Email is invalid")
                 .required("Email is required")
