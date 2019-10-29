@@ -6,9 +6,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 class ProfileForm extends Component {
-  constructor(props) {
-    super(props);
-    // Don't call this.setState() here!
+  getInitialValues() {
     var initialValuesMap = {
       givenName: "",
       familyName: "",
@@ -31,7 +29,7 @@ class ProfileForm extends Component {
       };
     }
 
-    this.state = Object.assign({ initialValuesMap });
+    return initialValuesMap;
   }
 
   renderBackButton() {
@@ -58,7 +56,7 @@ class ProfileForm extends Component {
         <div className="row">
           <Formik
             className="col-6"
-            initialValues={this.state.initialValuesMap}
+            initialValues={this.getInitialValues()}
             validationSchema={Yup.object().shape({
               givenName: Yup.string()
                 .min(2, "min 2 characters")

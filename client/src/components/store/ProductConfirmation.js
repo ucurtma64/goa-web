@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -74,4 +76,8 @@ class ProductConfirmation extends Component {
   }
 }
 
-export default ProductConfirmation;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(withRouter(ProductConfirmation));

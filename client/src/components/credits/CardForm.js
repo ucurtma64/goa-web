@@ -14,23 +14,20 @@ class CardForm extends Component {
     super(props);
     // Don't call this.setState() here!
 
-    const initialValuesMap = {
-      cardHolderName: this.props.formValues.cardHolderName || "",
-      cardNumber: this.props.formValues.cardNumber || "",
-      expireYear: this.props.formValues.expireYear || "",
-      expireMonth: this.props.formValues.expireMonth || "",
-      cvc: this.props.formValues.cvc || ""
-    };
-
-    this.state = { iyzipayHtml: "", initialValuesMap: initialValuesMap };
+    this.state = { iyzipayHtml: "" };
   }
 
   componentDidMount() {
     $('[data-toggle="tooltip"]').tooltip();
   }
 
-  onFormSubmit(fields) {
-    fields.expireYear += 2000;
+  onFormSubmit(fieldsToCopy) {
+    const fields = Object.assign({}, fieldsToCopy);
+
+    var expireYear = parseInt(fields.expireYear);
+    expireYear += 2000;
+
+    fields.expireYear = expireYear;
 
     const product = this.props.formValues.creditSelection;
 
@@ -66,7 +63,7 @@ class CardForm extends Component {
         <div className="row">
           <Formik
             className="col-6"
-            initialValues={this.state.initialValuesMap}
+            initialValues={{}}
             validationSchema={Yup.object().shape({
               cardHolderName: Yup.string()
                 .min(5, "cardHolderName must be at least 5 characters")

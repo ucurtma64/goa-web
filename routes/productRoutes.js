@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const net = require("net");
 
 const Product = mongoose.model("products");
 
@@ -11,9 +12,7 @@ module.exports = app => {
 };
 
 const sendMessageToMinecraft = (minecraftUsername, productSelection) => {
-  var net = require("net");
-
-  var client = net.connect(25120, "94.55.189.101");
+  const client = net.connect(25120, "94.55.189.101");
 
   const object = {
     minecraftUsername: minecraftUsername,
@@ -25,12 +24,10 @@ const sendMessageToMinecraft = (minecraftUsername, productSelection) => {
 
   client.on("data", function(data) {
     console.log("Received: " + data);
-    client.destroy(); // kill client after server's response
   });
 
   client.on("error", function(data) {
     console.log("error: " + data);
-    client.destroy(); // kill client after error
   });
 
   client.on("close", function() {

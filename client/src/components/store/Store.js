@@ -47,15 +47,20 @@ class Store extends Component {
 
     //if (this.state.formStage === 0)
     return (
-      <MinecraftForm
-        formValues={this.state.formValues}
-        onFormSubmit={fields => {
-          const formValues = this.state.formValues;
-          formValues.minecraftUsername = fields.minecraftUsername;
-          this.setState(Object.assign({ formStage: 1 }, { formValues }));
-          this.gotoNextStage();
-        }}
-      />
+      <div className="container">
+        <p className="text-danger text-center">
+          You must have joined the server at least once with this username
+        </p>
+        <MinecraftForm
+          formValues={this.state.formValues}
+          onFormSubmit={fields => {
+            const formValues = this.state.formValues;
+            formValues.minecraftUsername = fields.minecraftUsername;
+            this.setState(Object.assign({ formStage: 1 }, { formValues }));
+            this.gotoNextStage();
+          }}
+        />
+      </div>
     );
   }
 
