@@ -6,26 +6,15 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 class BillingForm extends Component {
-  renderBackButton() {
-    if (this.props.onCancel) {
-      return (
-        <button
-          className="btn btn-secondary"
-          variant="secondary"
-          onClick={this.props.onCancel}
-        >
-          Back
-        </button>
-      );
-    }
-  }
-
-  render() {
-    if (!this.props.auth) {
-      return <Spinner />;
-    }
-
-    var initialValuesMap;
+  constructor(props) {
+    super(props);
+    // Don't call this.setState() here!
+    var initialValuesMap = {
+      identityNumber: "",
+      registrationAddress: "",
+      city: "",
+      country: ""
+    };
 
     if (this.props.formValues && this.props.auth.billing) {
       initialValuesMap = {
@@ -57,12 +46,34 @@ class BillingForm extends Component {
       };
     }
 
+    this.state = Object.assign({ initialValuesMap });
+  }
+
+  renderBackButton() {
+    if (this.props.onCancel) {
+      return (
+        <button
+          className="btn btn-secondary"
+          variant="secondary"
+          onClick={this.props.onCancel}
+        >
+          Back
+        </button>
+      );
+    }
+  }
+
+  render() {
+    if (!this.props.auth) {
+      return <Spinner />;
+    }
+
     return (
       <div className="container">
         <div className="row">
           <Formik
             className="col-6"
-            initialValues={initialValuesMap}
+            initialValues={this.state.initialValuesMap}
             validationSchema={Yup.object().shape({
               identityNumber: Yup.string()
                 .min(5, "Identity number must be at least 5 characters")

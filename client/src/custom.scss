@@ -1,5 +1,5 @@
 // Override default variables before the import
-$font-family-base: "Kalam", cursive !default;
+$font-family-base: "Concert One", cursive !default;
 
 // Import Bootstrap and its default variables
 @import "~bootstrap/scss/bootstrap.scss";
@@ -105,6 +105,15 @@ hr {
 
 .nav-item {
   font-size: 1.2rem;
+}
+
+.navbar-light .navbar-nav .nav-item > .nav-link {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.navbar ul .active {
+  border-bottom: 2px solid #a3e4d7;
+  border-radius: 1px;
 }
 
 /* Form */

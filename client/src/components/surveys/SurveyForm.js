@@ -4,7 +4,9 @@ import * as Yup from "yup";
 import { Link } from "react-router-dom";
 
 class SurveyForm extends Component {
-  render() {
+  constructor(props) {
+    super(props);
+    // Don't call this.setState() here!
     const initialValuesMap = {
       title: this.props.formValues.title || "",
       subject: this.props.formValues.subject || "",
@@ -12,9 +14,13 @@ class SurveyForm extends Component {
       recipients: this.props.formValues.recipients || ""
     };
 
+    this.state = Object.assign({ initialValuesMap });
+  }
+
+  render() {
     return (
       <Formik
-        initialValues={initialValuesMap}
+        initialValues={this.state.initialValuesMap}
         validationSchema={Yup.object().shape({
           title: Yup.string().required("Title is required"),
           subject: Yup.string().required("Subject is required"),

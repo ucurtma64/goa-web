@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import ProductCard from "./ProductCard";
 import axios from "axios";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { Link } from "react-router-dom";
 
 class ProductConfirmation extends Component {
   async onConfirmation(formValues) {
@@ -10,6 +13,24 @@ class ProductConfirmation extends Component {
   }
 
   render() {
+    if (!this.props.auth) {
+      return (
+        <div className="container mw-100">
+          <div className="row">
+            <p className="mx-auto" role="status">
+              You must be logged in to complete purchase.
+            </p>
+          </div>
+          <div className="row">
+            <Link className="mx-auto" to="/auth/google">
+              <FontAwesomeIcon className="mr-2" icon={faGoogle} />
+              Login with google
+            </Link>
+          </div>
+        </div>
+      );
+    }
+
     return (
       <section className="py-5">
         <div className="container mw-100">

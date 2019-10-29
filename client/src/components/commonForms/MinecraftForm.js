@@ -6,6 +6,27 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 class MinecraftForm extends Component {
+  constructor(props) {
+    super(props);
+    // Don't call this.setState() here!
+    var initialValuesMap = { minecraftUsername: "" };
+
+    if (this.props.formValues && this.props.auth) {
+      initialValuesMap = {
+        minecraftUsername:
+          this.props.formValues.minecraftUsername ||
+          this.props.auth.minecraftUsername ||
+          ""
+      };
+    } else if (this.props.auth) {
+      initialValuesMap = {
+        minecraftUsername: this.props.auth.minecraftUsername || ""
+      };
+    }
+
+    this.state = Object.assign({ initialValuesMap });
+  }
+
   renderBackButton() {
     if (this.props.onCancel) {
       return (
@@ -21,31 +42,12 @@ class MinecraftForm extends Component {
   }
 
   render() {
-    if (!this.props.auth) {
-      return <Spinner />;
-    }
-
-    var initialValuesMap;
-
-    if (this.props.formValues) {
-      initialValuesMap = {
-        minecraftUsername:
-          this.props.formValues.minecraftUsername ||
-          this.props.auth.minecraftUsername ||
-          ""
-      };
-    } else {
-      initialValuesMap = {
-        minecraftUsername: this.props.auth.minecraftUsername || ""
-      };
-    }
-
     return (
       <div className="container">
         <div className="row">
           <Formik
             className="col-6"
-            initialValues={initialValuesMap}
+            initialValues={this.state.initialValuesMap}
             validationSchema={Yup.object().shape({
               minecraftUsername: Yup.string()
                 .matches(

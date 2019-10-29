@@ -6,6 +6,34 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 class ProfileForm extends Component {
+  constructor(props) {
+    super(props);
+    // Don't call this.setState() here!
+    var initialValuesMap = {
+      givenName: "",
+      familyName: "",
+      email: ""
+    };
+
+    if (this.props.formValues) {
+      initialValuesMap = {
+        givenName:
+          this.props.formValues.givenName || this.props.auth.givenName || "",
+        familyName:
+          this.props.formValues.familyName || this.props.auth.familyName || "",
+        email: this.props.formValues.email || this.props.auth.email || ""
+      };
+    } else {
+      initialValuesMap = {
+        givenName: this.props.auth.givenName || "",
+        familyName: this.props.auth.familyName || "",
+        email: this.props.auth.email || ""
+      };
+    }
+
+    this.state = Object.assign({ initialValuesMap });
+  }
+
   renderBackButton() {
     if (this.props.onCancel) {
       return (
@@ -25,30 +53,12 @@ class ProfileForm extends Component {
       return <Spinner />;
     }
 
-    var initialValuesMap;
-
-    if (this.props.formValues) {
-      initialValuesMap = {
-        givenName:
-          this.props.formValues.givenName || this.props.auth.givenName || "",
-        familyName:
-          this.props.formValues.familyName || this.props.auth.familyName || "",
-        email: this.props.formValues.email || this.props.auth.email || ""
-      };
-    } else {
-      initialValuesMap = {
-        givenName: this.props.auth.givenName || "",
-        familyName: this.props.auth.familyName || "",
-        email: this.props.auth.email || ""
-      };
-    }
-
     return (
       <div className="container">
         <div className="row">
           <Formik
             className="col-6"
-            initialValues={initialValuesMap}
+            initialValues={this.state.initialValuesMap}
             validationSchema={Yup.object().shape({
               givenName: Yup.string().required("Name is required"),
               familyName: Yup.string().required("Surname is required"),

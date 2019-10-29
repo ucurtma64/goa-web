@@ -14,7 +14,15 @@ class CardForm extends Component {
     super(props);
     // Don't call this.setState() here!
 
-    this.state = { iyzipayHtml: "" };
+    const initialValuesMap = {
+      cardHolderName: this.props.formValues.cardHolderName || "",
+      cardNumber: this.props.formValues.cardNumber || "",
+      expireYear: this.props.formValues.expireYear || "",
+      expireMonth: this.props.formValues.expireMonth || "",
+      cvc: this.props.formValues.cvc || ""
+    };
+
+    this.state = { iyzipayHtml: "", initialValuesMap: initialValuesMap };
   }
 
   componentDidMount() {
@@ -51,20 +59,12 @@ class CardForm extends Component {
   }
 
   render() {
-    const initialValuesMap = {
-      cardHolderName: this.props.formValues.cardHolderName || "",
-      cardNumber: this.props.formValues.cardNumber || "",
-      expireYear: this.props.formValues.expireYear || "",
-      expireMonth: this.props.formValues.expireMonth || "",
-      cvc: this.props.formValues.cvc || ""
-    };
-
     return (
       <div className="container">
         <div className="row">
           <Formik
             className="col-6"
-            initialValues={initialValuesMap}
+            initialValues={this.state.initialValuesMap}
             validationSchema={Yup.object().shape({
               cardHolderName: Yup.string()
                 .min(5, "cardHolderName must be at least 5 characters")

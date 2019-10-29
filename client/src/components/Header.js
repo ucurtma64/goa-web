@@ -14,9 +14,17 @@ import {
 import { faGoogle, faWikipediaW } from "@fortawesome/free-brands-svg-icons";
 
 class Header extends Component {
+  state = {
+    active: 0
+  };
+
+  handleClick(id) {
+    this.setState({ active: id });
+  }
+
   renderButtonsOnLeft() {
     const header = [
-      <li className="nav-item active" key="7">
+      <li className="nav-item" key="8">
         <a
           className="nav-link"
           rel="noopener noreferrer"
@@ -27,13 +35,21 @@ class Header extends Component {
           wiki
         </a>
       </li>,
-      <li className="nav-item active" key="8">
+      <li
+        className={this.state.active === 7 ? "nav-item active" : "nav-item"}
+        key="7"
+        onClick={() => this.handleClick(7)}
+      >
         <Link className="nav-link" to="/lore">
           <FontAwesomeIcon className="mx-1" icon={faBook} />
           Lore
         </Link>
       </li>,
-      <li className="nav-item active" key="1">
+      <li
+        className={this.state.active === 6 ? "nav-item active" : "nav-item"}
+        key="6"
+        onClick={() => this.handleClick(6)}
+      >
         <Link className="nav-link" to="/store">
           <FontAwesomeIcon className="mx-1" icon={faStore} />
           Store
@@ -50,7 +66,7 @@ class Header extends Component {
         return <Spinner />;
       case false:
         return (
-          <li className="nav-item active" key="4">
+          <li className="nav-item" key="5">
             <a className="nav-link" href="/auth/google">
               <FontAwesomeIcon className="mr-2" icon={faGoogle} />
               Login with google
@@ -59,19 +75,27 @@ class Header extends Component {
         );
       default:
         const header = [
-          <li className="nav-item active" key="3">
+          <li
+            className={this.state.active === 4 ? "nav-item active" : "nav-item"}
+            key="4"
+            onClick={() => this.handleClick(4)}
+          >
             <Link className="nav-link" to="/addcredit">
               <FontAwesomeIcon className="mx-1" icon={faCoins} />
               Credits: {this.props.auth.credits}
             </Link>
           </li>,
-          <li className="nav-item active" key="5">
+          <li
+            className={this.state.active === 3 ? "nav-item active" : "nav-item"}
+            key="3"
+            onClick={() => this.handleClick(3)}
+          >
             <Link className="nav-link" to="/profile">
               <FontAwesomeIcon className="mx-1" icon={faUser} />
               Profile
             </Link>
           </li>,
-          <li className="nav-item active" key="2">
+          <li className="nav-item" key="2">
             <a className="nav-link" href="/api/logout">
               <FontAwesomeIcon className="mx-1" icon={faSignOutAlt} />
               Logout
@@ -81,7 +105,13 @@ class Header extends Component {
 
         if (this.props.auth.role === "admin") {
           header.push(
-            <li className="nav-item active" key="6">
+            <li
+              className={
+                this.state.active === 1 ? "nav-item active" : "nav-item"
+              }
+              key="1"
+              onClick={() => this.handleClick(1)}
+            >
               <Link className="nav-link" to="/admin">
                 <FontAwesomeIcon className="mx-1" icon={faTools} />
                 Admin
@@ -104,7 +134,11 @@ class Header extends Component {
           backgroundColor: "transparent"
         }}
       >
-        <Link className="navbar-brand" to={"/"}>
+        <Link
+          className="navbar-brand"
+          to={"/"}
+          onClick={() => this.handleClick(0)}
+        >
           <img
             src="https://i.ibb.co/bPfdcsR/iconk.png"
             alt=""
