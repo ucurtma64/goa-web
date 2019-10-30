@@ -29,38 +29,38 @@ class Store extends Component {
 
     if (this.state.formStage === 1) {
       return (
-        <ProductSelection
-          formValues={this.state.formValues}
-          onCancel={() => {
-            this.setState({ formStage: 0 });
-            this.gotoPreviousStage();
-          }}
-          onFormSubmit={productSelection => {
-            const formValues = this.state.formValues;
-            formValues.productSelection = productSelection;
-            this.setState(Object.assign({ formStage: 2 }, { formValues }));
-            this.gotoNextStage();
-          }}
-        />
+        <div className="container">
+          <p className="text-danger text-center">
+            You must have joined the server at least once with this username
+          </p>
+          <MinecraftForm
+            formValues={this.state.formValues}
+            onFormSubmit={fields => {
+              const formValues = this.state.formValues;
+              formValues.minecraftUsername = fields.minecraftUsername;
+              this.setState(Object.assign({ formStage: 2 }, { formValues }));
+              this.gotoNextStage();
+            }}
+            onCancel={() => {
+              this.setState({ formStage: 0 });
+              this.gotoPreviousStage();
+            }}
+          />
+        </div>
       );
     }
 
     //if (this.state.formStage === 0)
     return (
-      <div className="container">
-        <p className="text-danger text-center">
-          You must have joined the server at least once with this username
-        </p>
-        <MinecraftForm
-          formValues={this.state.formValues}
-          onFormSubmit={fields => {
-            const formValues = this.state.formValues;
-            formValues.minecraftUsername = fields.minecraftUsername;
-            this.setState(Object.assign({ formStage: 1 }, { formValues }));
-            this.gotoNextStage();
-          }}
-        />
-      </div>
+      <ProductSelection
+        formValues={this.state.formValues}
+        onFormSubmit={productSelection => {
+          const formValues = this.state.formValues;
+          formValues.productSelection = productSelection;
+          this.setState(Object.assign({ formStage: 1 }, { formValues }));
+          this.gotoNextStage();
+        }}
+      />
     );
   }
 
@@ -78,8 +78,8 @@ class Store extends Component {
         <HorizontalStepper
           ref="horizontalStepper"
           stages={[
-            { title: "Minecraft Username", optional: "" },
             { title: "Select Product", optional: "" },
+            { title: "Minecraft Username", optional: "" },
             { title: "Confirm Purchase", optional: "" }
           ]}
         />

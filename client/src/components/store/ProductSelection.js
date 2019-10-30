@@ -91,16 +91,6 @@ class ProductSelection extends Component {
     return (
       <section className="py-5">
         <div className="container">{this.renderproductSelections()}</div>
-        <div className="container">
-          <button
-            className="btn btn-secondary mx-auto btn-lg"
-            type="button"
-            variant="secondary"
-            onClick={() => this.props.onCancel()}
-          >
-            Back
-          </button>
-        </div>
       </section>
     );
   }

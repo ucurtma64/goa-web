@@ -26,6 +26,26 @@ export const submitSurvey = (values, history) => async dispatch => {
   dispatch({ type: FETCH_USER, payload: res.data });
 };
 
+export const buyProduct = values => async dispatch => {
+  try {
+    const res = await axios.post("/api/products", values);
+
+    dispatch({ type: FETCH_USER, payload: res.data.user });
+
+    if (res.data.success) {
+      return { success: res.data.success };
+    } else if (res.data.error) {
+      return { error: res.data.error };
+    }
+  } catch (error) {
+    if (error.response) {
+      return { error: error.response.data };
+    } else {
+      return { error: "unknown error" };
+    }
+  }
+};
+
 export const fetchSurveys = () => async dispatch => {
   const res = await axios.get("/api/surveys");
 

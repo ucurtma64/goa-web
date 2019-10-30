@@ -5,7 +5,7 @@ import * as actions from "../actions";
 
 class NotificationModal extends Component {
   componentDidUpdate() {
-    $("#exampleModalCenter").modal("show");
+    $("#exampleModal").modal("show");
   }
 
   render() {
@@ -19,16 +19,16 @@ class NotificationModal extends Component {
 
         return (
           <div
-            className="modal fade"
-            id="exampleModalCenter"
+            className="modal fade bd-example-modal-lg align-middle"
             tabIndex="-1"
             role="dialog"
-            aria-labelledby="exampleModalCenterTitle"
+            aria-labelledby="myLargeModalLabel"
             aria-hidden="true"
+            id="exampleModal"
           >
-            <div className="modal-dialog modal-dialog-centered" role="document">
+            <div className="modal-dialog modal-lg modal-dialog-centered">
               <div className="modal-content">
-                <div className={"modal-header " + alertType}>
+                <div className={"modal-body text-center " + alertType}>
                   <button
                     type="button"
                     className="close"

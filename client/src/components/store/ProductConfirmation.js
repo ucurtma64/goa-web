@@ -6,12 +6,27 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { Link } from "react-router-dom";
+import { notifyModal, buyProduct } from "../../actions";
+import Spinner from "../util/Spinner";
 
 class ProductConfirmation extends Component {
   async onConfirmation(formValues) {
-    console.log(formValues);
+    this.props.notifyModal(
+      true,
+      "secondary",
+      <div>
+        <Spinner />
+        Please wait...
+      </div>
+    );
 
-    await axios.post("/api/products", formValues);
+    const res = await this.props.buyProduct(formValues);
+
+    if (res.success) {
+      this.props.notifyModal(true, "success", res.success);
+    } else if (res.error) {
+      this.props.notifyModal(true, "danger", res.error);
+    }
   }
 
   render() {
@@ -80,4 +95,7 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps)(withRouter(ProductConfirmation));
+export default connect(
+  mapStateToProps,
+  { notifyModal, buyProduct }
+)(withRouter(ProductConfirmation));
