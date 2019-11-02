@@ -129,9 +129,10 @@ class Header extends Component {
 
     return (
       <nav
-        className="navbar navbar-expand-lg navbar-light"
+        className="navbar navbar-expand-lg navbar-light mx-auto"
         style={{
-          backgroundColor: "transparent"
+          backgroundColor: "transparent",
+          maxWidth: "1300px"
         }}
       >
         <Link
