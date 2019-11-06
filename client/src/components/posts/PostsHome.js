@@ -114,7 +114,7 @@ class PostsHome extends Component {
             <h1 className="text-center m-5 font-weight-bold">
               <FontAwesomeIcon icon={faTwitter} />
             </h1>
-            <article className="h-75 mt-5">
+            <article className="h-75 mt-4">
               <TwitterTimelineEmbed
                 theme="dark"
                 sourceType="profile"
