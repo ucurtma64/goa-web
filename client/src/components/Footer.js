@@ -3,17 +3,19 @@ import React, { Component } from "react";
 class Footer extends Component {
   render() {
     return (
-      <footer className="footer pt-5">
-        <div className="text-left float-left">
-          <a className="px-3" href="mailto:lixakyildiz@gmail.com">
-            Business Contact
-          </a>
-          <a className="px-3" href="#">
-            Back to top
-          </a>
-        </div>
-        <div className="text-right px-3">
-          <p>&copy; Copyright 2019, Guardians of Adelia</p>
+      <footer className="footer pt-5 container-fluid">
+        <div className="row">
+          <div className="col text-left">
+            <a className="mr-3" href="mailto:lixakyildiz@gmail.com">
+              Business Contact
+            </a>
+            <a className="" href="#">
+              Back to top
+            </a>
+          </div>
+          <div className="col text-right">
+            <p className="">&copy; Copyright 2019, Guardians of Adelia</p>
+          </div>
         </div>
       </footer>
     );
