@@ -96,9 +96,7 @@ class BillingForm extends Component {
             render={({ errors, status, touched }) => (
               <Form className="d-block mx-auto px-2">
                 <div className="form-group" key="identityNumber">
-                  <label className="text-dark" htmlFor="identityNumber">
-                    Identity Number
-                  </label>
+                  <label htmlFor="identityNumber">Identity Number</label>
                   <Field
                     name="identityNumber"
                     type="text"
@@ -118,7 +116,7 @@ class BillingForm extends Component {
                 </div>
 
                 <div className="form-group" key="registrationAddress">
-                  <label className="text-dark" htmlFor="registrationAddress">
+                  <label htmlFor="registrationAddress">
                     Registration Address
                   </label>
                   <Field
@@ -142,9 +140,7 @@ class BillingForm extends Component {
                 </div>
                 <div className="form-row">
                   <div className="form-group col" key="city">
-                    <label className="text-dark" htmlFor="city">
-                      City
-                    </label>
+                    <label htmlFor="city">City</label>
                     <Field
                       name="city"
                       type="text"
@@ -162,9 +158,7 @@ class BillingForm extends Component {
                   </div>
 
                   <div className="form-group col" key="country">
-                    <label className="text-dark" htmlFor="country">
-                      Country
-                    </label>
+                    <label htmlFor="country">Country</label>
                     <Field
                       name="country"
                       type="text"

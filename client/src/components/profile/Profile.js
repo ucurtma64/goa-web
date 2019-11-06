@@ -32,7 +32,7 @@ class Profile extends Component {
           <div className="container mt-5">
             <div className="row">
               <div className="col-3">
-                <div className="text-dark text-center pb-2">
+                <div className="text-center pb-2">
                   <img
                     src="https://i.ibb.co/hR60sKK/2018-04-12-19-08-26.png"
                     className="rounded-circle w-50 pb-1"
@@ -46,7 +46,7 @@ class Profile extends Component {
                   aria-orientation="vertical"
                 >
                   <a
-                    className="nav-link active text-dark"
+                    className="nav-link active"
                     id="v-pills-home-tab"
                     data-toggle="pill"
                     href="#v-pills-home"
@@ -57,7 +57,7 @@ class Profile extends Component {
                     Profile
                   </a>
                   <a
-                    className="nav-link text-dark"
+                    className="nav-link"
                     id="v-pills-profile-tab"
                     data-toggle="pill"
                     href="#v-pills-profile"
@@ -68,7 +68,7 @@ class Profile extends Component {
                     Billing
                   </a>
                   <a
-                    className="nav-link text-dark"
+                    className="nav-link"
                     id="v-pills-messages-tab"
                     data-toggle="pill"
                     href="#v-pills-messages"

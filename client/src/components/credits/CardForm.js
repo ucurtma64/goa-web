@@ -93,9 +93,7 @@ class CardForm extends Component {
               <Form className="d-block mx-auto px-2">
                 <div className="form-row">
                   <div className="form-group col" key="cardHolderName">
-                    <label className="text-dark" htmlFor="cardHolderName">
-                      Name on card
-                    </label>
+                    <label htmlFor="cardHolderName">Name on card</label>
                     <Field
                       name="cardHolderName"
                       type="text"
@@ -115,9 +113,7 @@ class CardForm extends Component {
                   </div>
 
                   <div className="form-group col-md-2" key="expireMonth">
-                    <label className="text-dark" htmlFor="expireMonth">
-                      Month
-                    </label>
+                    <label htmlFor="expireMonth">Month</label>
                     <Field
                       name="expireMonth"
                       type="text"
@@ -137,9 +133,7 @@ class CardForm extends Component {
                   </div>
 
                   <div className="form-group col-md-2" key="expireYear">
-                    <label className="text-dark" htmlFor="expireYear">
-                      Year
-                    </label>
+                    <label htmlFor="expireYear">Year</label>
                     <Field
                       name="expireYear"
                       type="text"
@@ -161,9 +155,7 @@ class CardForm extends Component {
 
                 <div className="form-row">
                   <div className="form-group col" key="cardNumber">
-                    <label className="text-dark" htmlFor="cardNumber">
-                      Card number
-                    </label>
+                    <label htmlFor="cardNumber">Card number</label>
                     <Field
                       name="cardNumber"
                       type="text"
@@ -182,9 +174,7 @@ class CardForm extends Component {
                     />
                   </div>
                   <div className="form-group col-md-2" key="cvc">
-                    <label className="text-dark" htmlFor="cvc">
-                      Security
-                    </label>
+                    <label htmlFor="cvc">Security</label>
                     <div className="input-group">
                       <Field
                         name="cvc"

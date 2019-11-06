@@ -77,9 +77,7 @@ class ProfileForm extends Component {
               <Form className="d-block mx-auto px-2">
                 <div className="form-row">
                   <div className="form-group col" key="givenName">
-                    <label className="text-dark" htmlFor="givenName">
-                      Name
-                    </label>
+                    <label htmlFor="givenName">Name</label>
                     <Field
                       name="givenName"
                       type="text"
@@ -99,9 +97,7 @@ class ProfileForm extends Component {
                   </div>
 
                   <div className="form-group col" key="familyName">
-                    <label className="text-dark" htmlFor="familyName">
-                      Surname
-                    </label>
+                    <label htmlFor="familyName">Surname</label>
                     <Field
                       name="familyName"
                       type="text"
@@ -122,9 +118,7 @@ class ProfileForm extends Component {
                 </div>
 
                 <div className="form-group" key="email">
-                  <label className="text-dark" htmlFor="email">
-                    Email
-                  </label>
+                  <label htmlFor="email">Email</label>
                   <Field
                     name="email"
                     type="text"

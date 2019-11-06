@@ -41,8 +41,8 @@ class SurveyList extends Component {
     if (totalSurveys === 0) return null;
 
     const headerClass = [
-      "text-dark py-2 pr-4 m-0",
-      currentPage ? "border-dark border-right" : ""
+      "py-2 pr-4 m-0",
+      currentPage ? "border-light border-right" : ""
     ]
       .join(" ")
       .trim();
@@ -53,11 +53,11 @@ class SurveyList extends Component {
           <div className="w-100 px-4 py-5 d-flex flex-row flex-wrap align-items-center justify-content-between">
             <div className="d-flex flex-row align-items-center">
               <h2 className={headerClass}>
-                <strong className="text-dark">{totalSurveys}</strong> Surveys
+                <strong>{totalSurveys}</strong> Surveys
               </h2>
 
               {currentPage && (
-                <span className="current-page d-inline-block h-100 pl-4 text-dark">
+                <span className="current-page d-inline-block h-100 pl-4">
                   Page <span className="font-weight-bold">{currentPage}</span> /{" "}
                   <span className="font-weight-bold">{totalPages}</span>
                 </span>
@@ -78,7 +78,7 @@ class SurveyList extends Component {
             {currentSurveys.map(survey => (
               <div
                 key={survey.dateSent}
-                className="card text-dark border-light mb-3"
+                className="card border-light mb-3"
                 style={{ width: "18rem", margin: "2rem" }}
               >
                 <div className="card-header">

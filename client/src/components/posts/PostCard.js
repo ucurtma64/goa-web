@@ -34,7 +34,7 @@ class PostCard extends Component {
             Read More &rarr;
           </Link>
         </div>
-        <div className="card-footer text-muted">
+        <div className="card-footer">
           Posted on {new Date(this.props.date).toLocaleDateString()} by{" "}
           {this.props.author}
         </div>

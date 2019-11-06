@@ -75,7 +75,7 @@ class MinecraftForm extends Component {
                 render={({ errors, status, touched }) => (
                   <Form className="d-block mx-auto px-2">
                     <div className="form-group" key="minecraftUsername">
-                      <label className="text-dark" htmlFor="minecraftUsername">
+                      <label htmlFor="minecraftUsername">
                         Minecraft Username
                       </label>
                       <Field

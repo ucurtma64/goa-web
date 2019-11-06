@@ -53,8 +53,8 @@ class PostsHome extends Component {
     if (totalPosts === 0) return null;
 
     const headerClass = [
-      "text-dark py-2 pr-4 m-0",
-      currentPage ? "border-dark border-right" : ""
+      "py-2 pr-4 m-0",
+      currentPage ? "border-light border-right" : ""
     ]
       .join(" ")
       .trim();
@@ -76,11 +76,11 @@ class PostsHome extends Component {
         <div className="w-100 d-flex flex-row flex-wrap align-items-center justify-content-between">
           <div className="d-flex flex-row py-4 align-items-center">
             <h2 className={headerClass}>
-              <strong className="text-dark">{totalPosts}</strong> Posts
+              <strong>{totalPosts}</strong> Posts
             </h2>
 
             {currentPage && (
-              <span className="current-page d-inline-block h-100 pl-4 text-dark">
+              <span className="current-page d-inline-block h-100 pl-4">
                 Page <span className="font-weight-bold">{currentPage}</span> /{" "}
                 <span className="font-weight-bold">{totalPages}</span>
               </span>

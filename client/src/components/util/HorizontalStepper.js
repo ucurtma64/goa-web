@@ -182,11 +182,11 @@ class HorizontalStepper extends Component {
                 }
                 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.active-step .mdl-stepper-circle {
-                  background-color: #a280ff;
+                  background-color: #ffcc33;
                 }
                 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.step-done .mdl-stepper-circle {
-                    background-color:  #33beff;
+                    background-color:  #62b300;
                 }
 
                 .mdl-stepper-horizontal-alternative .mdl-stepper-step.editable-step .mdl-stepper-circle {

@@ -36,9 +36,7 @@ class SurveyForm extends Component {
           <Form className="d-block mx-auto px-2">
             <div className="form-row">
               <div className="form-group col" key="title">
-                <label className="text-dark" htmlFor="title">
-                  Survey Title
-                </label>
+                <label htmlFor="title">Survey Title</label>
                 <Field
                   name="title"
                   type="text"
@@ -56,9 +54,7 @@ class SurveyForm extends Component {
               </div>
 
               <div className="form-group col" key="subject">
-                <label className="text-dark" htmlFor="subject">
-                  Subject Line
-                </label>
+                <label htmlFor="subject">Subject Line</label>
                 <Field
                   name="subject"
                   type="text"
@@ -76,9 +72,7 @@ class SurveyForm extends Component {
               </div>
             </div>
             <div className="form-group" key="body">
-              <label className="text-dark" htmlFor="body">
-                Email Body
-              </label>
+              <label htmlFor="body">Email Body</label>
               <Field
                 rows="2"
                 component="textarea"
@@ -98,9 +92,7 @@ class SurveyForm extends Component {
             </div>
 
             <div className="form-group" key="recipients">
-              <label className="text-dark" htmlFor="recipients">
-                Recipient List
-              </label>
+              <label htmlFor="recipients">Recipient List</label>
               <Field
                 name="recipients"
                 type="text"
