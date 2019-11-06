@@ -7,7 +7,7 @@ $font-family-base: "Lato", sans-serif !default;
 /* General */
 
 body {
-  background: linear-gradient(180deg, #746058 0%, #493c37 100%);
+  background: #574842;
   color: #fff;
 }
 
@@ -30,9 +30,9 @@ a:hover {
 /* Custom */
 
 .intro {
-  -webkit-box-shadow: inset 0 -2rem 2rem 0 #5e4e47;
-  -moz-box-shadow: inset 0 -2rem 2rem 0 #5e4e47;
-  box-shadow: inset 0 -2rem 2rem 0 #5e4e47;
+  -webkit-box-shadow: inset 0 -2rem 2rem 0 #493c37;
+  -moz-box-shadow: inset 0 -2rem 2rem 0 #493c37;
+  box-shadow: inset 0 -2rem 2rem 0 #493c37;
 }
 
 /* Card */

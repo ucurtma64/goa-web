@@ -8,10 +8,10 @@ const Landing = () => {
         className="container-fluid intro"
         style={{
           paddingTop: "4rem",
-          paddingBottom: "16rem",
-          backgroundImage:
-            "url('https://vignette.wikia.nocookie.net/hytale-italia/images/5/50/Wiki-background/revision/latest?cb=20190110145409')",
-          backgroundRepeat: "no-repeat"
+          paddingBottom: "4rem",
+          backgroundImage: "url('https://i.ibb.co/Sx5M0ch/intro.jpg')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover"
         }}
       >
         <div className="row">
