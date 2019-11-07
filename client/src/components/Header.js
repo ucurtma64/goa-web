@@ -13,6 +13,7 @@ import {
   faTools
 } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle, faWikipediaW } from "@fortawesome/free-brands-svg-icons";
+import $ from "jquery";
 
 class Header extends Component {
   state = {
@@ -21,6 +22,10 @@ class Header extends Component {
 
   handleClick(id) {
     this.setState({ active: id });
+  }
+
+  componentDidUpdate() {
+    $('[data-toggle="tooltip"]').tooltip();
   }
 
   renderButtonsOnLeft() {
@@ -90,6 +95,9 @@ class Header extends Component {
             className={this.state.active === 4 ? "nav-item active" : "nav-item"}
             key="4"
             onClick={() => this.handleClick(4)}
+            title="Click to add credits!"
+            data-toggle="tooltip"
+            data-placement="bottom"
           >
             <Link className="nav-link text-light" to="/addcredit">
               <FontAwesomeIcon className="mx-1 text-warning" icon={faCoins} />

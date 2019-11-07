@@ -22,6 +22,8 @@ class CardForm extends Component {
   }
 
   onFormSubmit(fieldsToCopy) {
+    $("#paymentModal").modal("show");
+
     const fields = Object.assign({}, fieldsToCopy);
 
     var expireYear = parseInt(fields.expireYear);
@@ -217,8 +219,6 @@ class CardForm extends Component {
                     className="btn btn-primary float-right"
                     variant="primary"
                     type="submit"
-                    data-toggle="modal"
-                    data-target="#paymentModal"
                   >
                     Submit
                   </button>

@@ -59,7 +59,7 @@ class Landing extends Component {
                   this.copyToClipboard("play.guardiansofadelia.com")
                 }
               >
-                <span>START YOUR JOURNEY</span>
+                START YOUR JOURNEY
               </button>
             </div>
           </div>

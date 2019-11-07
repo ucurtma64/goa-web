@@ -27,6 +27,12 @@ a:hover {
   color: #d9d9d9;
 }
 
+form {
+  background: #746058;
+  border: 2rem solid #746058;
+  border-radius: 2rem;
+}
+
 /* Custom */
 
 .intro {
@@ -70,13 +76,14 @@ hr {
 /* Button */
 
 .btn {
-  background: linear-gradient(180deg, #5e4e47 0%, #3f3530 100%);
+  background: linear-gradient(180deg, #746058 0%, #5e4e47 100%);
   border: none;
+  border: 0.12rem solid #3f3530;
 }
 
 .btn:hover {
-  background-color: #3f3530;
-  border-color: #5e4e47;
+  background: linear-gradient(180deg, #5e4e47 0%, #3f3530 100%);
+  border-color: #3f3530;
 }
 
 .btn:focus,
@@ -84,7 +91,22 @@ hr {
   box-shadow: 0 0 0 0.2rem #3f3530;
 }
 
+.btn:not(:disabled):not(.disabled):active,
+.btn:not(:disabled):not(.disabled).active,
+.show > .btn.dropdown-toggle {
+  color: #fff;
+  background-color: #493d37;
+  border-color: #3f3530;
+}
+
+.btn:not(:disabled):not(.disabled):active:focus,
+.btn:not(:disabled):not(.disabled).active:focus,
+.show > .btn.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #3f3530;
+}
+
 .landing-btn {
+  background: linear-gradient(180deg, #5e4e47 0%, #3f3530 100%);
   padding-top: 1.2rem;
   padding-bottom: 1.2rem;
   padding-right: 2.4rem;
@@ -92,6 +114,10 @@ hr {
   border: 0.15rem solid #746058;
   box-shadow: 0 0 0 0.25rem #3a302c;
   width: 16rem;
+}
+
+.landing-btn:hover {
+  border-color: #746058;
 }
 
 /* Pagination */
