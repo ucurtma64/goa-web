@@ -59,7 +59,7 @@ class Landing extends Component {
                   this.copyToClipboard("play.guardiansofadelia.com")
                 }
               >
-                START YOUR JOURNEY
+                <span>START YOUR JOURNEY</span>
               </button>
             </div>
           </div>
@@ -69,7 +69,7 @@ class Landing extends Component {
           </div>
         </div>
 
-        <div className="container-fluid">
+        <div className="container-fluid news">
           <PostsHome className="row" />
         </div>
       </div>
