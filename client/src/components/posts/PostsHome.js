@@ -105,16 +105,18 @@ class PostsHome extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-8">
-            <h1 className="text-center m-5 font-weight-bold">Lastest Posts</h1>
+            <h1 className="text-center mt-4 mb-2 font-weight-bold">
+              Lastest Posts
+            </h1>
 
             {this.renderPosts()}
           </div>
 
           <div className="col-md-4">
-            <h1 className="text-center m-5 font-weight-bold">
+            <h1 className="text-center mt-4 mb-2 font-weight-bold">
               <FontAwesomeIcon icon={faTwitter} />
             </h1>
-            <article className="h-75 mt-4">
+            <article className="h-75">
               <TwitterTimelineEmbed
                 theme="dark"
                 sourceType="profile"
