@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const net = require("net");
+const io = require("socket.io-client");
 const requireLogin = require("../middlewares/requireLogin");
 const requireCredits = require("../middlewares/requireCredits");
 
@@ -23,8 +23,9 @@ module.exports = app => {
     }
 
     try {
-      const mcResponse = JSON.parse(
-        await sendMessageToMinecraft(minecraftUsername, productSelection)
+      const mcResponse = await sendMessageToMinecraft(
+        minecraftUsername,
+        productSelection
       );
 
       if (mcResponse.success) {
@@ -48,7 +49,7 @@ module.exports = app => {
 
 const sendMessageToMinecraft = (minecraftUsername, productSelection) => {
   return new Promise(function(resolve, reject) {
-    const client = net.connect(25120, "94.55.189.101");
+    const client = io.connect("http://localhost:9092");
 
     const object = {
       minecraftUsername: minecraftUsername,
@@ -56,15 +57,21 @@ const sendMessageToMinecraft = (minecraftUsername, productSelection) => {
       credits: productSelection.credits
     };
 
-    client.write(JSON.stringify(object));
+    client.emit("purchase", object);
 
-    client.on("data", function(data) {
+    client.on("connect", function() {
+      console.log("Connectted");
+    });
+
+    client.on("purchaseSuccess", function(data) {
       client.destroy(); // kill client after server's response
+      console.log(data);
       resolve(data);
     });
 
-    client.on("error", function(data) {
+    client.on("purchaseFail", function(data) {
       client.destroy(); // kill client after server's response
+      console.log(data);
       reject(data);
     });
 
