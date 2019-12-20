@@ -22,63 +22,55 @@ module.exports = app => {
       return res.status(403).send({ error: "Not enough credits!" });
     }
 
+    const webPurchase = {
+      productId: productSelection.productId,
+      payment: productSelection.credits,
+      minecraftUsername: minecraftUsername
+    };
+
     try {
-      const mcResponse = await sendMessageToMinecraft(
-        minecraftUsername,
-        productSelection
-      );
+      const mcResponse = await sendMessageToMinecraft(webPurchase);
 
-      if (mcResponse.success) {
-        req.user.credits -= resultProduct.credits;
-        const user = await req.user.save();
+      req.user.credits -= resultProduct.credits;
+      const user = await req.user.save();
 
-        const response = Object.assign({ user }, mcResponse);
+      const response = Object.assign({ user }, mcResponse);
 
-        res.send(response);
-      } else if (mcResponse.error) {
-        res.status(422).send(mcResponse.error);
-      } else {
-        res.status(422).send({ error: "unknown error" });
-      }
+      console.log(response);
+
+      res.send(response);
     } catch (err) {
+      console.log(err);
       if (err.errno === "ETIMEDOUT")
-        res.status(422).send("Game-server is down");
+        res.status(599).send("Game-server is down");
+      else {
+        res.status(500).send(err);
+      }
     }
   });
 };
 
-const sendMessageToMinecraft = (minecraftUsername, productSelection) => {
+const sendMessageToMinecraft = webPurchase => {
   return new Promise(function(resolve, reject) {
     const client = io.connect("http://localhost:9092");
 
-    const object = {
-      minecraftUsername: minecraftUsername,
-      productId: productSelection.productId,
-      credits: productSelection.credits
-    };
-
-    client.emit("purchase", object);
-
     client.on("connect", function() {
-      console.log("Connectted");
+      console.log("Connect");
     });
 
-    client.on("purchaseSuccess", function(data) {
-      client.destroy(); // kill client after server's response
-      console.log(data);
-      resolve(data);
+    client.on("disconnect", function() {
+      console.log("Disconnect");
     });
 
-    client.on("purchaseFail", function(data) {
-      client.destroy(); // kill client after server's response
-      console.log(data);
-      reject(data);
+    client.on("purchaseResult", function(data) {
+      client.close(); // kill client after server's response
+      if (data.success) {
+        resolve(data);
+      } else {
+        reject(data.msg);
+      }
     });
 
-    client.on("close", function() {
-      console.log("Connection closed");
-    });
-
-    client.end();
+    client.emit("purchase", webPurchase);
   });
 };

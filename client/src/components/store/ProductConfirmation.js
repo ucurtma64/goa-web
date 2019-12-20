@@ -22,10 +22,12 @@ class ProductConfirmation extends Component {
 
     const res = await this.props.buyProduct(formValues);
 
+    console.log(res);
+
     if (res.success) {
-      this.props.notifyModal(true, "success", res.success);
-    } else if (res.error) {
-      this.props.notifyModal(true, "danger", res.error);
+      this.props.notifyModal(true, "success", res.msg);
+    } else {
+      this.props.notifyModal(true, "danger", res.msg);
     }
   }
 
@@ -95,7 +97,6 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(
-  mapStateToProps,
-  { notifyModal, buyProduct }
-)(withRouter(ProductConfirmation));
+export default connect(mapStateToProps, { notifyModal, buyProduct })(
+  withRouter(ProductConfirmation)
+);
