@@ -28,9 +28,9 @@ a:hover {
 }
 
 form {
-  background: #a19b99;
-  border: 2rem solid #746058;
-  border-radius: 2rem;
+  background: #826d64;
+  border: 1rem solid #826d64;
+  border-radius: 1rem;
 }
 
 /* Custom */
@@ -42,24 +42,18 @@ form {
 /* Card */
 
 .card {
-  border: none;
-  border-radius: 1rem;
-  transition: all 0.2s;
-  box-shadow: 0 0.6rem 1rem 0 rgba(0, 0, 0, 0.1);
-  background: #726058;
-}
+  border: 3px solid #3f3530;
+  box-shadow: 0 0.6rem 1rem 0 rgba(0, 0, 0, 0.4);
+  background: #826d64;
+  .card-img-top {
+    height: 15vw;
+    object-fit: cover;
+  }
 
-.card-img-top {
-  height: 15vw;
-  object-fit: cover;
-}
-
-.card-title {
-  font-weight: bold;
-}
-
-.card:hover .btn {
-  opacity: 1;
+  .card-footer {
+    border-top: 2px solid #3f3530;
+    background: #736159;
+  }
 }
 
 /* Text */
@@ -76,13 +70,14 @@ hr {
 /* Button */
 
 .btn {
-  background: linear-gradient(180deg, #746058 0%, #5e4e47 100%);
-  border: none;
-  border: 0.12rem solid #3f3530;
+  background: #726058;
+  border: 1.5px solid #3f3530;
+  box-sizing: border-box;
+  border-radius: 4px;
 }
 
 .btn:hover {
-  background: linear-gradient(180deg, #5e4e47 0%, #3f3530 100%);
+  background: #66544d;
   border-color: #3f3530;
 }
 
@@ -157,6 +152,10 @@ hr {
 
 .navbar img {
   max-height: 32px;
+}
+
+.nav-tabs {
+  border-bottom: 2px solid #a7938b;
 }
 
 .nav-item,

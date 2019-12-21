@@ -154,30 +154,28 @@ class Pagination extends Component {
             {pages.map((page, index) => {
               if (page === LEFT_PAGE)
                 return (
-                  <li key={index} className="page-item">
+                  <li key={index} className="page-item disabled">
                     <Link
                       className="page-link"
                       to="#"
                       aria-label="Previous"
                       onClick={this.handleMoveLeft}
                     >
-                      <span aria-hidden="true">&laquo;</span>
-                      <span className="sr-only">Previous</span>
+                      ...
                     </Link>
                   </li>
                 );
 
               if (page === RIGHT_PAGE)
                 return (
-                  <li key={index} className="page-item">
+                  <li key={index} className="page-item disabled">
                     <Link
                       className="page-link"
                       to="#"
                       aria-label="Next"
                       onClick={this.handleMoveRight}
                     >
-                      <span aria-hidden="true">&raquo;</span>
-                      <span className="sr-only">Next</span>
+                      ...
                     </Link>
                   </li>
                 );

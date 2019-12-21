@@ -5,7 +5,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 class LorePage extends Component {
   render() {
     return (
-      <div className="container">
+      <div className="container mt-4">
         <img
           src="https://i.postimg.cc/445Cwt3s/Optimized-2019-08-22-02-19-15.jpg"
           className="card-img-top"

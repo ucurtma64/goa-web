@@ -28,15 +28,19 @@ class PostCard extends Component {
         {this.renderImage()}
 
         <div className="card-body">
-          <h2 className="card-title">{this.props.title}</h2>
+          <h2 className="card-title text-capitalize">
+            <u>{this.props.title}</u>
+          </h2>
           <p className="card-text">{this.renderTextPreview()}</p>
-          <Link to={postLink} className="btn btn-primary">
+        </div>
+        <div className="card-footer row w-100 mx-auto">
+          <div className="col text-left">
+            Posted on {new Date(this.props.date).toLocaleDateString()} by{" "}
+            {this.props.author}
+          </div>
+          <Link to={postLink} className="col text-right">
             Read More &rarr;
           </Link>
-        </div>
-        <div className="card-footer">
-          Posted on {new Date(this.props.date).toLocaleDateString()} by{" "}
-          {this.props.author}
         </div>
       </div>
     );
