@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ProductCard from "./ProductCard";
 
 class ProductSelection extends Component {
-  renderproductSelections() {
+  renderPets() {
     return (
       <div className="row card-deck">
         <ProductCard
@@ -89,8 +89,70 @@ class ProductSelection extends Component {
 
   render() {
     return (
-      <section className="py-5">
-        <div className="container">{this.renderproductSelections()}</div>
+      <section className="container py-5">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab-shop" role="tablist">
+            <a
+              class="nav-item nav-link active"
+              id="nav-home-tab"
+              data-toggle="tab"
+              href="#nav-home"
+              role="tab"
+              aria-controls="nav-home"
+              aria-selected="true"
+            >
+              Pet Skins
+            </a>
+            <a
+              class="nav-item nav-link"
+              id="nav-profile-tab"
+              data-toggle="tab"
+              href="#nav-profile"
+              role="tab"
+              aria-controls="nav-profile"
+              aria-selected="false"
+            >
+              Helmet Skins
+            </a>
+            <a
+              class="nav-item nav-link"
+              id="nav-contact-tab"
+              data-toggle="tab"
+              href="#nav-contact"
+              role="tab"
+              aria-controls="nav-contact"
+              aria-selected="false"
+            >
+              Contact
+            </a>
+          </div>
+        </nav>
+        <div class="tab-content mt-4" id="nav-tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="nav-home"
+            role="tabpanel"
+            aria-labelledby="nav-home-tab"
+          >
+            {this.renderPets()}
+          </div>
+          <div
+            class="tab-pane fade"
+            id="nav-profile"
+            role="tabpanel"
+            aria-labelledby="nav-profile-tab"
+          >
+            ...
+          </div>
+          <div
+            class="tab-pane fade"
+            id="nav-contact"
+            role="tabpanel"
+            aria-labelledby="nav-contact-tab"
+          >
+            ...
+          </div>
+        </div>
       </section>
     );
   }

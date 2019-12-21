@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import Spinner from "../util/Spinner";
+import Spinner from "components/util/Spinner";
 import { connect } from "react-redux";
-import PostForm from "../commonForms/PostForm";
+import PostForm from "components/forms/PostForm";
 
 class AdminDashboard extends Component {
   render() {

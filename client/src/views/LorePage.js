@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
-class Lore extends Component {
+class LorePage extends Component {
   render() {
     return (
       <div className="container">
@@ -208,4 +208,4 @@ class Lore extends Component {
   }
 }
 
-export default Lore;
+export default LorePage;

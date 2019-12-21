@@ -28,7 +28,7 @@ a:hover {
 }
 
 form {
-  background: #746058;
+  background: #a19b99;
   border: 2rem solid #746058;
   border-radius: 2rem;
 }
@@ -159,7 +159,8 @@ hr {
   max-height: 32px;
 }
 
-.nav-item {
+.nav-item,
+.nav-tabs .nav-link {
   background: #726058;
   border: 1.5px solid #3f3530;
   box-sizing: border-box;
@@ -167,8 +168,14 @@ hr {
   margin: 5px;
 }
 
-.nav-item.active {
+.nav-tabs .nav-link:hover {
+  border-color: #a7938b;
+}
+
+.nav-item.active,
+.nav-tabs .nav-link.active {
   border-width: 2px;
+  border-color: #3f3530;
 }
 
 .navbar-light .navbar-nav .nav-item > .nav-link {
@@ -180,8 +187,10 @@ hr {
   margin-right: 5px;
 }
 
-.navbar ul .active {
+.navbar ul .active,
+.nav-tabs .nav-link.active {
   background: #5e4e47;
+  color: #fff;
 }
 
 .navbar ul a .active {

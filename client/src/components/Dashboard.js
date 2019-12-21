@@ -8,8 +8,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <SurveyList />
-
         <Link
           to="/surveys/new"
           className="btn btn-primary btn-lg float-right"

@@ -1,12 +1,12 @@
 //Shows CreditSelection and BillingForm and CardForm
 import React, { Component } from "react";
-import CreditSelection from "./CreditSelection";
-import BillingForm from "../commonForms/BillingForm";
-import ProfileForm from "../commonForms/ProfileForm";
-import CardForm from "./CardForm";
-import HorizontalStepper from "../util/HorizontalStepper";
+import CreditSelection from "components/credits/CreditSelection";
+import BillingForm from "components/forms/BillingForm";
+import ProfileForm from "components/forms/ProfileForm";
+import CardForm from "components/credits/CardForm";
+import HorizontalStepper from "components/util/HorizontalStepper";
 
-class AddCredit extends Component {
+class AddCreditPage extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
@@ -103,4 +103,4 @@ class AddCredit extends Component {
   }
 }
 
-export default AddCredit;
+export default AddCreditPage;

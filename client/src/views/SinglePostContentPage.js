@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import Spinner from "../util/Spinner";
+import Spinner from "components/util/Spinner";
 import axios from "axios";
 
-class PostContent extends Component {
+class SinglePostContentPage extends Component {
   state = {
     _id: "",
     title: "",
@@ -62,4 +62,4 @@ class PostContent extends Component {
   }
 }
 
-export default PostContent;
+export default SinglePostContentPage;

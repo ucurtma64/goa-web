@@ -7,7 +7,7 @@ import Pagination from "../util/Pagination";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 
-class PostsHome extends Component {
+class PostsList extends Component {
   state = {
     totalPosts: 0,
     totalPages: 0,
@@ -136,7 +136,4 @@ function mapStateToProps({ posts }) {
   return { posts };
 }
 
-export default connect(
-  mapStateToProps,
-  { fetchPosts }
-)(PostsHome);
+export default connect(mapStateToProps, { fetchPosts })(PostsList);

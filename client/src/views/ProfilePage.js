@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Spinner from "../util/Spinner";
-import ProfileForm from "../commonForms/ProfileForm";
-import BillingForm from "../commonForms/BillingForm";
-import MinecraftForm from "../commonForms/MinecraftForm";
-import { notifyModal, updateUser } from "../../actions";
+import Spinner from "components/util/Spinner";
+import ProfileForm from "components/forms/ProfileForm";
+import BillingForm from "components/forms/BillingForm";
+import MinecraftForm from "components/forms/MinecraftForm";
+import { notifyModal, updateUser } from "actions";
 
 class Profile extends Component {
   async onFormSubmit(fields) {
@@ -131,7 +131,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(
-  mapStateToProps,
-  { notifyModal, updateUser }
-)(Profile);
+export default connect(mapStateToProps, { notifyModal, updateUser })(Profile);

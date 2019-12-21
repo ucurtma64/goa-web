@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class AddCreditCallback extends Component {
+class AddCreditCallbackPage extends Component {
   renderPaymentStatus() {
     const status = this.props.history.location.pathname.replace(
       "/addcredit/callback/",
@@ -35,4 +35,4 @@ class AddCreditCallback extends Component {
   }
 }
 
-export default AddCreditCallback;
+export default AddCreditCallbackPage;

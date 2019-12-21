@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import PostsHome from "./posts/PostsHome";
+import PostsHome from "components/posts/PostList";
 import $ from "jquery";
 
-class Landing extends Component {
+class LandingPage extends Component {
   componentDidMount() {
     $('[data-toggle="tooltip"]').tooltip();
   }
@@ -77,4 +77,4 @@ class Landing extends Component {
   }
 }
 
-export default Landing;
+export default LandingPage;

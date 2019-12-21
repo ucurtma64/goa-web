@@ -1,11 +1,11 @@
 //Shows CreditSelection and BillingForm and CardForm
 import React, { Component } from "react";
-import ProductConfirmation from "./ProductConfirmation";
-import ProductSelection from "./ProductSelection";
-import MinecraftForm from "../commonForms/MinecraftForm";
-import HorizontalStepper from "../util/HorizontalStepper";
+import ProductConfirmation from "components/store/ProductConfirmation";
+import ProductSelection from "components/store/ProductSelection";
+import MinecraftForm from "components/forms/MinecraftForm";
+import HorizontalStepper from "components/util/HorizontalStepper";
 
-class Store extends Component {
+class StorePage extends Component {
   constructor(props) {
     super(props);
     // Don't call this.setState() here!
@@ -90,4 +90,4 @@ class Store extends Component {
   }
 }
 
-export default Store;
+export default StorePage;
