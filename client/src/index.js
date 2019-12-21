@@ -1,4 +1,4 @@
-import "assets/scss/custom.scss";
+import "assets/scss/goaweb.scss";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "popper.js/dist/popper.min.js";
 import React from "react";

@@ -61,10 +61,10 @@ class CardForm extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container-fluid w-75">
         <div className="row">
           <Formik
-            className="col-6"
+            className="col"
             initialValues={{}}
             validationSchema={Yup.object().shape({
               cardHolderName: Yup.string()
@@ -243,6 +243,7 @@ class CardForm extends Component {
           />
 
           <CreditSelectionCard
+            className="col"
             creditSelection={{
               productId: this.props.formValues.creditSelection.productId,
               price: this.props.formValues.creditSelection.price,

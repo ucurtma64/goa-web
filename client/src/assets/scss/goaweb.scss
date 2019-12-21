@@ -1,0 +1,52 @@
+// Override default variables before the import
+$font-family-base: "Lato", sans-serif !default;
+
+// Import Bootstrap and its default variables
+@import "~bootstrap/scss/bootstrap.scss";
+
+/* General */
+
+body {
+  background: #493c37;
+  color: #fff;
+}
+
+.main-container {
+  min-height: 92vh;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: #fff;
+}
+
+a:hover {
+  color: #d9d9d9;
+}
+
+hr {
+  //hr is used to separate content
+  margin: 1.5rem 0;
+}
+
+/* Custom */
+
+.intro {
+  border-bottom: 1.6rem solid #3a312c;
+}
+
+.text-danger {
+  color: #ffa04d !important;
+}
+
+/* Imports */
+
+@import "button";
+@import "card";
+@import "carousel";
+@import "form";
+@import "nav";
+@import "pagination";

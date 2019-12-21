@@ -1,4 +1,3 @@
-//Shows CreditSelection and BillingForm and CardForm
 import React, { Component } from "react";
 import ProductConfirmation from "components/store/ProductConfirmation";
 import ProductSelection from "components/store/ProductSelection";

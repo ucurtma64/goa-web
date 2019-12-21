@@ -102,9 +102,9 @@ class PostsList extends Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="">
         <div className="row">
-          <div className="col-md-8">
+          <div className="col-8">
             <h1 className="text-center mt-4 mb-2 font-weight-bold">
               Latest Posts
             </h1>
@@ -112,12 +112,13 @@ class PostsList extends Component {
             {this.renderPosts()}
           </div>
 
-          <div className="col-md-4">
+          <div className="col-4">
             <h1 className="text-center mt-4 mb-2 font-weight-bold">
               <FontAwesomeIcon icon={faTwitter} />
             </h1>
-            <article className="h-75 card">
+            <article className="h-75">
               <TwitterTimelineEmbed
+                theme="dark"
                 sourceType="profile"
                 screenName="loykAd"
                 options={{ height: 640 }}

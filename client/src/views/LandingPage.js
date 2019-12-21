@@ -69,8 +69,8 @@ class LandingPage extends Component {
           </div>
         </div>
 
-        <div className="container-fluid news">
-          <PostsHome className="row" />
+        <div className="container news">
+          <PostsHome />
         </div>
       </div>
     );

@@ -93,7 +93,7 @@ class ProductSelection extends Component {
         <nav>
           <div class="nav nav-tabs" id="nav-tab-shop" role="tablist">
             <a
-              class="nav-item nav-link active"
+              class="nav-item nav-link active mx-auto"
               id="nav-home-tab"
               data-toggle="tab"
               href="#nav-home"
@@ -104,7 +104,7 @@ class ProductSelection extends Component {
               Pet Skins
             </a>
             <a
-              class="nav-item nav-link"
+              class="nav-item nav-link mx-auto"
               id="nav-profile-tab"
               data-toggle="tab"
               href="#nav-profile"
@@ -115,7 +115,7 @@ class ProductSelection extends Component {
               Helmet Skins
             </a>
             <a
-              class="nav-item nav-link"
+              class="nav-item nav-link mx-auto"
               id="nav-contact-tab"
               data-toggle="tab"
               href="#nav-contact"
