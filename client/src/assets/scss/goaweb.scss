@@ -29,7 +29,12 @@ a:hover {
 
 hr {
   //hr is used to separate content
-  margin: 1.5rem 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #3a312c;
+  margin: 1em 0;
+  padding: 0;
 }
 
 /* Custom */

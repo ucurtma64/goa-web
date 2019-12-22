@@ -11,7 +11,7 @@ class ProductSelection extends Component {
             credits: 1,
             name: "Hero Rank",
             description: "description",
-            image: "https://i.ibb.co/xzCCmm8/card2.png",
+            image: "https://i.ibb.co/jfsgtbY/Crystals3.png",
             imageSmall: true
           }}
           onFormSubmit={productSelection =>
@@ -24,7 +24,7 @@ class ProductSelection extends Component {
             credits: 2,
             name: "Titan Rank",
             description: "description",
-            image: "https://i.ibb.co/hRd0ZF9/card1.png",
+            image: "https://i.ibb.co/cywR15R/Crystals2.png",
             imageSmall: true
           }}
           onFormSubmit={productSelection =>
@@ -37,7 +37,7 @@ class ProductSelection extends Component {
             credits: 5,
             name: "Legend Rank",
             description: "description",
-            image: "https://i.ibb.co/dMntYTT/card4.png",
+            image: "https://i.ibb.co/jwF9pQR/Crystals1.png",
             imageSmall: true
           }}
           onFormSubmit={productSelection =>
