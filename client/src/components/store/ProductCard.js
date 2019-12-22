@@ -3,10 +3,12 @@ import React, { Component } from "react";
 class ProductCard extends Component {
   renderImage() {
     if (this.props.product.image) {
+      var imageClass = this.props.product.imageSmall ? " card-img-small" : "";
+
       return (
         <img
           src={this.props.product.image}
-          className="card-img-top"
+          className={"card-img-top " + imageClass}
           alt="..."
         ></img>
       );

@@ -2,17 +2,17 @@ import React, { Component } from "react";
 import ProductCard from "./ProductCard";
 
 class ProductSelection extends Component {
-  renderPets() {
+  renderRanks() {
     return (
       <div className="row card-deck">
         <ProductCard
           product={{
             productId: 1,
             credits: 1,
-            name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis",
-            image:
-              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
+            name: "Hero Rank",
+            description: "description",
+            image: "https://i.ibb.co/xzCCmm8/card2.png",
+            imageSmall: true
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -22,10 +22,10 @@ class ProductSelection extends Component {
           product={{
             productId: 2,
             credits: 2,
-            name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis",
-            image:
-              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
+            name: "Titan Rank",
+            description: "description",
+            image: "https://i.ibb.co/hRd0ZF9/card1.png",
+            imageSmall: true
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -35,10 +35,53 @@ class ProductSelection extends Component {
           product={{
             productId: 3,
             credits: 5,
-            name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis",
-            image:
-              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
+            name: "Legend Rank",
+            description: "description",
+            image: "https://i.ibb.co/dMntYTT/card4.png",
+            imageSmall: true
+          }}
+          onFormSubmit={productSelection =>
+            this.props.onFormSubmit(productSelection)
+          }
+        />
+      </div>
+    );
+  }
+
+  renderPets() {
+    return (
+      <div className="row card-deck">
+        <ProductCard
+          product={{
+            productId: 1,
+            credits: 1,
+            name: "Bee",
+            description: "description",
+            image: "https://i.ibb.co/DRFSv47/bee.png"
+          }}
+          onFormSubmit={productSelection =>
+            this.props.onFormSubmit(productSelection)
+          }
+        />
+        <ProductCard
+          product={{
+            productId: 2,
+            credits: 2,
+            name: "Red Fox",
+            description: "description",
+            image: "https://i.ibb.co/LtdZm9J/fox-red.png"
+          }}
+          onFormSubmit={productSelection =>
+            this.props.onFormSubmit(productSelection)
+          }
+        />
+        <ProductCard
+          product={{
+            productId: 3,
+            credits: 5,
+            name: "Snow Fox",
+            description: "description",
+            image: "https://i.ibb.co/CQq5xny/fox-snow.png"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -48,10 +91,9 @@ class ProductSelection extends Component {
           product={{
             productId: 4,
             credits: 10,
-            name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis",
-            image:
-              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
+            name: "Ice Cream",
+            description: "description",
+            image: "https://i.ibb.co/hdVTH08/icecream.png"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -61,10 +103,9 @@ class ProductSelection extends Component {
           product={{
             productId: 5,
             credits: 15,
-            name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis",
-            image:
-              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
+            name: "Vex",
+            description: "description",
+            image: "https://i.ibb.co/Jks4Cqq/vex.png"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -74,10 +115,9 @@ class ProductSelection extends Component {
           product={{
             productId: 6,
             credits: 20,
-            name: "Super Pickaxe",
-            description: "lapis lapis ohh lapis",
-            image:
-              "https://i.postimg.cc/SxvFph0s/Optimized-2019-08-22-02-50-29.jpg"
+            name: "Mini-dragon",
+            description: "description",
+            image: "https://i.ibb.co/hygWC4R/mini-dragon.png"
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -101,7 +141,7 @@ class ProductSelection extends Component {
               aria-controls="nav-home"
               aria-selected="true"
             >
-              Pet Skins
+              Ranks
             </a>
             <a
               class="nav-item nav-link mx-auto"
@@ -112,7 +152,7 @@ class ProductSelection extends Component {
               aria-controls="nav-profile"
               aria-selected="false"
             >
-              Helmet Skins
+              Pet Skins
             </a>
             <a
               class="nav-item nav-link mx-auto"
@@ -123,7 +163,7 @@ class ProductSelection extends Component {
               aria-controls="nav-contact"
               aria-selected="false"
             >
-              Contact
+              Helmet Skins
             </a>
           </div>
         </nav>
@@ -134,7 +174,7 @@ class ProductSelection extends Component {
             role="tabpanel"
             aria-labelledby="nav-home-tab"
           >
-            {this.renderPets()}
+            {this.renderRanks()}
           </div>
           <div
             class="tab-pane fade"
@@ -142,7 +182,7 @@ class ProductSelection extends Component {
             role="tabpanel"
             aria-labelledby="nav-profile-tab"
           >
-            ...
+            {this.renderPets()}
           </div>
           <div
             class="tab-pane fade"
@@ -150,7 +190,7 @@ class ProductSelection extends Component {
             role="tabpanel"
             aria-labelledby="nav-contact-tab"
           >
-            ...
+            {this.renderPets()}
           </div>
         </div>
       </section>

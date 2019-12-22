@@ -60,19 +60,20 @@ class PostsList extends Component {
       .trim();
 
     return (
-      <div className="">
-        {currentPosts.map(post => (
-          <PostCard
-            title={post.title}
-            text={post.text}
-            date={post.dateSent}
-            author={post.author}
-            image={post.image}
-            _id={post._id}
-            key={post._id}
-          />
-        ))}
-
+      <div>
+        <div className="post-list">
+          {currentPosts.map(post => (
+            <PostCard
+              title={post.title}
+              text={post.text}
+              date={post.dateSent}
+              author={post.author}
+              image={post.image}
+              _id={post._id}
+              key={post._id}
+            />
+          ))}
+        </div>
         <div className="w-100 d-flex flex-row flex-wrap align-items-center justify-content-between">
           <div className="d-flex flex-row mb-2 align-items-center">
             <div className={headerClass}>
@@ -102,30 +103,28 @@ class PostsList extends Component {
 
   render() {
     return (
-      <div className="">
-        <div className="row">
-          <div className="col-8">
-            <h1 className="text-center mt-4 mb-2 font-weight-bold">
-              Latest Posts
-            </h1>
+      <div className="row">
+        <div className="col-lg-8">
+          <h1 className="text-center mt-4 mb-2 font-weight-bold">
+            Latest Posts
+          </h1>
 
-            {this.renderPosts()}
-          </div>
+          {this.renderPosts()}
+        </div>
 
-          <div className="col-4">
-            <h1 className="text-center mt-4 mb-2 font-weight-bold">
-              <FontAwesomeIcon icon={faTwitter} />
-            </h1>
-            <article className="h-75">
-              <TwitterTimelineEmbed
-                theme="dark"
-                sourceType="profile"
-                screenName="loykAd"
-                options={{ height: 640 }}
-                lang="en"
-              />
-            </article>
-          </div>
+        <div className="col-lg-4">
+          <h1 className="text-center mt-4 mb-2 font-weight-bold">
+            <FontAwesomeIcon icon={faTwitter} />
+          </h1>
+          <article className="h-75">
+            <TwitterTimelineEmbed
+              theme="dark"
+              sourceType="profile"
+              screenName="loykAd"
+              options={{ height: 640 }}
+              lang="en"
+            />
+          </article>
         </div>
       </div>
     );

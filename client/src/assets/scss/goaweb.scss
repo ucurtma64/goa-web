@@ -42,7 +42,7 @@ hr {
   color: #ffa04d !important;
 }
 
-/* Imports */
+/* Imports General */
 
 @import "button";
 @import "card";
@@ -50,3 +50,7 @@ hr {
 @import "form";
 @import "nav";
 @import "pagination";
+
+/* Imports Pages */
+
+@import "./pages/post-list";
