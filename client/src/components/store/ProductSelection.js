@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import ProductCard from "./ProductCard";
+import hero from "assets/img/hero.png";
+import legend from "assets/img/legend.png";
+import titan from "assets/img/titan.png";
 
 class ProductSelection extends Component {
   renderRanks() {
@@ -11,8 +14,7 @@ class ProductSelection extends Component {
             credits: 1,
             name: "Hero Rank",
             description: "description",
-            image: "https://i.ibb.co/jfsgtbY/Crystals3.png",
-            imageSmall: true
+            image: hero
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -22,10 +24,9 @@ class ProductSelection extends Component {
           product={{
             productId: 2,
             credits: 2,
-            name: "Titan Rank",
+            name: "Legend Rank",
             description: "description",
-            image: "https://i.ibb.co/cywR15R/Crystals2.png",
-            imageSmall: true
+            image: legend
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
@@ -35,10 +36,9 @@ class ProductSelection extends Component {
           product={{
             productId: 3,
             credits: 5,
-            name: "Legend Rank",
+            name: "Titan Rank",
             description: "description",
-            image: "https://i.ibb.co/jwF9pQR/Crystals1.png",
-            imageSmall: true
+            image: titan
           }}
           onFormSubmit={productSelection =>
             this.props.onFormSubmit(productSelection)
