@@ -39,8 +39,7 @@ passport.use(
         user = await new User({
           googleId: profile.id,
           email: registerEmail,
-          givenName: profile.name.givenName,
-          familyName: profile.name.familyName
+          username: profile.name.givenName
         }).save(); //we already have a record with given profile.id
       }
 

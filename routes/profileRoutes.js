@@ -12,8 +12,8 @@ module.exports = app => {
     const {
       googleId,
       email,
-      givenName,
-      familyName,
+      username,
+      password,
       credits,
       identityNumber,
       registrationAddress,
@@ -34,8 +34,8 @@ module.exports = app => {
     var profife = {
       googleId: googleId,
       email: email,
-      givenName: givenName,
-      familyName: familyName,
+      username: username,
+      password: password,
       credits: credits,
       billing: billing,
       minecraftUsername: minecraftUsername

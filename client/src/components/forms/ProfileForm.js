@@ -8,23 +8,19 @@ import * as Yup from "yup";
 class ProfileForm extends Component {
   getInitialValues() {
     var initialValuesMap = {
-      givenName: "",
-      familyName: "",
+      username: "",
       email: ""
     };
 
     if (this.props.formValues && this.props.auth) {
       initialValuesMap = {
-        givenName:
-          this.props.formValues.givenName || this.props.auth.givenName || "",
-        familyName:
-          this.props.formValues.familyName || this.props.auth.familyName || "",
+        username:
+          this.props.formValues.username || this.props.auth.username || "",
         email: this.props.formValues.email || this.props.auth.email || ""
       };
     } else {
       initialValuesMap = {
-        givenName: this.props.auth.givenName || "",
-        familyName: this.props.auth.familyName || "",
+        username: this.props.auth.username || "",
         email: this.props.auth.email || ""
       };
     }
@@ -58,14 +54,10 @@ class ProfileForm extends Component {
             className="col-6"
             initialValues={this.getInitialValues()}
             validationSchema={Yup.object().shape({
-              givenName: Yup.string()
+              username: Yup.string()
                 .min(2, "min 2 characters")
                 .max(25, "max 25 characters")
                 .required("Name is required"),
-              familyName: Yup.string()
-                .min(2, "min 2 characters")
-                .max(25, "max 25 characters")
-                .required("Surname is required"),
               email: Yup.string()
                 .email("Email is invalid")
                 .required("Email is required")
@@ -76,41 +68,21 @@ class ProfileForm extends Component {
             render={({ errors, status, touched }) => (
               <Form className="d-block mx-auto px-2">
                 <div className="form-row">
-                  <div className="form-group col" key="givenName">
-                    <label htmlFor="givenName">Name</label>
+                  <div className="form-group col" key="username">
+                    <label htmlFor="username">Name</label>
                     <Field
-                      name="givenName"
+                      name="username"
                       type="text"
                       className={
                         "form-control" +
-                        (errors.givenName && touched.givenName
+                        (errors.username && touched.username
                           ? " is-invalid"
                           : "")
                       }
-                      placeholder="Given Name"
+                      placeholder="Username"
                     />
                     <ErrorMessage
-                      name="givenName"
-                      className="invalid-feedback"
-                      render={msg => <div className="text-danger">{msg}</div>}
-                    />
-                  </div>
-
-                  <div className="form-group col" key="familyName">
-                    <label htmlFor="familyName">Surname</label>
-                    <Field
-                      name="familyName"
-                      type="text"
-                      className={
-                        "form-control" +
-                        (errors.familyName && touched.familyName
-                          ? " is-invalid"
-                          : "")
-                      }
-                      placeholder="Family Name"
-                    />
-                    <ErrorMessage
-                      name="familyName"
+                      name="username"
                       className="invalid-feedback"
                       render={msg => <div className="text-danger">{msg}</div>}
                     />

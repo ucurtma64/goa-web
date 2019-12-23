@@ -10,7 +10,7 @@ class PostForm extends Component {
     this.props.notifyModal(true, "secondary", "Please wait");
 
     const post = Object.assign(fields, {
-      author: this.props.auth.givenName + " " + this.props.auth.familyName
+      author: this.props.auth.username
     });
 
     await axios.post("/api/posts", post);
@@ -117,7 +117,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(
-  mapStateToProps,
-  { notifyModal }
-)(PostForm);
+export default connect(mapStateToProps, { notifyModal })(PostForm);
