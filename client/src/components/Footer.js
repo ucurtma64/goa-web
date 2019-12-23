@@ -5,17 +5,17 @@ class Footer extends Component {
     return (
       <footer className="footer mt-4 container-fluid">
         <div className="row">
-          <div className="col text-left">
-            <a className="mr-3" href="mailto:lixakyildiz@gmail.com">
+          <small className="col text-left">
+            <a className="mr-2" href="mailto:lixakyildiz@gmail.com">
               Business Contact
             </a>
             <a className="" href="#">
               Back to top
             </a>
-          </div>
-          <div className="col text-right">
+          </small>
+          <small className="col text-right">
             <p className="">&copy; Copyright 2019, Guardians of Adelia</p>
-          </div>
+          </small>
         </div>
       </footer>
     );

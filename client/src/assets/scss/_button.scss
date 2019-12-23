@@ -1,17 +1,15 @@
 .btn {
-  background: #564943;
-  border: 1.5px solid #3a302c;
-  box-sizing: border-box;
-  border-radius: 4px;
-}
-
-.btn:hover {
   background: #64554f;
   border-color: #3a302c;
 }
 
-.btn:focus,
-.btn.focus {
+.btn:hover {
+  background: #564943;
+  border-color: #3a302c;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
   box-shadow: 0 0 0 0.2rem #3a302c;
 }
 

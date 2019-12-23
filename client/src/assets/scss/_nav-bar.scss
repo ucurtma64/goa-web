@@ -1,0 +1,55 @@
+.navbar {
+  background: linear-gradient(180deg, #5e4e47 0%, #726058 100%);
+  box-shadow: 0 0.2rem 1.2rem #1d1916;
+  border-bottom: 0.2rem solid #3f3530;
+}
+
+.navbar img {
+  max-height: 32px;
+}
+
+.nav-item,
+.nav-tabs .nav-link {
+  background: #726058;
+  border: 1.5px solid #3f3530;
+  box-sizing: border-box;
+  border-radius: 3px;
+  margin: 5px;
+}
+
+.nav-item.active,
+.nav-tabs .nav-link.active {
+  border-width: 2px;
+  border-color: #3f3530;
+  background: #5e4e47;
+  color: #fff;
+}
+
+.nav-item > .nav-link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.navbar ul a .active {
+  opacity: 0.5;
+}
+
+@media only screen and (min-width: 992px) {
+  .navbar-brand {
+    position: absolute;
+    transform: translate(-50%);
+    left: 50%;
+  }
+
+  .navbar-left-buttons {
+    margin-left: 4rem;
+  }
+
+  .navbar-right-buttons {
+    margin-right: 4rem;
+  }
+}

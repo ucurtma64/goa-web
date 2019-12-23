@@ -1,6 +1,6 @@
 .card {
-  border: 4px solid #3a312c;
-  box-shadow: 0 0.6rem 1rem 0 rgba(0, 0, 0, 0.4);
+  border: none;
+  box-shadow: 0 0.6rem 1rem 0 rgba(0, 0, 0, 0.24);
   background: #736159;
   .card-img-top {
     height: 15vw;
@@ -11,10 +11,5 @@
     padding-top: 1.2rem;
     height: 14vh;
     object-fit: contain;
-  }
-
-  .card-footer {
-    border-top: 2px solid #3a312c;
-    background: #65554e;
   }
 }

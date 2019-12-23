@@ -1,16 +1,38 @@
-.page-item.active .page-link {
-  background-color: #ffc107;
-  border: none;
+.pagination > li > a,
+.pagination > li > span {
+  background-color: transparent;
+  border: 2px solid #e6e6e6;
+  border-radius: 20px;
+  color: #e6e6e6;
+  height: 36px;
+  margin: 0 2px;
+  min-width: 36px;
+  padding: 8px 12px;
+  font-weight: 600;
 }
 
-.page-link:focus {
+.pagination > li > a:hover,
+.pagination > li > a:focus,
+.pagination > li > a:active {
+  background-color: #a6a6a6;
+  border-color: #e6e6e6;
+  color: #3a312c;
+}
+
+.page-item.active .page-link {
+  background-color: #e6e6e6;
+  color: #3a312c;
+  border-color: #e6e6e6;
+}
+
+.pagination .page-link {
   box-shadow: none;
 }
 
-.page-link:hover {
-  color: #404040;
-}
-
-.page-link {
-  color: #3f3530;
+.page-item.disabled .page-link {
+  color: #a6a6a6;
+  pointer-events: none;
+  cursor: auto;
+  background-color: transparent;
+  border-color: #a6a6a6;
 }

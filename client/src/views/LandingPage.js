@@ -69,7 +69,7 @@ class LandingPage extends Component {
           </div>
         </div>
 
-        <div className="container news">
+        <div className="container mt-4">
           <PostsHome />
         </div>
       </div>

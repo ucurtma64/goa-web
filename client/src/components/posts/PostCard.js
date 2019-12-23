@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencilAlt, faCalendar } from "@fortawesome/free-solid-svg-icons";
 
 class PostCard extends Component {
   renderImage() {
@@ -28,19 +30,24 @@ class PostCard extends Component {
         {this.renderImage()}
 
         <div className="card-body">
-          <h2 className="card-title text-capitalize">
-            <u>{this.props.title}</u>
-          </h2>
-          <p className="card-text">{this.renderTextPreview()}</p>
-        </div>
-        <div className="card-footer row w-100 mx-auto">
-          <div className="col text-left">
-            Posted on {new Date(this.props.date).toLocaleDateString()} by{" "}
-            {this.props.author}
+          <div className="card-title text-capitalize">
+            <h3>
+              <u>
+                <Link to={postLink}>{this.props.title}</Link>
+              </u>
+            </h3>
+            <small>
+              <a className="mx-2">
+                <FontAwesomeIcon className="mr-2" icon={faPencilAlt} />
+                {this.props.author}
+              </a>
+              <a className="mx-2">
+                <FontAwesomeIcon className="mr-2" icon={faCalendar} />
+                {this.props.date}
+              </a>
+            </small>
           </div>
-          <Link to={postLink} className="col text-right">
-            Read More &rarr;
-          </Link>
+          <p className="card-text mt-4 ml-2">{this.renderTextPreview()}</p>
         </div>
       </div>
     );
