@@ -13,7 +13,7 @@ class StorePage extends Component {
     this.state = Object.assign({ formStage: 0 }, { formValues });
   }
 
-  renderContent() {
+  renderCurrentStage() {
     if (this.state.formStage === 2) {
       return (
         <ProductConfirmation
@@ -61,6 +61,10 @@ class StorePage extends Component {
         }}
       />
     );
+  }
+
+  renderContent() {
+    return <div className="store">{this.renderCurrentStage()}</div>;
   }
 
   gotoNextStage() {

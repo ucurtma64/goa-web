@@ -17,12 +17,18 @@
   margin: 5px;
 }
 
+.nav-tabs .nav-link:hover,
+.nav-tabs .nav-link:focus {
+  border-color: #e2ded3;
+  color: #e2ded3;
+}
+
 .nav-item.active,
 .nav-tabs .nav-link.active {
   border-width: 2px;
   border-color: #3f3530;
   background: #5e4e47;
-  color: #fff;
+  color: #e2ded3;
 }
 
 .nav-item > .nav-link {
@@ -51,5 +57,27 @@
 
   .navbar-right-buttons {
     margin-right: 4rem;
+  }
+}
+
+// Store
+
+.store {
+  .nav-item.active,
+  .nav-tabs .nav-link.active {
+    background: #4e413b;
+    border-color: #e2ded3;
+    color: #e2ded3;
+  }
+
+  .nav-tabs .nav-link:hover,
+  .nav-tabs .nav-link:focus {
+    border-color: #e2ded3;
+    color: #e2ded3;
+  }
+
+  .nav-tabs .nav-link.active:hover,
+  .nav-tabs .nav-link.active:focus {
+    color: #e2ded3;
   }
 }

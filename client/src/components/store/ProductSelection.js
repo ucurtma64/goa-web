@@ -63,7 +63,11 @@ class ProductSelection extends Component {
             role="tabpanel"
             aria-labelledby="nav-ranks-tab"
           >
-            <ProductsRanks />
+            <ProductsRanks
+              onFormSubmit={productSelection =>
+                this.props.onFormSubmit(productSelection)
+              }
+            />
           </div>
           <div
             class="tab-pane fade"
@@ -71,7 +75,11 @@ class ProductSelection extends Component {
             role="tabpanel"
             aria-labelledby="nav-skins-tab"
           >
-            <ProductsSkins />
+            <ProductsSkins
+              onFormSubmit={productSelection =>
+                this.props.onFormSubmit(productSelection)
+              }
+            />
           </div>
           <div
             class="tab-pane fade"
@@ -79,7 +87,11 @@ class ProductSelection extends Component {
             role="tabpanel"
             aria-labelledby="nav-chests-tab"
           >
-            <ProductsChests />
+            <ProductsChests
+              onFormSubmit={productSelection =>
+                this.props.onFormSubmit(productSelection)
+              }
+            />
           </div>
           <div
             class="tab-pane fade"
@@ -87,7 +99,11 @@ class ProductSelection extends Component {
             role="tabpanel"
             aria-labelledby="nav-boosts-tab"
           >
-            <ProductsBoosts />
+            <ProductsBoosts
+              onFormSubmit={productSelection =>
+                this.props.onFormSubmit(productSelection)
+              }
+            />
           </div>
         </div>
       </section>
