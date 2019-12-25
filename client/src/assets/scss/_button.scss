@@ -7,14 +7,14 @@
 }
 
 .btn:hover {
-  background: #ccbe99;
+  background: #c2b089;
   border-color: #4e413b;
   color: #4e413b;
 }
 
 .btn-primary:focus,
 .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem #ccbe99;
+  box-shadow: 0 0 0 0.2rem #c2b089;
 }
 
 .btn:not(:disabled):not(.disabled):active,
@@ -28,7 +28,7 @@
 .btn:not(:disabled):not(.disabled):active:focus,
 .btn:not(:disabled):not(.disabled).active:focus,
 .show > .btn.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem #ccbe99;
+  box-shadow: 0 0 0 0.2rem #c2b089;
 }
 
 .landing-btn {
@@ -44,4 +44,5 @@
 
 .landing-btn:hover {
   border-color: #746058;
+  background: linear-gradient(180deg, #66544d 0%, #493c37 100%);
 }
