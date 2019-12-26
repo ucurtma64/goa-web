@@ -1,49 +1,41 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import $ from "jquery";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { notifyModal, fetchUser } from "../../actions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { fetchUser } from "actions";
+import $ from "jquery";
 
-class LoginModal extends Component {
+class LoginPage extends Component {
+  state = {
+    loginError: ""
+  };
+
   async onFormSubmit(fields) {
     try {
       const res = await axios.post("/auth/local", fields);
-      console.log(4);
-      console.log(res.data);
-      this.props.history.push("/");
-      this.hideLoginModal();
-    } catch (error) {
-      this.props.history.push("/login");
-      this.hideLoginModal();
-      // Error 😨
-      if (error.response) {
-        /*
-         * The request was made and the server responded with a
-         * status code that falls out of the range of 2xx
-         */
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request) {
-        /*
-         * The request was made but no response was received, `error.request`
-         * is an instance of XMLHttpRequest in the browser and an instance
-         * of http.ClientRequest in Node.js
-         */
-        console.log(error.request);
-      } else {
-        // Something happened in setting up the request and triggered an Error
-        console.log("Error", error.message);
-      }
-      console.log(error);
-    }
 
-    this.props.fetchUser();
+      this.hideLoginModal();
+
+      console.log("1");
+      console.log(res.data.message);
+      console.log(res.data);
+      this.setState({ loginError: res.data.message });
+      if (res.data.success) {
+        this.props.fetchUser();
+        this.props.history.push("/");
+      } else {
+        this.props.history.push("/login");
+      }
+    } catch (error) {
+      console.log("2");
+      console.log(error.response.data);
+      this.setState({ loginError: error.response.data.message });
+      this.hideLoginModal();
+
+      this.props.history.push("/login");
+    }
   }
 
   hideLoginModal() {
@@ -52,44 +44,6 @@ class LoginModal extends Component {
 
   render() {
     return (
-      <div
-        class="modal fade"
-        id="loginModal"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="loginModalLabel"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="loginModalLabel">
-                Login
-              </h5>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="modal"
-                aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body pb-5">{this.renderLoginForm()}</div>
-            <div class="modal-footer">
-              <a className="nav-link login-google" href="/auth/google">
-                <FontAwesomeIcon className="mr-2" icon={faGoogle} />
-                Login with google
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  renderLoginForm() {
-    return (
       <Formik
         className="col"
         initialValues={{}}
@@ -97,11 +51,14 @@ class LoginModal extends Component {
           username: Yup.string().required("username is required"),
           password: Yup.string().required("password is required")
         })}
-        onSubmit={fields => {
-          this.onFormSubmit(fields);
+        onSubmit={async (fields, { setSubmitting }) => {
+          await this.onFormSubmit(fields);
+
+          setSubmitting(false);
         }}
-        render={({ errors, status, touched }) => (
+        render={({ errors, status, touched, isSubmitting }) => (
           <Form className="d-block mx-auto px-2">
+            <span className="text-danger">{this.state.loginError}</span>
             <div className="form-row">
               <div className="form-group col" key="title">
                 <label htmlFor="username">Username</label>
@@ -147,6 +104,7 @@ class LoginModal extends Component {
                 className="btn btn-primary float-right"
                 variant="primary"
                 type="submit"
+                disabled={isSubmitting}
               >
                 Login
               </button>
@@ -162,6 +120,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, { notifyModal, fetchUser })(
-  withRouter(LoginModal)
-);
+export default connect(mapStateToProps, { fetchUser })(withRouter(LoginPage));

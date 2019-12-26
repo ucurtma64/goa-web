@@ -15,7 +15,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
 import $ from "jquery";
-import LoginModal from "./forms/LoginModal";
+import LoginModal from "./LoginModal";
 
 class Header extends Component {
   state = {

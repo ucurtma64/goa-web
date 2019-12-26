@@ -6,6 +6,14 @@
   color: #e2ded3;
 }
 
+.btn.disabled,
+.btn:disabled {
+  color: #fff;
+  background-color: #fff;
+  border-color: #fff;
+  border-width: 4px;
+}
+
 .btn:hover {
   background: #c2b089;
   border-color: #4e413b;

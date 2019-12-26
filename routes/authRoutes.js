@@ -4,20 +4,21 @@ module.exports = app => {
   app.post("/auth/local", function(req, res, next) {
     passport.authenticate("local", function(err, user, info) {
       if (err) {
-        console.log("1");
         return next(err);
       }
       if (!user) {
-        console.log("2");
-        return res.redirect("/login");
+        return res.status(400).json({
+          success: false,
+          message: "Invalid e-mail address or password."
+        });
       }
       req.logIn(user, function(err) {
         if (err) {
-          console.log("3");
           return next(err);
         }
-        console.log("4");
-        return res.redirect("/users/" + user.username);
+        return res.status(200).json({
+          success: true
+        });
       });
     })(req, res, next);
   });

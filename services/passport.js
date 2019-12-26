@@ -19,21 +19,15 @@ passport.deserializeUser((id, done) => {
 
 passport.use(
   new LocalStrategy(function(username, password, done) {
-    console.log(username);
-    console.log(password);
     User.findOne({ username: username }, function(err, user) {
       if (err) {
-        return done(err, { message: "invalid e-mail address or password" });
+        return done(err);
       }
       if (!user) {
-        return done(null, false, {
-          message: "invalid e-mail address or password"
-        });
+        return done(null, false);
       }
       if (!user.verifyPassword(password)) {
-        return done(null, false, {
-          message: "invalid e-mail address or password"
-        });
+        return done(null, false);
       }
       return done(null, user);
     });
