@@ -209,11 +209,7 @@ class CardForm extends Component {
                   </div>
                 </div>
 
-                <div
-                  className="form-group "
-                  key="buttons"
-                  style={{ margin: "2rem" }}
-                >
+                <div className="" key="buttons" style={{ margin: "2rem" }}>
                   <button
                     className="btn btn-primary float-right"
                     variant="primary"

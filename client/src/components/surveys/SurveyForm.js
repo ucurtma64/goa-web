@@ -109,11 +109,7 @@ class SurveyForm extends Component {
               />
             </div>
 
-            <div
-              className="form-group "
-              key="buttons"
-              style={{ margin: "2rem" }}
-            >
+            <div className="" key="buttons" style={{ margin: "2rem" }}>
               <button
                 className="btn btn-primary float-right"
                 variant="primary"

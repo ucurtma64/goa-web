@@ -107,7 +107,7 @@ class ProfileForm extends Component {
                   />
                 </div>
 
-                <div className="form-group " key="buttons">
+                <div className="" key="buttons">
                   {this.renderBackButton()}
 
                   <button

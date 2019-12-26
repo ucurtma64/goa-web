@@ -176,7 +176,7 @@ class BillingForm extends Component {
                   </div>
                 </div>
 
-                <div className="form-group " key="buttons">
+                <div className="" key="buttons">
                   {this.renderBackButton()}
 
                   <button

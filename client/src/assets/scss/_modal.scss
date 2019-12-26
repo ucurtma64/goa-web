@@ -4,7 +4,7 @@
   flex-direction: column;
   width: 100%;
   pointer-events: auto;
-  background-color: #e2ded3;
+  background-color: #d7d1c1;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;
@@ -12,20 +12,12 @@
   color: #3a312c;
 
   form {
-    background-color: #e2ded3;
-    border-color: #e2ded3;
+    background-color: #d7d1c1;
+    border-color: #d7d1c1;
 
     .text-danger {
       display: none;
     }
-  }
-
-  .form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #493c37;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(87, 66, 37, 0.25);
   }
 }
 
@@ -44,4 +36,9 @@
 
 .close:hover {
   color: #3a312c;
+}
+
+.modal-header,
+.modal-footer {
+  border-bottom-color: #e2ded3;
 }

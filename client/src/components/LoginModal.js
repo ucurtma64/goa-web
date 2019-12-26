@@ -36,7 +36,7 @@ class LoginModal extends Component {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div class="modal-body pb-5">
+            <div class="modal-body pb-4">
               <LoginForm></LoginForm>
             </div>
             <div class="modal-footer">

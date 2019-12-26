@@ -99,9 +99,9 @@ class LoginPage extends Component {
               </div>
             </div>
 
-            <div className="form-group " key="buttons">
+            <div className="text-right" key="buttons">
               <button
-                className="btn btn-primary float-right"
+                className="btn btn-primary"
                 variant="primary"
                 type="submit"
                 disabled={isSubmitting}
