@@ -1,5 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
 
@@ -7,7 +8,7 @@ const User = mongoose.model("users");
 
 passport.serializeUser((user, done) => {
   //user is the user in done() function
-  done(null, user.id); //this user.id is not googleID, it is the id of user assigned by mongo.
+  done(null, user._id); //this user.id is not googleID, it is the id of user assigned by mongo.
 });
 
 passport.deserializeUser((id, done) => {
@@ -15,6 +16,29 @@ passport.deserializeUser((id, done) => {
     done(null, user);
   });
 });
+
+passport.use(
+  new LocalStrategy(function(username, password, done) {
+    console.log(username);
+    console.log(password);
+    User.findOne({ username: username }, function(err, user) {
+      if (err) {
+        return done(err, { message: "invalid e-mail address or password" });
+      }
+      if (!user) {
+        return done(null, false, {
+          message: "invalid e-mail address or password"
+        });
+      }
+      if (!user.verifyPassword(password)) {
+        return done(null, false, {
+          message: "invalid e-mail address or password"
+        });
+      }
+      return done(null, user);
+    });
+  })
+);
 
 passport.use(
   new GoogleStrategy(

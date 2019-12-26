@@ -1,0 +1,47 @@
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-color: #e2ded3;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+  color: #3a312c;
+
+  form {
+    background-color: #e2ded3;
+    border-color: #e2ded3;
+
+    .text-danger {
+      display: none;
+    }
+  }
+
+  .form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #493c37;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(87, 66, 37, 0.25);
+  }
+}
+
+.login-google {
+  background: #dd4b39;
+  color: #e2ded3;
+}
+
+.close {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #3a312c;
+  text-shadow: 0 1px 0 #3a312c;
+}
+
+.close:hover {
+  color: #3a312c;
+}

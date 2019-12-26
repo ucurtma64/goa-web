@@ -13,4 +13,8 @@ const userSchema = new Schema({
   minecraftUsername: String
 });
 
+userSchema.methods.verifyPassword = function(password) {
+  return this.password == password;
+};
+
 mongoose.model("users", userSchema);

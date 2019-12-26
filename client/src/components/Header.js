@@ -10,10 +10,12 @@ import {
   faCoins,
   faUser,
   faSignOutAlt,
-  faTools
+  faTools,
+  faSignInAlt
 } from "@fortawesome/free-solid-svg-icons";
-import { faGoogle, faWikipediaW } from "@fortawesome/free-brands-svg-icons";
+import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
 import $ from "jquery";
+import LoginModal from "./forms/LoginModal";
 
 class Header extends Component {
   state = {
@@ -76,6 +78,10 @@ class Header extends Component {
     return header;
   }
 
+  showLoginModal() {
+    $("#loginModal").modal("show");
+  }
+
   renderButtonsOnRight() {
     switch (this.props.auth) {
       case null:
@@ -83,9 +89,13 @@ class Header extends Component {
       case false:
         return (
           <li className="nav-item" key="5">
-            <a className="nav-link text-light" href="/auth/google">
-              <FontAwesomeIcon className="mr-2" icon={faGoogle} />
-              Login with google
+            <a
+              className="nav-link text-light"
+              href="#"
+              onClick={this.showLoginModal}
+            >
+              <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />
+              Login
             </a>
           </li>
         );
@@ -177,6 +187,7 @@ class Header extends Component {
             {this.renderButtonsOnRight()}
           </ul>
         </div>
+        <LoginModal />
       </nav>
     );
   }
