@@ -48,7 +48,9 @@ class LoginPage extends Component {
         className="col"
         initialValues={{}}
         validationSchema={Yup.object().shape({
-          username: Yup.string().required("username is required"),
+          emailOrUsername: Yup.string().required(
+            "Email or username is required"
+          ),
           password: Yup.string().required("password is required")
         })}
         onSubmit={async (fields, { setSubmitting }) => {
@@ -61,18 +63,20 @@ class LoginPage extends Component {
             <span className="text-danger">{this.state.loginError}</span>
             <div className="form-row">
               <div className="form-group col" key="title">
-                <label htmlFor="username">Username</label>
+                <label htmlFor="emailOrUsername">Email or username</label>
                 <Field
-                  name="username"
+                  name="emailOrUsername"
                   type="text"
                   className={
                     "form-control" +
-                    (errors.username && touched.username ? " is-invalid" : "")
+                    (errors.emailOrUsername && touched.emailOrUsername
+                      ? " is-invalid"
+                      : "")
                   }
-                  placeholder="Username"
+                  placeholder="Email or username"
                 />
                 <ErrorMessage
-                  name="username"
+                  name="emailOrUsername"
                   className="invalid-feedback"
                   render={msg => <div className="text-danger">{msg}</div>}
                 />
