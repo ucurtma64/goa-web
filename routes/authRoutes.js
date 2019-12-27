@@ -9,7 +9,7 @@ module.exports = app => {
       if (!user) {
         return res.status(400).json({
           success: false,
-          message: "Invalid e-mail address or password."
+          message: info.message
         });
       }
       req.logIn(user, function(err) {

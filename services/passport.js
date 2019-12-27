@@ -33,12 +33,14 @@ passport.use(
             return done(err);
           }
           if (!user) {
-            return done(null, false);
+            return done(null, false, {
+              message: "Invalid username or email address."
+            });
           }
           if (!user.verifyPassword(password)) {
-            return done(null, false);
+            return done(null, false, { message: "Wrong password." });
           }
-          return done(null, user);
+          return done(null, user, { message: "Success!" });
         }
       );
     }
