@@ -4,7 +4,6 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
-const flash = require("connect-flash");
 require("./models/User"); //add use schema before using it in ./services/passport.js
 require("./models/Order");
 require("./models/CreditSelection");
@@ -36,7 +35,6 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash());
 
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
