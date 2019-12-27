@@ -17,6 +17,7 @@ import ProfilePage from "./views/ProfilePage";
 import AddCreditPage from "./views/credits/AddCreditPage";
 import AddCreditCallbackPage from "./views/credits/AddCreditCallbackPage";
 import SinglePostContentPage from "./views/SinglePostContentPage";
+import MissingPage from "./views/MissingPage";
 
 //utils
 import NotificationModal from "./components/NotificationModal";
@@ -29,9 +30,9 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Switch>
-          <div className="main-container">
-            <Header />
+        <div className="main-container">
+          <Header />
+          <Switch>
             <Route exact path="/admin" component={AdminDashboard} />
             <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={LoginPage} />
@@ -44,11 +45,12 @@ class App extends Component {
               component={AddCreditCallbackPage}
             />
             <Route path="/post" component={SinglePostContentPage} />
-            <NotificationModal />
-          </div>
+            <Route component={MissingPage} />
+          </Switch>
+          <NotificationModal />
+        </div>
 
-          <Footer />
-        </Switch>
+        <Footer />
       </BrowserRouter>
     );
   }
