@@ -91,7 +91,7 @@ class Header extends Component {
           <li className="nav-item" key="5">
             <a
               className="nav-link text-light"
-              href="#"
+              href="#loginModal"
               onClick={this.showLoginModal}
             >
               <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />
@@ -158,7 +158,7 @@ class Header extends Component {
     console.log(this.props.auth);
 
     return (
-      <nav className="navbar navbar-expand-lg navbar-light mx-auto">
+      <nav id="header" className="navbar navbar-expand-lg navbar-light mx-auto">
         <Link
           className="navbar-brand"
           to={"/"}

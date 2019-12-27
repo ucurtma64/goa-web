@@ -37,14 +37,14 @@ class PostCard extends Component {
               </u>
             </h3>
             <small>
-              <a className="mx-2">
+              <span className="mx-2">
                 <FontAwesomeIcon className="mr-2" icon={faPencilAlt} />
                 {this.props.author}
-              </a>
-              <a className="mx-2">
+              </span>
+              <span className="mx-2">
                 <FontAwesomeIcon className="mr-2" icon={faCalendar} />
                 {this.props.date}
-              </a>
+              </span>
             </small>
           </div>
           <p className="card-text mt-4 ml-2">{this.renderTextPreview()}</p>

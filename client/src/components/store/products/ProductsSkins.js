@@ -11,9 +11,9 @@ class ProductsSkins extends Component {
     return (
       <section className="">
         <nav>
-          <div class="nav nav-tabs" id="nav-tab-shop" role="tablist">
+          <div className="nav nav-tabs" id="nav-tab-shop" role="tablist">
             <a
-              class="nav-item nav-link active mx-auto"
+              className="nav-item nav-link active mx-auto"
               id="nav-weaponskins-tab"
               data-toggle="tab"
               href="#nav-weaponskins"
@@ -24,7 +24,7 @@ class ProductsSkins extends Component {
               Weapon Skins
             </a>
             <a
-              class="nav-item nav-link mx-auto"
+              className="nav-item nav-link mx-auto"
               id="nav-helmetskins-tab"
               data-toggle="tab"
               href="#nav-helmetskins"
@@ -35,7 +35,7 @@ class ProductsSkins extends Component {
               Helmet Skins
             </a>
             <a
-              class="nav-item nav-link mx-auto"
+              className="nav-item nav-link mx-auto"
               id="nav-petskins-tab"
               data-toggle="tab"
               href="#nav-petskins"
@@ -47,9 +47,9 @@ class ProductsSkins extends Component {
             </a>
           </div>
         </nav>
-        <div class="tab-content mt-4" id="nav-tabContent">
+        <div className="tab-content mt-4" id="nav-tabContent">
           <div
-            class="tab-pane fade show active"
+            className="tab-pane fade show active"
             id="nav-weaponskins"
             role="tabpanel"
             aria-labelledby="nav-weaponskins-tab"
@@ -57,7 +57,7 @@ class ProductsSkins extends Component {
             {this.renderWeapons()}
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="nav-helmetskins"
             role="tabpanel"
             aria-labelledby="nav-helmetskins-tab"
@@ -65,7 +65,7 @@ class ProductsSkins extends Component {
             {this.renderHeadgear()}
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="nav-petskins"
             role="tabpanel"
             aria-labelledby="nav-petskins-tab"

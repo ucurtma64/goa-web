@@ -46,7 +46,7 @@ class LoginPage extends Component {
     return (
       <Formik
         className="col"
-        initialValues={{}}
+        initialValues={{ emailOrUsername: "", password: "" }}
         validationSchema={Yup.object().shape({
           emailOrUsername: Yup.string().required(
             "Email or username is required"

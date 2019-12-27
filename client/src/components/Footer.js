@@ -9,7 +9,7 @@ class Footer extends Component {
             <a className="mr-2" href="mailto:lixakyildiz@gmail.com">
               Business Contact
             </a>
-            <a className="" href="#">
+            <a className="" href="#header">
               Back to top
             </a>
           </small>

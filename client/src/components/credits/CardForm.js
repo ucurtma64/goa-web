@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuestionCircle, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import $ from "jquery";
 import axios from "axios";
 import CreditSelectionCard from "./CreditSelectionCard";

@@ -9,9 +9,9 @@ class ProductSelection extends Component {
     return (
       <section className="container py-5">
         <nav>
-          <div class="nav nav-tabs" id="nav-tab-shop" role="tablist">
+          <div className="nav nav-tabs" id="nav-tab-shop" role="tablist">
             <a
-              class="nav-item nav-link active mx-auto"
+              className="nav-item nav-link active mx-auto"
               id="nav-ranks-tab"
               data-toggle="tab"
               href="#nav-ranks"
@@ -22,7 +22,7 @@ class ProductSelection extends Component {
               Ranks
             </a>
             <a
-              class="nav-item nav-link mx-auto"
+              className="nav-item nav-link mx-auto"
               id="nav-skins-tab"
               data-toggle="tab"
               href="#nav-skins"
@@ -33,7 +33,7 @@ class ProductSelection extends Component {
               Skins
             </a>
             <a
-              class="nav-item nav-link mx-auto"
+              className="nav-item nav-link mx-auto"
               id="nav-chests-tab"
               data-toggle="tab"
               href="#nav-chests"
@@ -44,7 +44,7 @@ class ProductSelection extends Component {
               Chests
             </a>
             <a
-              class="nav-item nav-link mx-auto"
+              className="nav-item nav-link mx-auto"
               id="nav-boosts-tab"
               data-toggle="tab"
               href="#nav-boosts"
@@ -56,9 +56,9 @@ class ProductSelection extends Component {
             </a>
           </div>
         </nav>
-        <div class="tab-content mt-4" id="nav-tabContent">
+        <div className="tab-content mt-4" id="nav-tabContent">
           <div
-            class="tab-pane fade show active"
+            className="tab-pane fade show active"
             id="nav-ranks"
             role="tabpanel"
             aria-labelledby="nav-ranks-tab"
@@ -70,7 +70,7 @@ class ProductSelection extends Component {
             />
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="nav-skins"
             role="tabpanel"
             aria-labelledby="nav-skins-tab"
@@ -82,7 +82,7 @@ class ProductSelection extends Component {
             />
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="nav-chests"
             role="tabpanel"
             aria-labelledby="nav-chests-tab"
@@ -94,7 +94,7 @@ class ProductSelection extends Component {
             />
           </div>
           <div
-            class="tab-pane fade"
+            className="tab-pane fade"
             id="nav-boosts"
             role="tabpanel"
             aria-labelledby="nav-boosts-tab"
