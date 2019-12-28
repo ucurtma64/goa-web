@@ -56,7 +56,9 @@ class LoginPage extends Component {
         onSubmit={async (fields, { setSubmitting }) => {
           await this.onFormSubmit(fields);
 
-          setSubmitting(false);
+          setTimeout(() => {
+            setSubmitting(false);
+          }, 2000);
         }}
         render={({ errors, status, touched, isSubmitting }) => (
           <Form className="d-block mx-auto px-2">

@@ -10,11 +10,16 @@ const userSchema = new Schema({
   credits: { type: Number, default: 0 },
   billing: BillingSchema,
   role: { type: String, default: "user" },
-  minecraftUsername: String
+  minecraftUsername: String,
+  verified: Boolean
 });
 
 userSchema.methods.verifyPassword = function(password) {
   return this.password == password;
+};
+
+userSchema.methods.isUserVerified = function() {
+  return this.verified;
 };
 
 mongoose.model("users", userSchema);

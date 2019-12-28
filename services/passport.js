@@ -40,6 +40,11 @@ passport.use(
           if (!user.verifyPassword(password)) {
             return done(null, false, { message: "Wrong password." });
           }
+          if (!user.isUserVerified()) {
+            return done(null, false, {
+              message: "Please verify your account."
+            });
+          }
           return done(null, user, { message: "Success!" });
         }
       );
@@ -70,7 +75,8 @@ passport.use(
         user = await new User({
           googleId: profile.id,
           email: registerEmail,
-          username: profile.name.givenName
+          username: profile.name.givenName,
+          verified: true
         }).save(); //we already have a record with given profile.id
       }
 

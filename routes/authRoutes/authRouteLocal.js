@@ -23,28 +23,11 @@ module.exports = app => {
     })(req, res, next);
   });
 
-  app.get(
-    "/auth/google",
-    passport.authenticate("google", {
-      scope: ["profile", "email"],
-      prompt: "select_account"
-    })
-  );
-
-  app.get(
-    "/auth/google/callback",
-    passport.authenticate("google"),
-    (req, res) => {
-      res.redirect("/");
-    }
-  );
-
-  app.get("/api/logout", (req, res) => {
-    req.logout();
-    res.redirect("/");
+  app.post("/auth/local/register", (req, res) => {
+    res.send("Thanks for register!");
   });
 
-  app.get("/api/current_user", (req, res) => {
-    res.send(req.user);
+  app.get("/auth/local/verify/:userId", (req, res) => {
+    res.send("Thanks for verify!");
   });
 };

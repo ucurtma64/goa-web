@@ -1,8 +1,7 @@
 const sendgrid = require("@sendgrid/mail");
-const helper = sendgrid.mail;
 const keys = require("../config/keys");
 
-class Mailer {
+class SendgridMultiple {
   constructor({ subject, recipients }, content) {
     sendgrid.setApiKey(keys.sendgridKey);
 
@@ -10,7 +9,7 @@ class Mailer {
 
     this.msg = {
       to: emails,
-      from: "no-reply@emaily.com",
+      from: "no-reply@guardiansofadelia.com",
       subject: subject,
       text: "Hello plain world!",
       html: content,
@@ -28,11 +27,11 @@ class Mailer {
     };
   }
 
-  async send() {
+  async sendMultiple() {
     const response = await sendgrid.sendMultiple(this.msg);
 
     return response;
   }
 }
 
-module.exports = Mailer;
+module.exports = SendgridMultiple;
