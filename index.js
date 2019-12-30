@@ -4,11 +4,12 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
-require("./models/User"); //add use schema before using it in ./services/passport.js
-require("./models/Order");
 require("./models/CreditSelection");
+require("./models/Order");
 require("./models/Post");
 require("./models/Product");
+require("./models/User"); //add use schema before using it in ./services/passport.js
+require("./models/UserVerify");
 require("./services/passport"); //not assigned to a variable since we need this to run only once
 if (!(process.env.NODE_ENV === "production")) {
   require("./webhooks/ngrok"); //use ngrok in development

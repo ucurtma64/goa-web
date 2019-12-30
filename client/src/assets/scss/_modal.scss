@@ -16,13 +16,17 @@
     border-color: #d7d1c1;
 
     .text-danger {
-      display: none;
+      color: #dd4b39 !important;
     }
   }
 }
 
 .login-google {
   background: #dd4b39;
+  color: #e2ded3;
+}
+
+.login-google:hover {
   color: #e2ded3;
 }
 

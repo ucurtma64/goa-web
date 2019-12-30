@@ -6,6 +6,8 @@ import * as Yup from "yup";
 import axios from "axios";
 import { fetchUser } from "actions";
 import $ from "jquery";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 
 class LoginPage extends Component {
   state = {
@@ -43,81 +45,91 @@ class LoginPage extends Component {
   }
 
   render() {
+    if (this.props.auth) {
+      return <p>You are already logged in</p>;
+    }
     return (
-      <Formik
-        className="col"
-        initialValues={{ emailOrUsername: "", password: "" }}
-        validationSchema={Yup.object().shape({
-          emailOrUsername: Yup.string().required(
-            "Email or username is required"
-          ),
-          password: Yup.string().required("password is required")
-        })}
-        onSubmit={async (fields, { setSubmitting }) => {
-          await this.onFormSubmit(fields);
+      <>
+        <Formik
+          className="col"
+          initialValues={{ emailOrUsername: "", password: "" }}
+          validationSchema={Yup.object().shape({
+            emailOrUsername: Yup.string().required(
+              "Email or username is required"
+            ),
+            password: Yup.string().required("password is required")
+          })}
+          onSubmit={async (fields, { setSubmitting }) => {
+            await this.onFormSubmit(fields);
 
-          setTimeout(() => {
-            setSubmitting(false);
-          }, 2000);
-        }}
-        render={({ errors, status, touched, isSubmitting }) => (
-          <Form className="d-block mx-auto px-2">
-            <span className="text-danger">{this.state.loginError}</span>
-            <div className="form-row">
-              <div className="form-group col" key="title">
-                <label htmlFor="emailOrUsername">Email or username</label>
-                <Field
-                  name="emailOrUsername"
-                  type="text"
-                  className={
-                    "form-control" +
-                    (errors.emailOrUsername && touched.emailOrUsername
-                      ? " is-invalid"
-                      : "")
-                  }
-                  placeholder="Email or username"
-                />
-                <ErrorMessage
-                  name="emailOrUsername"
-                  className="invalid-feedback"
-                  render={msg => <div className="text-danger">{msg}</div>}
-                />
+            setTimeout(() => {
+              setSubmitting(false);
+            }, 2000);
+          }}
+          render={({ errors, status, touched, isSubmitting }) => (
+            <Form className="d-block mx-auto px-2">
+              <span className="text-danger">{this.state.loginError}</span>
+              <div className="form-row">
+                <div className="form-group col" key="title">
+                  <label htmlFor="emailOrUsername">Email or username</label>
+                  <Field
+                    name="emailOrUsername"
+                    type="text"
+                    className={
+                      "form-control" +
+                      (errors.emailOrUsername && touched.emailOrUsername
+                        ? " is-invalid"
+                        : "")
+                    }
+                    placeholder="Email or username"
+                  />
+                  <ErrorMessage
+                    name="emailOrUsername"
+                    className="invalid-feedback"
+                    render={msg => <div className="text-danger">{msg}</div>}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="form-row">
-              <div className="form-group col" key="password">
-                <label htmlFor="password">Password</label>
-                <Field
-                  name="password"
-                  type="password"
-                  className={
-                    "form-control" +
-                    (errors.password && touched.password ? " is-invalid" : "")
-                  }
-                  placeholder="Password"
-                />
-                <ErrorMessage
-                  name="password"
-                  className="invalid-feedback"
-                  render={msg => <div className="text-danger">{msg}</div>}
-                />
+              <div className="form-row">
+                <div className="form-group col" key="password">
+                  <label htmlFor="password">Password</label>
+                  <Field
+                    name="password"
+                    type="password"
+                    className={
+                      "form-control" +
+                      (errors.password && touched.password ? " is-invalid" : "")
+                    }
+                    placeholder="Password"
+                  />
+                  <ErrorMessage
+                    name="password"
+                    className="invalid-feedback"
+                    render={msg => <div className="text-danger">{msg}</div>}
+                  />
+                </div>
               </div>
-            </div>
 
-            <div className="text-right" key="buttons">
-              <button
-                className="btn btn-primary"
-                variant="primary"
-                type="submit"
-                disabled={isSubmitting}
-              >
-                Login
-              </button>
-            </div>
-          </Form>
-        )}
-      />
+              <div className="text-right" key="buttons">
+                <button
+                  className="btn btn-primary"
+                  variant="primary"
+                  type="submit"
+                  disabled={isSubmitting}
+                >
+                  Login
+                </button>
+              </div>
+            </Form>
+          )}
+        />
+        <hr />
+        <a className="col-2 nav-link login-google" href="/auth/google">
+          <FontAwesomeIcon className="mr-2" icon={faGoogle} />
+          Login with google
+        </a>
+      </>
     );
   }
 }

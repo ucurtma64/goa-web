@@ -11,11 +11,13 @@ import {
   faUser,
   faSignOutAlt,
   faTools,
-  faSignInAlt
+  faSignInAlt,
+  faUserPlus
 } from "@fortawesome/free-solid-svg-icons";
 import { faWikipediaW } from "@fortawesome/free-brands-svg-icons";
 import $ from "jquery";
-import LoginModal from "./LoginModal";
+import LoginModal from "./modals/LoginModal";
+import RegisterModal from "./modals/RegisterModal";
 
 class Header extends Component {
   state = {
@@ -82,13 +84,27 @@ class Header extends Component {
     $("#loginModal").modal("show");
   }
 
+  showRegisterModal() {
+    $("#registerModal").modal("show");
+  }
+
   renderButtonsOnRight() {
     switch (this.props.auth) {
       case null:
         return <Spinner />;
       case false:
-        return (
-          <li className="nav-item" key="5">
+        return [
+          <li className="nav-item" key="11">
+            <a
+              className="nav-link text-light"
+              href="#registerModal"
+              onClick={this.showRegisterModal}
+            >
+              <FontAwesomeIcon className="mr-2" icon={faUserPlus} />
+              Register
+            </a>
+          </li>,
+          <li className="nav-item" key="10">
             <a
               className="nav-link text-light"
               href="#loginModal"
@@ -98,7 +114,7 @@ class Header extends Component {
               Login
             </a>
           </li>
-        );
+        ];
       default:
         const header = [
           <li
@@ -188,6 +204,7 @@ class Header extends Component {
           </ul>
         </div>
         <LoginModal />
+        <RegisterModal />
       </nav>
     );
   }

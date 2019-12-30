@@ -10,7 +10,8 @@ import Footer from "./components/Footer";
 //pages
 import AdminDashboard from "./views/admin/AdminDashboard";
 import LandingPage from "./views/LandingPage";
-import LoginPage from "./views/LoginPage";
+import LoginPage from "./views/auth/LoginPage";
+import RegisterPage from "./views/auth/RegisterPage";
 import LorePage from "./views/LorePage";
 import StorePage from "./views/StorePage";
 import ProfilePage from "./views/ProfilePage";
@@ -36,6 +37,7 @@ class App extends Component {
             <Route exact path="/admin" component={AdminDashboard} />
             <Route exact path="/" component={LandingPage} />
             <Route path="/login" component={LoginPage} />
+            <Route path="/register" component={RegisterPage} />
             <Route path="/lore" component={LorePage} />
             <Route exact path="/store" component={StorePage} />
             <Route exact path="/profile" component={ProfilePage} />
