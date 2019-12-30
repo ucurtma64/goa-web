@@ -40,11 +40,6 @@ passport.use(
           if (!user.verifyPassword(password)) {
             return done(null, false, { message: "Wrong password." });
           }
-          if (!user.isUserVerified()) {
-            return done(null, false, {
-              message: "Please verify your account."
-            });
-          }
           return done(null, user, { message: "Success!" });
         }
       );

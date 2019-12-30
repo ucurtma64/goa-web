@@ -24,16 +24,19 @@ class RegisterForm extends Component {
       console.log(res.data);
       this.setState({ registerError: res.data.message });
       if (res.data.success) {
-        this.props.history.push("/login");
+        window.location.href = "/";
       } else {
         this.props.history.push("/register");
       }
     } catch (error) {
       console.log("2");
-      console.log(error.response.data);
-      this.setState({ registerError: error.response.data.message });
-      this.hideRegisterModal();
 
+      if (error.response && error.response.data) {
+        console.log(error.response.data);
+        this.setState({ registerError: error.response.data.message });
+      }
+
+      this.hideRegisterModal();
       this.props.history.push("/register");
     }
   }
@@ -75,7 +78,10 @@ class RegisterForm extends Component {
           }}
           validationSchema={Yup.object().shape({
             email: Yup.string()
-              .email()
+              .matches(
+                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+                "Email must be a valid email"
+              )
               .required("Email is required"),
             username: Yup.string()
               .min(4)
@@ -169,7 +175,7 @@ class RegisterForm extends Component {
                   <label htmlFor="passwordConfirm">Repeat password</label>
                   <Field
                     name="passwordConfirm"
-                    type="passwordConfirm"
+                    type="password"
                     className={
                       "form-control" +
                       (errors.passwordConfirm && touched.passwordConfirm

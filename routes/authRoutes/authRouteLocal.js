@@ -1,12 +1,14 @@
 const passport = require("passport");
 const mongoose = require("mongoose");
+const SendgridSingle = require("../../services/mailers/SendgridSingle");
+const registerTemplate = require("../../services/emailTemplates/registerTemplate");
 
 const User = mongoose.model("users");
 const UserVerify = mongoose.model("usersVerify");
 
 const passwordRegexp = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,16}$/;
 const emailRegexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-const usernameRegex = /^[a-zA-Z0-9]{6,16}$/;
+const usernameRegex = /^[a-zA-Z0-9]{4,16}$/;
 
 module.exports = app => {
   app.post("/auth/local", function(req, res, next) {
@@ -65,13 +67,12 @@ module.exports = app => {
         message: "Email is not valid."
       });
     }
-    console.log("1");
 
     User.findOne(
       {
         $or: [{ email: email }, { username: username }]
       },
-      function(err, user) {
+      async function(err, user) {
         if (err) {
           return done(err);
         }
@@ -83,21 +84,71 @@ module.exports = app => {
           });
         }
 
-        user = await new User({
-          email: email,
-          username: username,
-          password: password,
-          verified: false
-        }).save();
+        try {
+          user = await new User({
+            email: email,
+            username: username,
+            password: password,
+            verified: false
+          }).save();
 
-        return res.status(200).json({
-          success: true
-        });
+          req.logIn(user, function(err) {
+            if (err) {
+              return next(err);
+            }
+            return res.status(200).json({
+              success: true
+            });
+          });
+        } catch (error) {
+          return done(error);
+        }
       }
     );
   });
 
   app.get("/auth/local/verify/:verifyID", (req, res) => {
     res.send("Thanks for verify!");
+  });
+
+  app.get("/auth/local/register/resend", (req, res) => {
+    User.findOne(
+      {
+        $or: [{ email: email }, { username: username }]
+      },
+      async function(err, user) {
+        if (err) {
+          return done(err);
+        }
+        if (!user) {
+          return res.status(400).json({
+            success: false,
+            message: "Invalid username or email address."
+          });
+        }
+
+        if (user.verified) {
+          return res.status(400).json({
+            success: false,
+            message: "User is already verified."
+          });
+        }
+
+        const mailer = new SendgridSingle(
+          { subject: "", recipient: "" },
+          registerTemplate(user)
+        );
+
+        try {
+          await mailer.send();
+        } catch (err) {
+          res.status(422).send(err);
+        }
+
+        return res.status(200).json({
+          success: true
+        });
+      }
+    );
   });
 };

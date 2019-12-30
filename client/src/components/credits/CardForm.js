@@ -9,6 +9,8 @@ import $ from "jquery";
 import axios from "axios";
 import CreditSelectionCard from "./CreditSelectionCard";
 
+const cardRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$/;
+
 class CardForm extends Component {
   constructor(props) {
     super(props);
@@ -23,13 +25,16 @@ class CardForm extends Component {
 
   onFormSubmit(fieldsToCopy) {
     $("#paymentModal").modal("show");
-
     const fields = Object.assign({}, fieldsToCopy);
 
     var expireYear = parseInt(fields.expireYear);
     expireYear += 2000;
-
     fields.expireYear = expireYear;
+
+    var names = fields.cardHolderName.split(" ");
+    const surname = names[names.length - 1];
+    names.pop();
+    const name = names.join(" ");
 
     const product = this.props.formValues.creditSelection;
 
@@ -40,7 +45,9 @@ class CardForm extends Component {
       email: this.props.formValues.email,
       registrationAddress: this.props.formValues.registrationAddress,
       city: this.props.formValues.city,
-      country: this.props.formValues.country
+      country: this.props.formValues.country,
+      name: name,
+      surname: surname
     };
 
     const paymentCard = Object.assign(fields, { registerCard: 0 });
@@ -64,15 +71,23 @@ class CardForm extends Component {
         <div className="row">
           <Formik
             className="col"
-            initialValues={{}}
+            initialValues={{
+              cardHolderName: "",
+              cardNumber: "",
+              expireYear: "",
+              expireMonth: "",
+              cvc: ""
+            }}
             validationSchema={Yup.object().shape({
               cardHolderName: Yup.string()
                 .min(5, "cardHolderName must be at least 5 characters")
                 .max(50, "cardHolderName must be at most 50 characters")
+                .matches(
+                  /^([a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/
+                )
                 .required("required"),
-              cardNumber: Yup.number()
-                .min(1000000000000000, "This is not a valid card number")
-                .max(9999999999999999, "This is not a valid card number")
+              cardNumber: Yup.string()
+                .matches(cardRegex)
                 .required("required"),
               expireYear: Yup.number()
                 .min(1, "Between 1-99")

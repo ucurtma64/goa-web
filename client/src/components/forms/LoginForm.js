@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import { fetchUser } from "actions";
 import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
@@ -25,17 +24,17 @@ class LoginPage extends Component {
       console.log(res.data);
       this.setState({ loginError: res.data.message });
       if (res.data.success) {
-        this.props.fetchUser();
-        this.props.history.push("/");
+        window.location.href = "/";
       } else {
         this.props.history.push("/login");
       }
     } catch (error) {
       console.log("2");
-      console.log(error.response.data);
-      this.setState({ loginError: error.response.data.message });
+      if (error.response && error.response.data) {
+        console.log(error.response.data);
+        this.setState({ loginError: error.response.data.message });
+      }
       this.hideLoginModal();
-
       this.props.history.push("/login");
     }
   }
@@ -138,4 +137,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, { fetchUser })(withRouter(LoginPage));
+export default connect(mapStateToProps, null)(withRouter(LoginPage));
