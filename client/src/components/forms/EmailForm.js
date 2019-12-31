@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { notifyModal, updateUser } from "actions";
+import { emailRegex } from "assets/regex";
 
 class EmailForm extends Component {
   async onFormSubmit(fields) {
@@ -47,7 +48,7 @@ class EmailForm extends Component {
             initialValues={this.getInitialValues()}
             validationSchema={Yup.object().shape({
               email: Yup.string()
-                .email("Email is invalid")
+                .matches(emailRegex, "Email is invalid")
                 .required("Email is required")
             })}
             onSubmit={fields => {

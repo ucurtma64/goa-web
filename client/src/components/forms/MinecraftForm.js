@@ -6,6 +6,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { minecraftUsernameRegex } from "assets/regex";
 
 class MinecraftForm extends Component {
   getInitialValues() {
@@ -64,7 +65,7 @@ class MinecraftForm extends Component {
                 validationSchema={Yup.object().shape({
                   minecraftUsername: Yup.string()
                     .matches(
-                      /^\w{3,16}$/,
+                      minecraftUsernameRegex,
                       "3-16 characters, no spaces, The only allowed special character is _(underscore)"
                     )
                     .required("Minecraft Username is required")

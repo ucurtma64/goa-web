@@ -1,9 +1,14 @@
 const _ = require("lodash");
-const { Path } = require("path-parser");
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
 
 const User = mongoose.model("users");
+
+const {
+  passwordRegex,
+  emailRegex,
+  usernameRegex
+} = require("../services/regex");
 
 module.exports = app => {
   app.post("/api/profile", requireLogin, async (req, res) => {
@@ -21,6 +26,19 @@ module.exports = app => {
       country,
       minecraftUsername
     } = req.body;
+
+    if (
+      !(
+        emailRegex.test(email) &&
+        usernameRegex.test(username) &&
+        passwordRegex.test(password)
+      )
+    ) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid request."
+      });
+    }
 
     const billing = {
       identityNumber: identityNumber,

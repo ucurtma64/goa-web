@@ -7,6 +7,7 @@ import axios from "axios";
 import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { emailRegex, usernameRegex, passwordRegex } from "assets/regex";
 
 class RegisterForm extends Component {
   state = {
@@ -78,16 +79,13 @@ class RegisterForm extends Component {
           }}
           validationSchema={Yup.object().shape({
             email: Yup.string()
-              .matches(
-                /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
-                "Email must be a valid email"
-              )
+              .matches(emailRegex, "Email must be a valid email")
               .required("Email is required"),
             username: Yup.string()
               .min(4)
               .max(16)
               .matches(
-                /^[a-zA-Z0-9]+$/,
+                usernameRegex,
                 "Username can't contain special characters"
               )
               .required("Username is required"),
@@ -95,7 +93,7 @@ class RegisterForm extends Component {
               .min(6)
               .max(16)
               .matches(
-                /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]+$/,
+                passwordRegex,
                 "Password must contain at least one letter and one number"
               )
               .required("Password is required"),

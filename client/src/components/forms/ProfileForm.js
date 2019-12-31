@@ -3,6 +3,7 @@ import Spinner from "../util/Spinner";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
+import { emailRegex, usernameRegex } from "assets/regex";
 import * as Yup from "yup";
 
 class ProfileForm extends Component {
@@ -57,9 +58,10 @@ class ProfileForm extends Component {
               username: Yup.string()
                 .min(2, "min 2 characters")
                 .max(25, "max 25 characters")
+                .matches(usernameRegex, "Username is invalid")
                 .required("Name is required"),
               email: Yup.string()
-                .email("Email is invalid")
+                .matches(emailRegex, "Email is invalid")
                 .required("Email is required")
             })}
             onSubmit={fields => {
