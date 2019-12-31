@@ -2,6 +2,7 @@ const passport = require("passport");
 const mongoose = require("mongoose");
 const SendgridSingle = require("../../services/mailers/SendgridSingle");
 const registerTemplate = require("../../services/emailTemplates/registerTemplate");
+const { Path } = require("path-parser");
 
 const User = mongoose.model("users");
 const UserVerify = mongoose.model("usersVerify");
@@ -94,14 +95,18 @@ module.exports = app => {
             verified: false
           }).save();
 
-          req.logIn(user, function(err) {
+          req.logIn(user, async function(err) {
             if (err) {
               return next(err);
             }
 
+            const userVerify = await new UserVerify({
+              _user: user.id
+            }).save();
+
             const mailer = new SendgridSingle(
               { subject: "Activate your GoA account", recipient: email },
-              registerTemplate(user)
+              registerTemplate(userVerify)
             );
 
             mailer.send();
@@ -117,8 +122,32 @@ module.exports = app => {
     );
   });
 
-  app.get("/auth/local/verify/:verifyID", (req, res) => {
-    res.send("Thanks for verify!");
+  app.get("/auth/local/verify/:verifyID", async (req, res) => {
+    const p = new Path("/auth/local/verify/:verifyID");
+    const match = p.test(req.path);
+
+    if (!match) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid request."
+      });
+    }
+
+    const verifyID = match.verifyID;
+
+    const userVerify = await UserVerify.findById(verifyID);
+
+    const userId = userVerify._user;
+
+    const user = await User.findById(userId);
+
+    user.verified = true;
+
+    await user.save();
+
+    await userVerify.remove();
+
+    res.redirect("/register/verify");
   });
 
   app.get("/auth/local/register/resend", (req, res) => {
@@ -144,9 +173,13 @@ module.exports = app => {
           });
         }
 
+        const userVerify = await UserVerify.findOne({
+          _user: user.id
+        });
+
         const mailer = new SendgridSingle(
           { subject: "Activate your GoA account", recipient: email },
-          registerTemplate(user)
+          registerTemplate(userVerify)
         );
 
         try {

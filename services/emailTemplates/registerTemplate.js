@@ -1,6 +1,6 @@
 const keys = require("../../config/keys");
 
-module.exports = user => {
+module.exports = userVerify => {
   return `
         <html>
             <body>
@@ -8,7 +8,7 @@ module.exports = user => {
                     <h3>Verify your account</h3>
                     <p>Guardians of Adelia, a minecraft MORPG server.</p>
                     <div>
-                        <a href="${keys.redirectDomain}/api/register/${user.id}">Click here to verify your account.</a>
+                        <a href="${keys.redirectDomain}/auth/local/verify/${userVerify.id}">Click here to verify your account.</a>
                     </div>
                 </div>
             </body>

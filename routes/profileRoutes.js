@@ -1,8 +1,6 @@
 const _ = require("lodash");
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
-const SendgridSingle = require("../services/mailers/SendgridSingle");
-const registerTemplate = require("../services/emailTemplates/registerTemplate");
 
 const User = mongoose.model("users");
 
@@ -15,8 +13,6 @@ const {
 
 module.exports = app => {
   app.post("/api/profile", requireLogin, async (req, res) => {
-    var verified = req.user.verified;
-
     const {
       googleId,
       email,
@@ -90,8 +86,7 @@ module.exports = app => {
       password: password,
       credits: credits,
       billing: billing,
-      minecraftUsername: minecraftUsername,
-      verified: verified
+      minecraftUsername: minecraftUsername
     };
 
     clean(profife);
@@ -114,8 +109,6 @@ module.exports = app => {
               message: "Email is taken."
             });
           }
-          //valid new email
-          verified = false;
         }
       }
     }
@@ -126,17 +119,8 @@ module.exports = app => {
         new: true
       });
 
-      //send mail if mongo operation is successful
-      const mailer = new SendgridSingle(
-        { subject: "Activate your GoA account", recipient: email },
-        registerTemplate(user)
-      );
-      mailer.send();
-
       res.send(mongoRes);
     } catch (err) {
-      console.log(err);
-
       res.send(err);
     }
   });

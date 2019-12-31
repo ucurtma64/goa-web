@@ -3,7 +3,7 @@ const { Schema } = mongoose; //const Schema = mongoose.Schema;
 const UserSchema = require("./User");
 
 const userVerifySchema = new Schema({
-  userToActivate: UserSchema
+  _user: { type: Schema.Types.ObjectId, ref: "User" }
 });
 
 mongoose.model("usersVerify", userVerifySchema);
