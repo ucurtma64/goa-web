@@ -4,7 +4,8 @@ import {
   FETCH_SURVEYS,
   FETCH_PRODUCTS,
   FETCH_POSTS,
-  NOTIFICATION_MODAL
+  NOTIFICATION_MODAL,
+  NOTIFICATION_TOPBAR
 } from "./types";
 
 export const fetchUser = () => async dispatch => {
@@ -83,6 +84,13 @@ export const fetchPosts = (page, limit) => async dispatch => {
 export const notifyModal = (isVisible, type, message) => async dispatch => {
   dispatch({
     type: NOTIFICATION_MODAL,
+    payload: { isVisible: isVisible, type: type, message: message }
+  });
+};
+
+export const notifyTopBar = (isVisible, type, message) => async dispatch => {
+  dispatch({
+    type: NOTIFICATION_TOPBAR,
     payload: { isVisible: isVisible, type: type, message: message }
   });
 };
