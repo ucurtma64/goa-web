@@ -2,19 +2,31 @@ import React, { Component } from "react";
 import Spinner from "components/util/Spinner";
 import { connect } from "react-redux";
 import PostForm from "components/forms/PostForm";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import $ from "jquery";
 
 class AdminDashboard extends Component {
+  showLoginModal() {
+    $("#loginModal").modal("show");
+  }
+
   render() {
     switch (this.props.auth) {
       case null:
         return <Spinner />;
       case false:
         return (
-          <li className="nav-item" key="4">
-            <a className="nav-link" href="/auth/google">
-              Login with google
-            </a>
-          </li>
+          <div className="row">
+            <button
+              className="mt-4 btn mx-auto"
+              href="#loginModal"
+              onClick={this.showLoginModal}
+            >
+              <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />
+              Login
+            </button>
+          </div>
         );
       default:
     }

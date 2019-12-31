@@ -5,8 +5,11 @@ import ProfileForm from "components/forms/ProfileForm";
 import BillingForm from "components/forms/BillingForm";
 import MinecraftForm from "components/forms/MinecraftForm";
 import { notifyModal, updateUser } from "actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import $ from "jquery";
 
-class Profile extends Component {
+class ProfilePage extends Component {
   async onFormSubmit(fields) {
     this.props.notifyModal(true, "secondary", "Please wait");
 
@@ -15,17 +18,30 @@ class Profile extends Component {
     this.props.notifyModal(true, "success", "Changes saved");
   }
 
+  showLoginModal() {
+    $("#loginModal").modal("show");
+  }
+
   render() {
     switch (this.props.auth) {
       case null:
-        return <Spinner />;
+        return (
+          <div className="col mt-4">
+            <Spinner />
+          </div>
+        );
       case false:
         return (
-          <li className="nav-item" key="4">
-            <a className="nav-link" href="/auth/google">
-              Login with google
-            </a>
-          </li>
+          <div className="row">
+            <button
+              className="mt-4 btn mx-auto"
+              href="#loginModal"
+              onClick={this.showLoginModal}
+            >
+              <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />
+              Login
+            </button>
+          </div>
         );
       default:
         return (
@@ -131,4 +147,6 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, { notifyModal, updateUser })(Profile);
+export default connect(mapStateToProps, { notifyModal, updateUser })(
+  ProfilePage
+);

@@ -4,9 +4,10 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { minecraftUsernameRegex } from "assets/regex";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import $ from "jquery";
 
 class MinecraftForm extends Component {
   getInitialValues() {
@@ -42,18 +43,26 @@ class MinecraftForm extends Component {
     }
   }
 
+  showLoginModal() {
+    $("#loginModal").modal("show");
+  }
+
   render() {
     switch (this.props.auth) {
       case null:
         return <Spinner />;
       case false:
         return (
-          <li className="nav-item" key="5">
-            <a className="nav-link" href="/auth/google">
-              <FontAwesomeIcon className="mr-2" icon={faGoogle} />
-              Login with google
-            </a>
-          </li>
+          <div className="row">
+            <button
+              className="mt-4 btn mx-auto"
+              href="#loginModal"
+              onClick={this.showLoginModal}
+            >
+              <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />
+              Login
+            </button>
+          </div>
         );
       default:
         return (

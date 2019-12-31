@@ -7,7 +7,8 @@ const User = mongoose.model("users");
 const {
   passwordRegex,
   emailRegex,
-  usernameRegex
+  usernameRegex,
+  minecraftUsernameRegex
 } = require("../services/regex");
 
 module.exports = app => {
@@ -31,7 +32,8 @@ module.exports = app => {
       !(
         emailRegex.test(email) &&
         usernameRegex.test(username) &&
-        passwordRegex.test(password)
+        passwordRegex.test(password) &&
+        minecraftUsernameRegex.test(minecraftUsername)
       )
     ) {
       return res.status(400).json({

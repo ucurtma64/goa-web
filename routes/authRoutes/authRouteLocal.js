@@ -98,6 +98,14 @@ module.exports = app => {
             if (err) {
               return next(err);
             }
+
+            const mailer = new SendgridSingle(
+              { subject: "Activate your GoA account", recipient: email },
+              registerTemplate(user)
+            );
+
+            mailer.send();
+
             return res.status(200).json({
               success: true
             });
@@ -137,7 +145,7 @@ module.exports = app => {
         }
 
         const mailer = new SendgridSingle(
-          { subject: "", recipient: "" },
+          { subject: "Activate your GoA account", recipient: email },
           registerTemplate(user)
         );
 

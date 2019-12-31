@@ -4,7 +4,7 @@ import hero from "assets/img/hero.png";
 import legend from "assets/img/legend.png";
 import titan from "assets/img/titan.png";
 
-class ProductRanks extends Component {
+class ProductsRanks extends Component {
   render() {
     return (
       <div className="row card-deck">
@@ -49,4 +49,4 @@ class ProductRanks extends Component {
   }
 }
 
-export default ProductRanks;
+export default ProductsRanks;

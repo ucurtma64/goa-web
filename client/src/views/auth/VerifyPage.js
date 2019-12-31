@@ -8,7 +8,7 @@ class VerifyPage extends Component {
     if (!this.props.auth) {
       return (
         <div className="col mt-4">
-          <Spinner className="mt-4" />
+          <Spinner />
         </div>
       );
     }
@@ -21,7 +21,7 @@ class VerifyPage extends Component {
               <div className="card-header">Verify</div>
               <div className="card-body">
                 <p>{this.props.auth.email}</p>
-                We sent you a very awesome email called "Activate your new GoA
+                We sent you a very awesome email called "Activate your GoA
                 account" to the email address above. To activate your account,
                 find that email in your inbox and click the button that says
                 "Activate your account".

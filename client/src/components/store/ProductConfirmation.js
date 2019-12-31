@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import ProductCard from "./ProductCard";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
-import { Link } from "react-router-dom";
 import { notifyModal, buyProduct } from "../../actions";
 import Spinner from "../util/Spinner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
+import $ from "jquery";
 
 class ProductConfirmation extends Component {
   async onConfirmation(formValues) {
@@ -30,6 +30,10 @@ class ProductConfirmation extends Component {
     }
   }
 
+  showLoginModal() {
+    $("#loginModal").modal("show");
+  }
+
   render() {
     if (!this.props.auth) {
       return (
@@ -40,10 +44,14 @@ class ProductConfirmation extends Component {
             </p>
           </div>
           <div className="row">
-            <Link className="mx-auto" to="/auth/google">
-              <FontAwesomeIcon className="mr-2" icon={faGoogle} />
-              Login with google
-            </Link>
+            <button
+              className="mt-4 btn mx-auto"
+              href="#loginModal"
+              onClick={this.showLoginModal}
+            >
+              <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />
+              Login
+            </button>
           </div>
         </div>
       );

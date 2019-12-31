@@ -8,6 +8,7 @@ import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import { emailRegex, usernameRegex, passwordRegex } from "assets/regex";
+import { fetchUser } from "actions";
 
 class RegisterForm extends Component {
   state = {
@@ -25,7 +26,8 @@ class RegisterForm extends Component {
       console.log(res.data);
       this.setState({ registerError: res.data.message });
       if (res.data.success) {
-        window.location.href = "/";
+        this.props.fetchUser();
+        this.props.history.push("/");
       } else {
         this.props.history.push("/register");
       }
@@ -217,4 +219,6 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, null)(withRouter(RegisterForm));
+export default connect(mapStateToProps, { fetchUser })(
+  withRouter(RegisterForm)
+);

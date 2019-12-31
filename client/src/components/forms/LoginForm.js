@@ -7,8 +7,9 @@ import axios from "axios";
 import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { fetchUser } from "actions";
 
-class LoginPage extends Component {
+class LoginForm extends Component {
   state = {
     loginError: ""
   };
@@ -24,7 +25,8 @@ class LoginPage extends Component {
       console.log(res.data);
       this.setState({ loginError: res.data.message });
       if (res.data.success) {
-        window.location.href = "/";
+        this.props.fetchUser();
+        this.props.history.push("/");
       } else {
         this.props.history.push("/login");
       }
@@ -137,4 +139,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps, null)(withRouter(LoginPage));
+export default connect(mapStateToProps, { fetchUser })(withRouter(LoginForm));
