@@ -2,8 +2,27 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import EmailForm from "components/forms/EmailForm";
 import Spinner from "components/util/Spinner";
+import axios from "axios";
 
 class VerifyPage extends Component {
+  async resendConfirmationMail() {
+    this.props.notifyModal(true, "Please wait", "");
+
+    const res = await axios.get("/auth/local/register/resend");
+
+    if (res.success) {
+      this.props.notifyModal(
+        true,
+        "Success",
+        "We sent you a new activation email."
+      );
+    } else {
+      var message = "Failed";
+      if (res.data.message) message = res.data.message;
+      this.props.notifyModal(true, "Danger", message);
+    }
+  }
+
   render() {
     if (!this.props.auth) {
       return (
@@ -25,7 +44,10 @@ class VerifyPage extends Component {
                   find that email in your inbox and click the button that says
                   "Activate your account".
                   <div className="mt-4 text-right">
-                    <button className="btn btn-primary">
+                    <button
+                      className="btn btn-primary"
+                      onClick={this.resendConfirmationMail}
+                    >
                       Resend Confirmation
                     </button>
                   </div>
