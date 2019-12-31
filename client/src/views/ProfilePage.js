@@ -13,6 +13,7 @@ class ProfilePage extends Component {
   async onFormSubmit(fields) {
     this.props.notifyModal(true, "secondary", "Please wait");
 
+    console.log(fields);
     await this.props.updateUser(fields);
 
     this.props.notifyModal(true, "success", "Changes saved");

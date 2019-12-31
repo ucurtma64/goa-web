@@ -15,9 +15,17 @@ export const fetchUser = () => async dispatch => {
 };
 
 export const updateUser = values => async dispatch => {
-  const res = await axios.post("/api/profile", values);
+  try {
+    const res = await axios.post("/api/profile", values);
 
-  dispatch({ type: FETCH_USER, payload: res.data });
+    dispatch({ type: FETCH_USER, payload: res.data });
+
+    return { success: true };
+  } catch (error) {
+    if (error.response && error.response.data) {
+      return error.response.data;
+    }
+  }
 };
 
 export const submitSurvey = (values, history) => async dispatch => {

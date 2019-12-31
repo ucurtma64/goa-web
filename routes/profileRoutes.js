@@ -1,6 +1,8 @@
 const _ = require("lodash");
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
+const SendgridSingle = require("../services/mailers/SendgridSingle");
+const registerTemplate = require("../services/emailTemplates/registerTemplate");
 
 const User = mongoose.model("users");
 
@@ -13,7 +15,7 @@ const {
 
 module.exports = app => {
   app.post("/api/profile", requireLogin, async (req, res) => {
-    const userId = req.user.id;
+    var verified = req.user.verified;
 
     const {
       googleId,
@@ -28,18 +30,48 @@ module.exports = app => {
       minecraftUsername
     } = req.body;
 
-    if (
-      !(
-        emailRegex.test(email) &&
-        usernameRegex.test(username) &&
-        passwordRegex.test(password) &&
-        minecraftUsernameRegex.test(minecraftUsername)
-      )
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid request."
-      });
+    if (username) {
+      if (username != req.user.username) {
+        if (!usernameRegex.test(username)) {
+          return res.status(400).json({
+            success: false,
+            message: "Invalid request."
+          });
+        } else {
+          const user = await User.findOne({
+            username: username
+          });
+
+          if (user) {
+            return res.status(400).json({
+              success: false,
+              message: "Username is taken."
+            });
+          }
+        }
+      }
+    }
+
+    if (password) {
+      if (password != req.user.password) {
+        if (!passwordRegex.test(password)) {
+          return res.status(400).json({
+            success: false,
+            message: "Invalid request."
+          });
+        }
+      }
+    }
+
+    if (minecraftUsername) {
+      if (minecraftUsername != req.user.minecraftUsername) {
+        if (!minecraftUsernameRegex.test(minecraftUsername)) {
+          return res.status(400).json({
+            success: false,
+            message: "Invalid request."
+          });
+        }
+      }
     }
 
     const billing = {
@@ -58,17 +90,55 @@ module.exports = app => {
       password: password,
       credits: credits,
       billing: billing,
-      minecraftUsername: minecraftUsername
+      minecraftUsername: minecraftUsername,
+      verified: verified
     };
 
     clean(profife);
 
-    const mongoRes = await User.findByIdAndUpdate(userId, profife, {
-      useFindAndModify: false,
-      new: true
-    });
+    if (email) {
+      if (email != req.user.email) {
+        if (!emailRegex.test(email)) {
+          return res.status(400).json({
+            success: false,
+            message: "Invalid request."
+          });
+        } else {
+          const user = await User.findOne({
+            email: email
+          });
 
-    res.send(mongoRes);
+          if (user) {
+            return res.status(400).json({
+              success: false,
+              message: "Email is taken."
+            });
+          }
+          //valid new email
+          verified = false;
+        }
+      }
+    }
+
+    try {
+      const mongoRes = await User.findByIdAndUpdate(req.user.id, profife, {
+        useFindAndModify: false,
+        new: true
+      });
+
+      //send mail if mongo operation is successful
+      const mailer = new SendgridSingle(
+        { subject: "Activate your GoA account", recipient: email },
+        registerTemplate(user)
+      );
+      mailer.send();
+
+      res.send(mongoRes);
+    } catch (err) {
+      console.log(err);
+
+      res.send(err);
+    }
   });
 };
 

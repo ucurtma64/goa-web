@@ -5,7 +5,7 @@ import * as actions from "../actions";
 
 class NotificationModal extends Component {
   componentDidUpdate() {
-    $("#exampleModal").modal("show");
+    $("#notificationModal").modal("show");
   }
 
   render() {
@@ -15,31 +15,41 @@ class NotificationModal extends Component {
       case false:
         return <div />;
       default:
-        const alertType = "alert-" + this.props.notificationModal.type; //bootstrap alert, eight required contextual classes to define color
-
         return (
           <div
-            className="modal fade bd-example-modal-lg align-middle"
-            tabIndex="-1"
+            class="modal fade"
+            id="notificationModal"
+            tabindex="-1"
             role="dialog"
-            aria-labelledby="myLargeModalLabel"
+            aria-labelledby="exampleModalCenterTitle"
             aria-hidden="true"
-            id="exampleModal"
           >
-            <div className="modal-dialog modal-lg modal-dialog-centered">
-              <div className="modal-content">
-                <div className={"modal-body text-center " + alertType}>
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">
+                    {this.props.notificationModal.type}
+                  </h5>
                   <button
                     type="button"
-                    className="close"
+                    class="close"
                     data-dismiss="modal"
                     aria-label="Close"
                   >
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div className={"modal-body text-center " + alertType}>
+                <div class={"modal-body text-center"}>
                   {this.props.notificationModal.message}
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-dismiss="modal"
+                  >
+                    Close
+                  </button>
                 </div>
               </div>
             </div>
@@ -53,7 +63,4 @@ function mapStateToProps({ notificationModal }) {
   return { notificationModal };
 }
 
-export default connect(
-  mapStateToProps,
-  actions
-)(NotificationModal);
+export default connect(mapStateToProps, actions)(NotificationModal);

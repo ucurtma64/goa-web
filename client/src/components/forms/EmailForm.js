@@ -9,11 +9,22 @@ import { emailRegex } from "assets/regex";
 class EmailForm extends Component {
   async onFormSubmit(fields) {
     if (this.props.auth) {
-      this.props.notifyModal(true, "secondary", "Please wait");
+      this.props.notifyModal(true, "Please wait", "");
 
-      await this.props.updateUser(fields);
+      const resData = await this.props.updateUser(fields);
+      console.log(resData);
 
-      this.props.notifyModal(true, "success", "Changes saved");
+      if (resData.success) {
+        this.props.notifyModal(
+          true,
+          "Success",
+          "Changes saved and we sent you a new activation email."
+        );
+      } else {
+        var message = "Failed";
+        if (resData.message) message = resData.message;
+        this.props.notifyModal(true, "Danger", message);
+      }
     }
   }
 
