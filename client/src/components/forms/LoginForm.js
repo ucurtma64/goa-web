@@ -6,7 +6,12 @@ import * as Yup from "yup";
 import axios from "axios";
 import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGoogle,
+  faGithub,
+  faTwitter,
+  faFacebook
+} from "@fortawesome/free-brands-svg-icons";
 import { fetchUser } from "actions";
 
 class LoginForm extends Component {
@@ -140,6 +145,22 @@ class LoginForm extends Component {
           >
             <FontAwesomeIcon className="mr-2" icon={faGithub} />
             Login with github
+          </a>
+        </div>
+        <div className="row mt-2">
+          <a
+            className="col mx-4 nav-link login login-twitter"
+            href="/auth/twitter"
+          >
+            <FontAwesomeIcon className="mr-2" icon={faTwitter} />
+            Login with twitter
+          </a>
+          <a
+            className="col mx-4 nav-link login login-facebook"
+            href="/auth/facebook"
+          >
+            <FontAwesomeIcon className="mr-2" icon={faFacebook} />
+            Login with facebook
           </a>
         </div>
       </>

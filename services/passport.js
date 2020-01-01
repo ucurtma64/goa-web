@@ -1,6 +1,8 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const GitHubStrategy = require("passport-github").Strategy;
+const TwitterStrategy = require("passport-twitter").Strategy;
+const FacebookStrategy = require("passport-facebook").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
@@ -29,6 +31,7 @@ passport.use(
         {
           $or: [{ email: username }, { username: username }]
         },
+        "+password",
         async function(err, user) {
           if (err) {
             return done(err);
@@ -92,8 +95,6 @@ passport.use(
       callbackURL: "/auth/github/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-
       let user = await User.findOne({ githubId: profile.id });
 
       if (!user) {
@@ -101,6 +102,61 @@ passport.use(
           githubId: profile.id,
           email: profile.email,
           username: profile.username,
+          verified: true
+        }).save(); //we already have a record with given profile.id
+      }
+
+      done(null, user); //call done after saving user(async db call) is completed
+    }
+  )
+);
+
+passport.use(
+  new TwitterStrategy(
+    {
+      consumerKey: keys.twitterConsumerKey,
+      consumerSecret: keys.twitterConsumerSecret,
+      callbackURL: "/auth/twitter/callback"
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+
+      let user = await User.findOne({ twitterId: profile.id });
+
+      if (!user) {
+        user = await new User({
+          twitterId: profile.id,
+          email: profile.email,
+          username: profile.username,
+          verified: true
+        }).save(); //we already have a record with given profile.id
+      }
+
+      done(null, user); //call done after saving user(async db call) is completed
+    }
+  )
+);
+
+passport.use(
+  new FacebookStrategy(
+    {
+      clientID: keys.facebookAppID,
+      clientSecret: keys.facebookAppSecret,
+      callbackURL: "/auth/facebook/callback",
+      profileFields: ["id", "displayName", "email"]
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+
+      let user = await User.findOne({ facebookId: profile.id });
+
+      let registerEmail = profile.emails[0].value;
+
+      if (!user) {
+        user = await new User({
+          facebookId: profile.id,
+          email: registerEmail,
+          username: profile.displayName,
           verified: true
         }).save(); //we already have a record with given profile.id
       }

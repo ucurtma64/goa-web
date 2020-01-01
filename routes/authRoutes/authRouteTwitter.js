@@ -2,16 +2,16 @@ const passport = require("passport");
 
 module.exports = app => {
   app.get(
-    "/auth/github",
-    passport.authenticate("github", {
+    "/auth/twitter",
+    passport.authenticate("twitter", {
       scope: ["read:user"],
       prompt: "select_account"
     })
   );
 
   app.get(
-    "/auth/github/callback",
-    passport.authenticate("github"),
+    "/auth/twitter/callback",
+    passport.authenticate("twitter"),
     (req, res) => {
       res.redirect("/");
     }

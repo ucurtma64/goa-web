@@ -17,7 +17,6 @@ module.exports = app => {
       email,
       username,
       password,
-      credits,
       identityNumber,
       registrationAddress,
       city,
@@ -82,7 +81,6 @@ module.exports = app => {
       email: email,
       username: username,
       password: password,
-      credits: credits,
       billing: billing,
       minecraftUsername: minecraftUsername
     };

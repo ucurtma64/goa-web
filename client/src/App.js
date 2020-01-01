@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Suspense, lazy } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import * as actions from "./actions";
@@ -8,23 +8,27 @@ import { Link } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-//pages
-import AdminDashboard from "./views/admin/AdminDashboard";
-import LandingPage from "./views/LandingPage";
-import LoginPage from "./views/auth/LoginPage";
-import RegisterPage from "./views/auth/RegisterPage";
-import VerifyPage from "./views/auth/VerifyPage";
-import LorePage from "./views/LorePage";
-import StorePage from "./views/StorePage";
-import ProfilePage from "./views/ProfilePage";
-import AddCreditPage from "./views/credits/AddCreditPage";
-import AddCreditCallbackPage from "./views/credits/AddCreditCallbackPage";
-import SinglePostContentPage from "./views/SinglePostContentPage";
-import MissingPage from "./views/MissingPage";
-
 //utils
 import NotificationTopBar from "./components/NotificationTopBar";
 import NotificationModal from "./components/NotificationModal";
+
+//pages
+const AdminDashboard = lazy(() => import("./views/admin/AdminDashboard"));
+const LandingPage = lazy(() => import("./views/LandingPage"));
+const LoginPage = lazy(() => import("./views/auth/LoginPage"));
+const RegisterPage = lazy(() => import("./views/auth/RegisterPage"));
+const VerifyPage = lazy(() => import("./views/auth/VerifyPage"));
+const LorePage = lazy(() => import("./views/LorePage"));
+const StorePage = lazy(() => import("./views/StorePage"));
+const ProfilePage = lazy(() => import("./views/ProfilePage"));
+const AddCreditPage = lazy(() => import("./views/credits/AddCreditPage"));
+const AddCreditCallbackPage = lazy(() =>
+  import("./views/credits/AddCreditCallbackPage")
+);
+const SinglePostContentPage = lazy(() =>
+  import("./views/SinglePostContentPage")
+);
+const MissingPage = lazy(() => import("./views/MissingPage"));
 
 class App extends Component {
   componentDidMount() {
@@ -55,23 +59,25 @@ class App extends Component {
         <div className="main-container">
           <NotificationTopBar />
           <Header />
-          <Switch>
-            <Route exact path="/admin" component={AdminDashboard} />
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/login" component={LoginPage} />
-            <Route exact path="/register" component={RegisterPage} />
-            <Route path="/register/verify" component={VerifyPage} />
-            <Route path="/lore" component={LorePage} />
-            <Route exact path="/store" component={StorePage} />
-            <Route exact path="/profile" component={ProfilePage} />
-            <Route exact path="/addcredit" component={AddCreditPage} />
-            <Route
-              path="/addcredit/callback"
-              component={AddCreditCallbackPage}
-            />
-            <Route path="/post" component={SinglePostContentPage} />
-            <Route component={MissingPage} />
-          </Switch>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Switch>
+              <Route exact path="/admin" component={AdminDashboard} />
+              <Route exact path="/" component={LandingPage} />
+              <Route path="/login" component={LoginPage} />
+              <Route exact path="/register" component={RegisterPage} />
+              <Route path="/register/verify" component={VerifyPage} />
+              <Route path="/lore" component={LorePage} />
+              <Route exact path="/store" component={StorePage} />
+              <Route exact path="/profile" component={ProfilePage} />
+              <Route exact path="/addcredit" component={AddCreditPage} />
+              <Route
+                path="/addcredit/callback"
+                component={AddCreditCallbackPage}
+              />
+              <Route path="/post" component={SinglePostContentPage} />
+              <Route component={MissingPage} />
+            </Switch>
+          </Suspense>
           <NotificationModal />
         </div>
 
