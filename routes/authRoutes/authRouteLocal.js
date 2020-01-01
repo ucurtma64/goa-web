@@ -135,6 +135,13 @@ module.exports = app => {
 
     const userVerify = await UserVerify.findById(verifyID);
 
+    if (!userVerify) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid request."
+      });
+    }
+
     const userId = userVerify._user;
 
     const user = await User.findById(userId);
