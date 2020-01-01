@@ -150,48 +150,34 @@ module.exports = app => {
     res.redirect("/register/verify");
   });
 
-  app.get("/auth/local/register/resend", (req, res) => {
-    User.findOne(
-      {
-        $or: [{ email: email }, { username: username }]
-      },
-      async function(err, user) {
-        if (err) {
-          return done(err);
-        }
-        if (!user) {
-          return res.status(400).json({
-            success: false,
-            message: "Invalid username or email address."
-          });
-        }
-
-        if (user.verified) {
-          return res.status(400).json({
-            success: false,
-            message: "User is already verified."
-          });
-        }
-
-        const userVerify = await UserVerify.findOne({
-          _user: user.id
-        });
-
-        const mailer = new SendgridSingle(
-          { subject: "Activate your GoA account", recipient: email },
-          registerTemplate(userVerify)
-        );
-
-        try {
-          await mailer.send();
-        } catch (err) {
-          res.status(422).send(err);
-        }
-
-        return res.status(200).json({
-          success: true
+  app.get("/auth/local/register/resend", async (req, res) => {
+    if (req.user) {
+      const user = req.user;
+      if (user.verified) {
+        return res.status(400).json({
+          success: false,
+          message: "User is already verified."
         });
       }
-    );
+
+      const userVerify = await UserVerify.findOne({
+        _user: user.id
+      });
+
+      const mailer = new SendgridSingle(
+        { subject: "Activate your GoA account", recipient: user.email },
+        registerTemplate(userVerify)
+      );
+
+      try {
+        await mailer.send();
+      } catch (err) {
+        res.status(422).send(err);
+      }
+
+      return res.status(200).json({
+        success: true
+      });
+    }
   });
 };

@@ -6,12 +6,18 @@ import axios from "axios";
 import { notifyModal } from "actions";
 
 class VerifyPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.resendConfirmationMail = this.resendConfirmationMail.bind(this);
+  }
+
   async resendConfirmationMail() {
     this.props.notifyModal(true, "Please wait", "");
 
     const res = await axios.get("/auth/local/register/resend");
 
-    if (res.success) {
+    if (res.data.success) {
       this.props.notifyModal(
         true,
         "Success",
