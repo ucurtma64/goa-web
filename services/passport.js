@@ -28,7 +28,7 @@ passport.use(
         {
           $or: [{ email: username }, { username: username }]
         },
-        function(err, user) {
+        async function(err, user) {
           if (err) {
             return done(err);
           }
@@ -37,7 +37,10 @@ passport.use(
               message: "Invalid username or email address."
             });
           }
-          if (!user.verifyPassword(password)) {
+
+          const verifyPassword = await user.verifyPassword(password);
+
+          if (!verifyPassword) {
             return done(null, false, { message: "Wrong password." });
           }
           return done(null, user, { message: "Success!" });

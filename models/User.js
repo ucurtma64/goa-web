@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose; //const Schema = mongoose.Schema;
 const BillingSchema = require("./Billing");
+const bcrypt = require("bcryptjs");
 
 const userSchema = new Schema({
   googleId: {
@@ -20,8 +21,14 @@ const userSchema = new Schema({
   verified: Boolean
 });
 
-userSchema.methods.verifyPassword = function(password) {
-  return this.password == password;
+userSchema.methods.verifyPassword = async function(password) {
+  const compare = await bcrypt.compare(password, this.password);
+
+  if (compare) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 mongoose.model("users", userSchema);

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const SendgridSingle = require("../../services/mailers/SendgridSingle");
 const registerTemplate = require("../../services/emailTemplates/registerTemplate");
 const { Path } = require("path-parser");
+const bcrypt = require("bcryptjs");
 
 const User = mongoose.model("users");
 const UserVerify = mongoose.model("usersVerify");
@@ -85,10 +86,12 @@ module.exports = app => {
     }
 
     try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+
       user = await new User({
         email: email,
         username: username,
-        password: password,
+        password: hashedPassword,
         verified: false
       }).save();
 
