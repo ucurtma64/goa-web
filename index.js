@@ -39,6 +39,7 @@ app.use(passport.session());
 
 require("./routes/authRoutes/authRoute")(app);
 require("./routes/authRoutes/authRouteGoogle")(app);
+require("./routes/authRoutes/authRouteGithub")(app);
 require("./routes/authRoutes/authRouteLocal")(app);
 require("./routes/billingRoutes")(app);
 require("./routes/postRoutes")(app);

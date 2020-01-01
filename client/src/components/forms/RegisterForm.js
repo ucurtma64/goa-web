@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import $ from "jquery";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGoogle } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 import { emailRegex, usernameRegex, passwordRegex } from "assets/regex";
 import { fetchUser } from "actions";
 
@@ -206,10 +206,22 @@ class RegisterForm extends Component {
           )}
         />
         <hr />
-        <a className="col-2 nav-link login-google" href="/auth/google">
-          <FontAwesomeIcon className="mr-2" icon={faGoogle} />
-          Login with google
-        </a>
+        <div className="row">
+          <a
+            className="col mx-4 nav-link login login-google"
+            href="/auth/google"
+          >
+            <FontAwesomeIcon className="mr-2" icon={faGoogle} />
+            Login with google
+          </a>
+          <a
+            className="col mx-4 nav-link login login-github"
+            href="/auth/github"
+          >
+            <FontAwesomeIcon className="mr-2" icon={faGithub} />
+            Login with github
+          </a>
+        </div>
       </>
     );
   }

@@ -14,7 +14,6 @@ const {
 module.exports = app => {
   app.post("/api/profile", requireLogin, async (req, res) => {
     const {
-      googleId,
       email,
       username,
       password,
@@ -80,7 +79,6 @@ module.exports = app => {
     clean(billing);
 
     var profife = {
-      googleId: googleId,
       email: email,
       username: username,
       password: password,

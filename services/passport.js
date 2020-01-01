@@ -1,5 +1,6 @@
 const passport = require("passport");
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GitHubStrategy = require("passport-github").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
 const mongoose = require("mongoose");
 const keys = require("../config/keys");
@@ -74,6 +75,32 @@ passport.use(
           googleId: profile.id,
           email: registerEmail,
           username: profile.name.givenName,
+          verified: true
+        }).save(); //we already have a record with given profile.id
+      }
+
+      done(null, user); //call done after saving user(async db call) is completed
+    }
+  )
+);
+
+passport.use(
+  new GitHubStrategy(
+    {
+      clientID: keys.githubClientID,
+      clientSecret: keys.githubClientSecret,
+      callbackURL: "/auth/github/callback"
+    },
+    async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+
+      let user = await User.findOne({ githubId: profile.id });
+
+      if (!user) {
+        user = await new User({
+          githubId: profile.id,
+          email: profile.email,
+          username: profile.username,
           verified: true
         }).save(); //we already have a record with given profile.id
       }
