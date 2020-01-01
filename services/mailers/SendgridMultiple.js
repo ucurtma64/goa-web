@@ -9,7 +9,7 @@ class SendgridMultiple {
 
     this.msg = {
       to: emails,
-      from: "no-reply@guardiansofadelia.com",
+      from: "goa@guardiansofadelia.com",
       subject: subject,
       text: "Hello plain world!",
       html: content,

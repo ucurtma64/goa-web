@@ -7,7 +7,7 @@ class SendgridSingle {
 
     this.msg = {
       to: recipient,
-      from: "no-reply@guardiansofadelia.com",
+      from: "goa@guardiansofadelia.com",
       subject: subject,
       text: "Hello plain world!",
       html: content,

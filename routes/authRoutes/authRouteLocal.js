@@ -36,11 +36,10 @@ module.exports = app => {
     })(req, res, next);
   });
 
-  app.post("/auth/local/register", (req, res) => {
+  app.post("/auth/local/register", async (req, res) => {
     const { email, username, password, passwordConfirm } = req.body;
 
     if (password !== passwordConfirm) {
-      console.log("Passwords does not match");
       return res.status(400).json({
         success: false,
         message: "Passwords does not match."
@@ -48,7 +47,6 @@ module.exports = app => {
     }
 
     if (!passwordRegex.test(password)) {
-      console.log("Password is not valid");
       return res.status(400).json({
         success: false,
         message: "Password is not valid."
@@ -56,7 +54,6 @@ module.exports = app => {
     }
 
     if (!usernameRegex.test(username)) {
-      console.log("Username is not valid");
       return res.status(400).json({
         success: false,
         message: "Username is not valid."
@@ -64,62 +61,60 @@ module.exports = app => {
     }
 
     if (!emailRegex.test(email)) {
-      console.log("Email is not valid");
       return res.status(400).json({
         success: false,
         message: "Email is not valid."
       });
     }
 
-    User.findOne(
-      {
+    var user;
+
+    try {
+      user = await User.findOne({
         $or: [{ email: email }, { username: username }]
-      },
-      async function(err, user) {
+      });
+    } catch (error) {
+      return done(error);
+    }
+
+    if (user) {
+      return res.status(400).json({
+        success: false,
+        message: "Email or username is taken."
+      });
+    }
+
+    try {
+      user = await new User({
+        email: email,
+        username: username,
+        password: password,
+        verified: false
+      }).save();
+
+      req.logIn(user, async function(err) {
         if (err) {
-          return done(err);
-        }
-        if (user) {
-          console.log("Email or username is taken.");
-          return res.status(400).json({
-            success: false,
-            message: "Email or username is taken."
-          });
+          return next(err);
         }
 
-        try {
-          user = await new User({
-            email: email,
-            username: username,
-            password: password,
-            verified: false
-          }).save();
+        const userVerify = await new UserVerify({
+          _user: user.id
+        }).save();
 
-          req.logIn(user, async function(err) {
-            if (err) {
-              return next(err);
-            }
+        const mailer = new SendgridSingle(
+          { subject: "Activate your GoA account", recipient: email },
+          registerTemplate(userVerify)
+        );
 
-            const userVerify = await new UserVerify({
-              _user: user.id
-            }).save();
+        mailer.send();
 
-            const mailer = new SendgridSingle(
-              { subject: "Activate your GoA account", recipient: email },
-              registerTemplate(userVerify)
-            );
-
-            mailer.send();
-
-            return res.status(200).json({
-              success: true
-            });
-          });
-        } catch (error) {
-          return done(error);
-        }
-      }
-    );
+        return res.status(200).json({
+          success: true
+        });
+      });
+    } catch (error) {
+      return done(error);
+    }
   });
 
   app.get("/auth/local/verify/:verifyID", async (req, res) => {
