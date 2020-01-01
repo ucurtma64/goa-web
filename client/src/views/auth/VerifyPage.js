@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import EmailForm from "components/forms/EmailForm";
 import Spinner from "components/util/Spinner";
 import axios from "axios";
+import { notifyModal } from "actions";
 
 class VerifyPage extends Component {
   async resendConfirmationMail() {
@@ -81,4 +82,4 @@ function mapStateToProps({ auth }) {
   return { auth };
 }
 
-export default connect(mapStateToProps)(VerifyPage);
+export default connect(mapStateToProps, { notifyModal })(VerifyPage);
