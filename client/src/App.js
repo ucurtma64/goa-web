@@ -9,8 +9,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 //utils
-import NotificationTopBar from "./components/NotificationTopBar";
-import NotificationModal from "./components/NotificationModal";
+import NotificationTopBar from "./components/notification/NotificationTopBar";
+import NotificationModal from "./components/notification/NotificationModal";
 
 //pages
 const AdminDashboard = lazy(() => import("./views/admin/AdminDashboard"));

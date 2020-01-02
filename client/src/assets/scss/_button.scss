@@ -1,8 +1,6 @@
 .btn {
-  border-width: 2px;
-  background: #857671;
-  border-color: #4e413b;
-  border-radius: 12px;
+  border: none;
+  background: #8f7970;
   color: #e2ded3;
 }
 
@@ -21,14 +19,14 @@
 }
 
 .btn:hover {
-  background: #c2b089;
-  border-color: #4e413b;
-  color: #4e413b;
+  background: #816d65;
+  border-color: #e2ded3;
+  color: #e2ded3;
 }
 
 .btn-primary:focus,
 .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem #c2b089;
+  box-shadow: 0 0 0 1px #e2ded3;
 }
 
 .btn:not(:disabled):not(.disabled):active,
@@ -42,7 +40,7 @@
 .btn:not(:disabled):not(.disabled):active:focus,
 .btn:not(:disabled):not(.disabled).active:focus,
 .show > .btn.dropdown-toggle:focus {
-  box-shadow: 0 0 0 0.2rem #c2b089;
+  box-shadow: 0 0 0 0.2rem #e2ded3;
 }
 
 .landing-btn {
