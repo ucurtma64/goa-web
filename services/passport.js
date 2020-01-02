@@ -119,6 +119,8 @@ passport.use(
       callbackURL: "/auth/twitter/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log(profile);
+
       let user = await User.findOne({ twitterId: profile.id });
 
       if (!user) {
