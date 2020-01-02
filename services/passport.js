@@ -116,7 +116,8 @@ passport.use(
     {
       consumerKey: keys.twitterConsumerKey,
       consumerSecret: keys.twitterConsumerSecret,
-      callbackURL: "/auth/twitter/callback"
+      callbackURL:
+        "https://guardiansofadelia.herokuapp.com/auth/twitter/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
       console.log(profile);
