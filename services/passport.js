@@ -128,7 +128,7 @@ passport.use(
         user = await new User({
           twitterId: profile.id,
           email: profile.email,
-          username: profile.name,
+          username: profile.username,
           verified: true
         }).save(); //we already have a record with given profile.id
       }
