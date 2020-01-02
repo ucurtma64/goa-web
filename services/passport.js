@@ -119,15 +119,13 @@ passport.use(
       callbackURL: "/auth/twitter/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-
       let user = await User.findOne({ twitterId: profile.id });
 
       if (!user) {
         user = await new User({
           twitterId: profile.id,
           email: profile.email,
-          username: profile.username,
+          username: profile.name,
           verified: true
         }).save(); //we already have a record with given profile.id
       }

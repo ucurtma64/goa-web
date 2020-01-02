@@ -4,7 +4,7 @@ module.exports = app => {
   app.get(
     "/auth/twitter",
     passport.authenticate("twitter", {
-      scope: ["read:user"],
+      scope: ["user"],
       prompt: "select_account"
     })
   );
