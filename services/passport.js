@@ -66,17 +66,8 @@ passport.use(
       let user = await User.findOne({ googleId: profile.id });
 
       if (!user) {
-        let registerEmail = profile.emails[0].value;
-
-        const verifiedEmail = profile.emails.filter(email => {
-          return email.verified;
-        })[0].value;
-
-        if (verifiedEmail) registerEmail = verifiedEmail;
-
         user = await new User({
           googleId: profile.id,
-          email: registerEmail,
           username: profile.name.givenName,
           verified: true
         }).save(); //we already have a record with given profile.id
@@ -100,7 +91,6 @@ passport.use(
       if (!user) {
         user = await new User({
           githubId: profile.id,
-          email: profile.email,
           username: profile.username,
           verified: true
         }).save(); //we already have a record with given profile.id
@@ -127,7 +117,6 @@ passport.use(
       if (!user) {
         user = await new User({
           twitterId: profile.id,
-          email: profile.email,
           username: profile.username,
           verified: true
         }).save(); //we already have a record with given profile.id
@@ -144,19 +133,16 @@ passport.use(
       clientID: keys.facebookAppID,
       clientSecret: keys.facebookAppSecret,
       callbackURL: "/auth/facebook/callback",
-      profileFields: ["id", "displayName", "email"]
+      profileFields: ["id", "displayName"]
     },
     async (accessToken, refreshToken, profile, done) => {
       console.log(profile);
 
       let user = await User.findOne({ facebookId: profile.id });
 
-      let registerEmail = profile.emails[0].value;
-
       if (!user) {
         user = await new User({
           facebookId: profile.id,
-          email: registerEmail,
           username: profile.displayName,
           verified: true
         }).save(); //we already have a record with given profile.id

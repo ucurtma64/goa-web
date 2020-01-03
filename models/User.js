@@ -33,7 +33,7 @@ const userSchema = new Schema({
     select: false
   },
   email: { type: String, index: true, unique: true, sparse: true },
-  username: { type: String, required: true, index: true, unique: true },
+  username: String,
   password: { type: String, select: false },
   credits: { type: Number, default: 0 },
   billing: BillingSchema,
