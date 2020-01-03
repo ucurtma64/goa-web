@@ -83,7 +83,8 @@ passport.use(
     {
       clientID: keys.githubClientID,
       clientSecret: keys.githubClientSecret,
-      callbackURL: "/auth/github/callback"
+      callbackURL:
+        "https://guardiansofadelia.herokuapp.com/auth/github/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
       let user = await User.findOne({ githubId: profile.id });
@@ -132,7 +133,8 @@ passport.use(
     {
       clientID: keys.facebookAppID,
       clientSecret: keys.facebookAppSecret,
-      callbackURL: "/auth/facebook/callback",
+      callbackURL:
+        "https://guardiansofadelia.herokuapp.com/auth/facebook/callback",
       profileFields: ["id", "displayName"]
     },
     async (accessToken, refreshToken, profile, done) => {
