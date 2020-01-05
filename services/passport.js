@@ -111,8 +111,6 @@ passport.use(
         "https://guardiansofadelia.herokuapp.com/auth/twitter/callback"
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-
       let user = await User.findOne({ twitterId: profile.id });
 
       if (!user) {
@@ -138,8 +136,6 @@ passport.use(
       profileFields: ["id", "displayName"]
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log(profile);
-
       let user = await User.findOne({ facebookId: profile.id });
 
       if (!user) {
