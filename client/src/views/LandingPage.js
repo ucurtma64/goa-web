@@ -53,7 +53,7 @@ class LandingPage extends Component {
           <div className="row mt-5">
             <div className="col text-center">
               <button
-                className="btn landing-btn text-light"
+                className="btn landing-btn font-weight-bold"
                 title="Click to copy server adress!"
                 data-toggle="tooltip"
                 data-placement="right"

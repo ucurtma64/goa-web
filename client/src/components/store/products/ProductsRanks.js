@@ -3,6 +3,8 @@ import ProductCard from "../ProductCard";
 import hero from "assets/img/hero.png";
 import legend from "assets/img/legend.png";
 import titan from "assets/img/titan.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 
 class ProductsRanks extends Component {
   render() {
@@ -13,7 +15,16 @@ class ProductsRanks extends Component {
             productId: 1,
             credits: 1,
             name: "Hero Rank",
-            description: "description",
+            description: (
+              <ul class="list-group">
+                <li class="list-group-item">Chat Tag: Hero</li>
+                <li class="list-group-item">Class Slots: +2 (5 total)</li>
+                <li class="list-group-item">
+                  Notify When Login:
+                  <FontAwesomeIcon className="ml-2" icon={faCheck} />
+                </li>
+              </ul>
+            ),
             image: hero
           }}
           onFormSubmit={productSelection =>
@@ -25,7 +36,16 @@ class ProductsRanks extends Component {
             productId: 2,
             credits: 2,
             name: "Legend Rank",
-            description: "description",
+            description: (
+              <ul class="list-group">
+                <li class="list-group-item">Chat Tag: Legend</li>
+                <li class="list-group-item">Class Slots: +4 (7 total)</li>
+                <li class="list-group-item">
+                  Notify When Login:
+                  <FontAwesomeIcon className="ml-2" icon={faCheck} />
+                </li>
+              </ul>
+            ),
             image: legend
           }}
           onFormSubmit={productSelection =>
@@ -37,7 +57,16 @@ class ProductsRanks extends Component {
             productId: 3,
             credits: 5,
             name: "Titan Rank",
-            description: "description",
+            description: (
+              <ul class="list-group">
+                <li class="list-group-item">Chat Tag: Titan</li>
+                <li class="list-group-item">Class Slots: +6 (9 total)</li>
+                <li class="list-group-item">
+                  Notify When Login:
+                  <FontAwesomeIcon className="ml-2" icon={faCheck} />
+                </li>
+              </ul>
+            ),
             image: titan
           }}
           onFormSubmit={productSelection =>
