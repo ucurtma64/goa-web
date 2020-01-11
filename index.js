@@ -17,7 +17,9 @@ if (!(process.env.NODE_ENV === "production")) {
 
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
 });
 
 const app = express();

@@ -12,5 +12,7 @@ module.exports = {
   iyzipayPublishableKey: process.env.IYZIPAY_API_KEY,
   iyzipaySecretKey: process.env.IYZIPAY_SECRET_KEY,
   sendgridKey: process.env.SENDGRID_KEY,
-  redirectDomain: process.env.REDIRECT_DOMAIN
+  redirectDomain: process.env.REDIRECT_DOMAIN,
+  minecraftSocketAddress: process.env.MINECRAFT_SOCKET_ADDRESS,
+  minecraftSocketPassword: process.env.MINECRAFT_SOCKET_PASSWORD
 };

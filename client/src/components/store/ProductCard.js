@@ -45,9 +45,9 @@ class ProductCard extends Component {
             <p className="text-center mt-n2 text-monospace">
               {this.props.product.credits} Credits
             </p>
-            <p className="text-center font-italic mt-4">
+            <div className="text-center font-italic mt-4">
               {this.props.product.description}
-            </p>
+            </div>
 
             {this.renderButton()}
           </div>

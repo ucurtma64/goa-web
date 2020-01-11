@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const io = require("socket.io-client");
 const requireLogin = require("../middlewares/requireLogin");
 const requireCredits = require("../middlewares/requireCredits");
+const keys = require("../config/keys");
 
 const Product = mongoose.model("products");
 
@@ -14,7 +15,7 @@ module.exports = app => {
     });
 
     if (!resultProduct) {
-      res.status(422).send(err);
+      res.status(422).send("No such product");
       return;
     }
 
@@ -25,7 +26,8 @@ module.exports = app => {
     const webPurchase = {
       productId: productSelection.productId,
       payment: productSelection.credits,
-      minecraftUsername: minecraftUsername
+      minecraftUsername: minecraftUsername,
+      password: keys.minecraftSocketPassword
     };
 
     try {
@@ -35,8 +37,6 @@ module.exports = app => {
       const user = await req.user.save();
 
       const response = Object.assign({ user }, mcResponse);
-
-      console.log(response);
 
       res.send(response);
     } catch (err) {
@@ -52,7 +52,7 @@ module.exports = app => {
 
 const sendMessageToMinecraft = webPurchase => {
   return new Promise(function(resolve, reject) {
-    const client = io.connect("http://localhost:9092");
+    const client = io.connect(keys.minecraftSocketAddress + ":9092");
 
     client.on("connect", function() {
       console.log("Connect");

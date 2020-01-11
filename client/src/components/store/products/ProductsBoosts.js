@@ -29,7 +29,7 @@ class ProductsBoosts extends Component {
             credits: 1,
             name: "Item-Drop-Rate Boost",
             description:
-              "1.5x chance of monsters droping item when they die for 20 minutes on the whole server.",
+              "2x chance of monsters droping item when they die for 20 minutes on the whole server.",
             image: boostLoot,
             imageSmall: true
           }}

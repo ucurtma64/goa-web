@@ -16,10 +16,12 @@ class ProductsRanks extends Component {
             credits: 1,
             name: "Hero Rank",
             description: (
-              <ul class="list-group">
-                <li class="list-group-item">Chat Tag: Hero</li>
-                <li class="list-group-item">Class Slots: +2 (5 total)</li>
-                <li class="list-group-item">
+              <ul className="list-group">
+                <li className="list-group-item">Chat Tag: Hero</li>
+                <li className="list-group-item">
+                  Character Slots: +2 (5 total)
+                </li>
+                <li className="list-group-item">
                   Notify When Login:
                   <FontAwesomeIcon className="ml-2" icon={faCheck} />
                 </li>
@@ -37,10 +39,12 @@ class ProductsRanks extends Component {
             credits: 2,
             name: "Legend Rank",
             description: (
-              <ul class="list-group">
-                <li class="list-group-item">Chat Tag: Legend</li>
-                <li class="list-group-item">Class Slots: +4 (7 total)</li>
-                <li class="list-group-item">
+              <ul className="list-group">
+                <li className="list-group-item">Chat Tag: Legend</li>
+                <li className="list-group-item">
+                  Character Slots: +4 (7 total)
+                </li>
+                <li className="list-group-item">
                   Notify When Login:
                   <FontAwesomeIcon className="ml-2" icon={faCheck} />
                 </li>
@@ -58,10 +62,12 @@ class ProductsRanks extends Component {
             credits: 5,
             name: "Titan Rank",
             description: (
-              <ul class="list-group">
-                <li class="list-group-item">Chat Tag: Titan</li>
-                <li class="list-group-item">Class Slots: +6 (9 total)</li>
-                <li class="list-group-item">
+              <ul className="list-group">
+                <li className="list-group-item">Chat Tag: Titan</li>
+                <li className="list-group-item">
+                  Character Slots: +6 (9 total)
+                </li>
+                <li className="list-group-item">
                   Notify When Login:
                   <FontAwesomeIcon className="ml-2" icon={faCheck} />
                 </li>

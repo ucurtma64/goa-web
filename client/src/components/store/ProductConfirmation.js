@@ -19,6 +19,11 @@ class ProductConfirmation extends Component {
       </div>
     );
 
+    delete formValues.productSelection.description;
+    delete formValues.productSelection.image;
+    delete formValues.productSelection.name;
+    console.log(formValues);
+
     const res = await this.props.buyProduct(formValues);
 
     console.log(res);
