@@ -13,7 +13,7 @@ class ProductsRanks extends Component {
         <ProductCard
           product={{
             productId: 1,
-            credits: 1,
+            credits: 200,
             name: "Hero Rank",
             description: (
               <ul className="list-group">
@@ -36,7 +36,7 @@ class ProductsRanks extends Component {
         <ProductCard
           product={{
             productId: 2,
-            credits: 2,
+            credits: 400,
             name: "Legend Rank",
             description: (
               <ul className="list-group">
@@ -59,7 +59,7 @@ class ProductsRanks extends Component {
         <ProductCard
           product={{
             productId: 3,
-            credits: 5,
+            credits: 600,
             name: "Titan Rank",
             description: (
               <ul className="list-group">

@@ -14,7 +14,9 @@ class Footer extends Component {
             </a>
           </small>
           <small className="col text-right">
-            <p className="">&copy; Copyright 2019, Guardians of Adelia</p>
+            <p className="">
+              &copy; Copyright {new Date().getFullYear()}, Guardians of Adelia
+            </p>
           </small>
         </div>
       </footer>

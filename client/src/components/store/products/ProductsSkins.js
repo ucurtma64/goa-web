@@ -82,8 +82,8 @@ class ProductsSkins extends Component {
       <div className="row card-deck">
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 4,
+            credits: 50,
             name: "1x Item Skin Scroll",
             description:
               "Use on your weapon or shield to give it a visual effect. (Your item must be level 50 or higher)",
@@ -95,8 +95,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 5,
+            credits: 100,
             name: "2x Item Skin Scroll",
             description:
               "Use on your weapon or shield to give it a visual effect. (Your item must be level 50 or higher)",
@@ -108,8 +108,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 6,
+            credits: 200,
             name: "5x Item Skin Scroll",
             description:
               "Use on your weapon or shield to give it a visual effect. (Your item must be level 50 or higher)",
@@ -128,8 +128,8 @@ class ProductsSkins extends Component {
       <div className="row card-deck">
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 7,
+            credits: 100,
             name: "Angel Wings",
             description:
               "Right click to change visual appearance of your equiped helmet.",
@@ -141,8 +141,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 8,
+            credits: 100,
             name: "Demon Wings",
             description:
               "Right click to change visual appearance of your equiped helmet.",
@@ -154,8 +154,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 9,
+            credits: 100,
             name: "Dark Dragon Wings",
             description:
               "Right click to change visual appearance of your equiped helmet.",
@@ -167,8 +167,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 10,
+            credits: 100,
             name: "White Dragon Wings",
             description:
               "Right click to change visual appearance of your equiped helmet.",
@@ -180,8 +180,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 11,
+            credits: 50,
             name: "Golden Crown",
             description:
               "Right click to change visual appearance of your equiped helmet.",
@@ -200,8 +200,8 @@ class ProductsSkins extends Component {
       <div className="row card-deck">
         <ProductCard
           product={{
-            productId: 1,
-            credits: 1,
+            productId: 12,
+            credits: 100,
             name: "Bee",
             description:
               "Right click to your pet to change it's visual appearance.",
@@ -213,8 +213,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 2,
-            credits: 2,
+            productId: 13,
+            credits: 100,
             name: "Red Fox",
             description:
               "Right click to your pet to change it's visual appearance.",
@@ -226,8 +226,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 3,
-            credits: 5,
+            productId: 14,
+            credits: 100,
             name: "Snow Fox",
             description:
               "Right click to your pet to change it's visual appearance.",
@@ -239,8 +239,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 4,
-            credits: 10,
+            productId: 15,
+            credits: 100,
             name: "Ice Cream",
             description:
               "Right click to your pet to change it's visual appearance.",
@@ -252,8 +252,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 5,
-            credits: 15,
+            productId: 16,
+            credits: 100,
             name: "Vex",
             description:
               "Right click to your pet to change it's visual appearance.",
@@ -265,8 +265,8 @@ class ProductsSkins extends Component {
         />
         <ProductCard
           product={{
-            productId: 6,
-            credits: 20,
+            productId: 17,
+            credits: 100,
             name: "Baby Dragon",
             description:
               "Right click to your pet to change it's visual appearance.",
