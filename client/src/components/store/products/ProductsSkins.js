@@ -84,7 +84,7 @@ class ProductsSkins extends Component {
           product={{
             productId: 4,
             credits: 50,
-            name: "1x Item Skin Scroll",
+            name: "1x Weapon/Shield Skin Scroll",
             description:
               "Use on your weapon or shield to give it a visual effect. (Your item must be level 50 or higher)",
             image: "https://media.giphy.com/media/1mhU3YqvhgLv2utfKv/giphy.gif"
@@ -97,7 +97,7 @@ class ProductsSkins extends Component {
           product={{
             productId: 5,
             credits: 100,
-            name: "2x Item Skin Scroll",
+            name: "2x Weapon/Shield Skin Scroll",
             description:
               "Use on your weapon or shield to give it a visual effect. (Your item must be level 50 or higher)",
             image: "https://media.giphy.com/media/8YKZGnI8Eb6qD83tLa/giphy.gif"
@@ -110,7 +110,7 @@ class ProductsSkins extends Component {
           product={{
             productId: 6,
             credits: 200,
-            name: "5x Item Skin Scroll",
+            name: "5x Weapon/Shield Skin Scroll",
             description:
               "Use on your weapon or shield to give it a visual effect. (Your item must be level 50 or higher)",
             image: "https://media.giphy.com/media/2kSUhLi6vm0mmEvHOm/giphy.gif"

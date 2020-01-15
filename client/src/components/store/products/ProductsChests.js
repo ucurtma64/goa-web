@@ -9,7 +9,7 @@ class ProductsChests extends Component {
         <ProductCard
           product={{
             productId: 18,
-            credits: 50,
+            credits: 100,
             name: "1x Skin Chest",
             description:
               "Skin Chests are chests you can open in game for a chance to get a random cosmetic object!",
@@ -23,7 +23,7 @@ class ProductsChests extends Component {
         <ProductCard
           product={{
             productId: 19,
-            credits: 100,
+            credits: 200,
             name: "2x Skin Chest",
             description:
               "Skin Chests are chests you can open in game for a chance to get a random cosmetic object!",
@@ -37,7 +37,7 @@ class ProductsChests extends Component {
         <ProductCard
           product={{
             productId: 20,
-            credits: 200,
+            credits: 400,
             name: "5x Skin Chest",
             description:
               "Skin Chests are chests you can open in game for a chance to get a random cosmetic object!",
