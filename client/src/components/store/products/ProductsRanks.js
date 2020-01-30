@@ -19,7 +19,7 @@ class ProductsRanks extends Component {
               <ul className="list-group">
                 <li className="list-group-item">Chat Tag: Hero</li>
                 <li className="list-group-item">
-                  Character Slots: +2 (5 total)
+                  Character Slots: +2 (4 total)
                 </li>
                 <li className="list-group-item">
                   Notify When Login:
@@ -42,7 +42,7 @@ class ProductsRanks extends Component {
               <ul className="list-group">
                 <li className="list-group-item">Chat Tag: Legend</li>
                 <li className="list-group-item">
-                  Character Slots: +4 (7 total)
+                  Character Slots: +4 (6 total)
                 </li>
                 <li className="list-group-item">
                   Notify When Login:
@@ -65,7 +65,7 @@ class ProductsRanks extends Component {
               <ul className="list-group">
                 <li className="list-group-item">Chat Tag: Titan</li>
                 <li className="list-group-item">
-                  Character Slots: +6 (9 total)
+                  Character Slots: +6 (8 total)
                 </li>
                 <li className="list-group-item">
                   Notify When Login:

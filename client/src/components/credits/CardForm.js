@@ -9,8 +9,6 @@ import $ from "jquery";
 import axios from "axios";
 import CreditSelectionCard from "./CreditSelectionCard";
 
-const cardRegex = /^(?:4[0-9]{12}(?:[0-9]{3})?|(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$/;
-
 class CardForm extends Component {
   constructor(props) {
     super(props);
@@ -86,9 +84,7 @@ class CardForm extends Component {
                   /^([a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/
                 )
                 .required("required"),
-              cardNumber: Yup.string()
-                .matches(cardRegex)
-                .required("required"),
+              cardNumber: Yup.number().required("required"),
               expireYear: Yup.number()
                 .min(1, "Between 1-99")
                 .max(99, "Between 1-99")

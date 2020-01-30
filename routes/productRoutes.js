@@ -8,7 +8,7 @@ const Product = mongoose.model("products");
 
 module.exports = app => {
   app.post("/api/products", requireLogin, requireCredits, async (req, res) => {
-    const { minecraftUsername, productSelection } = req.body;
+    const { minecraftUuid, productSelection } = req.body;
 
     const resultProduct = await Product.findOne({
       productId: productSelection.productId
@@ -26,7 +26,7 @@ module.exports = app => {
     const webPurchase = {
       productId: productSelection.productId,
       payment: productSelection.credits,
-      minecraftUsername: minecraftUsername,
+      minecraftUuid: minecraftUuid,
       password: keys.minecraftSocketPassword
     };
 

@@ -46,6 +46,7 @@ require("./routes/authRoutes/authRouteGoogle")(app);
 require("./routes/authRoutes/authRouteLocal")(app);
 require("./routes/authRoutes/authRouteTwitter")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/mojangRoutes")(app);
 require("./routes/postRoutes")(app);
 require("./routes/productRoutes")(app);
 require("./routes/profileRoutes")(app);

@@ -7,8 +7,44 @@ import Spinner from "../util/Spinner";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignInAlt } from "@fortawesome/free-solid-svg-icons";
 import $ from "jquery";
+import axios from "axios";
 
 class ProductConfirmation extends Component {
+  state = {
+    name: "",
+    id: "",
+    skin: ""
+  };
+
+  componentDidMount() {
+    this.getMinecraftUser();
+  }
+
+  async getMinecraftUser() {
+    if (this.props.formValues.minecraftUsername) {
+      try {
+        const res = await axios.get(
+          "/api/mojang/users/profiles/minecraft?username=" +
+            this.props.formValues.minecraftUsername
+        );
+
+        this.setState({ name: res.data.name, id: res.data.id });
+
+        const skinRes = await axios.get(
+          "/api/mojang/session/minecraft/profile?uuid=" + res.data.id
+        );
+
+        this.setState({
+          name: res.data.name,
+          id: res.data.id,
+          skin: skinRes.data.textures.SKIN.url
+        });
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  }
+
   async onConfirmation(formValues) {
     this.props.notifyModal(
       true,
@@ -22,9 +58,15 @@ class ProductConfirmation extends Component {
     delete formValues.productSelection.description;
     delete formValues.productSelection.image;
     delete formValues.productSelection.name;
+    delete formValues.productSelection.minecraftUsername;
     console.log(formValues);
 
-    const res = await this.props.buyProduct(formValues);
+    const requestString = Object.assign(
+      { minecraftUuid: this.state.id },
+      formValues
+    );
+
+    const res = await this.props.buyProduct(requestString);
 
     console.log(res);
 
@@ -73,11 +115,22 @@ class ProductConfirmation extends Component {
               <div className="card">
                 <div className="card-body">
                   <h5 className="card-title text-center mt-2">
-                    Minecraft Username:
+                    Minecraft Username
                   </h5>
-                  <p className="text-center mt-n2">
-                    {this.props.formValues.minecraftUsername}
-                  </p>
+                  <p className="text-center mt-n2">{this.state.name}</p>
+                  <h5 className="card-title text-center mt-2">
+                    Minecraft UUID
+                  </h5>
+                  <p className="text-center">{this.state.id}</p>
+                  <h5 className="card-title text-center mt-2">
+                    Minecraft Skin
+                  </h5>
+                  <img
+                    width="512"
+                    height="512"
+                    src={this.state.skin}
+                    style={{ imageRendering: "crisp-edges" }}
+                  ></img>
                 </div>
               </div>
             </div>

@@ -39,7 +39,7 @@ module.exports = () => {
   ];
 
   Product.insertMany(arr, function(error, docs) {
-    if (error) console.log(error);
-    else console.log(docs);
+    if (error) console.log("Products already inited");
+    else console.log("Init products");
   });
 };
