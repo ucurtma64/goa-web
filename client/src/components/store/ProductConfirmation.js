@@ -55,6 +55,11 @@ class ProductConfirmation extends Component {
       </div>
     );
 
+    if (!this.state.id) {
+      this.props.notifyModal(true, "danger", "Minecraft user not found");
+      return;
+    }
+
     delete formValues.productSelection.description;
     delete formValues.productSelection.image;
     delete formValues.productSelection.name;
