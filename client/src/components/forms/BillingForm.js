@@ -177,8 +177,6 @@ class BillingForm extends Component {
                 </div>
 
                 <div className="" key="buttons">
-                  {this.renderBackButton()}
-
                   <button
                     className="btn btn-primary float-right"
                     variant="primary"
@@ -186,6 +184,8 @@ class BillingForm extends Component {
                   >
                     Submit
                   </button>
+
+                  {this.renderBackButton()}
                 </div>
               </Form>
             )}
