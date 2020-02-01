@@ -135,6 +135,7 @@ class ProductConfirmation extends Component {
                     height="512"
                     src={this.state.skin}
                     style={{ imageRendering: "crisp-edges" }}
+                    alt="..."
                   ></img>
                 </div>
               </div>

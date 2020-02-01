@@ -109,7 +109,8 @@ class RegisterForm extends Component {
               setSubmitting(false);
             }, 2000);
           }}
-          render={({ errors, status, touched, isSubmitting }) => (
+        >
+          {({ errors, status, touched, isSubmitting }) => (
             <Form className="d-block mx-auto px-2">
               <span className="text-danger">{this.state.registerError}</span>
               <div className="form-row">
@@ -203,7 +204,7 @@ class RegisterForm extends Component {
               </div>
             </Form>
           )}
-        />
+        </Formik>
         <hr />
         <LoginStrategies />
       </>

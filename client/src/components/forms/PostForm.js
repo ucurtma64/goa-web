@@ -31,7 +31,8 @@ class PostForm extends Component {
         onSubmit={fields => {
           this.publishPost(fields);
         }}
-        render={({ errors, status, touched }) => (
+      >
+        {({ errors, status, touched }) => (
           <Form className="d-block mx-auto px-2">
             <div className="form-row">
               <div className="form-group col" key="title">
@@ -104,7 +105,7 @@ class PostForm extends Component {
             </div>
           </Form>
         )}
-      />
+      </Formik>
     );
   }
 }

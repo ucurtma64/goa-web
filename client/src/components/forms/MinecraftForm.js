@@ -82,7 +82,8 @@ class MinecraftForm extends Component {
                 onSubmit={fields => {
                   this.props.onFormSubmit(fields);
                 }}
-                render={({ errors, status, touched }) => (
+              >
+                {({ errors, status, touched }) => (
                   <Form className="d-block mx-auto px-2">
                     <div className="form-group" key="minecraftUsername">
                       <label htmlFor="minecraftUsername">
@@ -119,7 +120,7 @@ class MinecraftForm extends Component {
                     </div>
                   </Form>
                 )}
-              />
+              </Formik>
             </div>
           </div>
         );

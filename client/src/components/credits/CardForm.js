@@ -81,7 +81,8 @@ class CardForm extends Component {
                 .min(5, "cardHolderName must be at least 5 characters")
                 .max(50, "cardHolderName must be at most 50 characters")
                 .matches(
-                  /^([a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/
+                  /^([a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{1,}|[a-zA-Z0-9]+\s{1}[a-zA-Z0-9]{3,}\s{1}[a-zA-Z0-9]{1,})$/,
+                  "cardHolderName must be at least 2 words"
                 )
                 .required("required"),
               cardNumber: Yup.number().required("required"),
@@ -101,7 +102,8 @@ class CardForm extends Component {
             onSubmit={fields => {
               this.onFormSubmit(fields);
             }}
-            render={({ errors, status, touched }) => (
+          >
+            {({ errors, status, touched }) => (
               <Form className="d-block mx-auto px-2">
                 <div className="form-row">
                   <div className="form-group col" key="cardHolderName">
@@ -246,7 +248,7 @@ class CardForm extends Component {
                 </div>
               </Form>
             )}
-          />
+          </Formik>
 
           <CreditSelectionCard
             className="col"

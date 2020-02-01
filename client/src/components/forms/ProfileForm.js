@@ -67,7 +67,8 @@ class ProfileForm extends Component {
             onSubmit={fields => {
               this.props.onFormSubmit(fields);
             }}
-            render={({ errors, status, touched }) => (
+          >
+            {({ errors, status, touched }) => (
               <Form className="d-block mx-auto px-2">
                 <div className="form-row">
                   <div className="form-group col" key="username">
@@ -122,7 +123,7 @@ class ProfileForm extends Component {
                 </div>
               </Form>
             )}
-          />
+          </Formik>
         </div>
       </div>
     );

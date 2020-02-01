@@ -65,7 +65,8 @@ class EmailForm extends Component {
             onSubmit={fields => {
               this.onFormSubmit(fields);
             }}
-            render={({ errors, status, touched }) => (
+          >
+            {({ errors, status, touched }) => (
               <Form className="d-block mx-auto px-2">
                 <div className="form-group" key="email">
                   <label htmlFor="email">Email</label>
@@ -96,7 +97,7 @@ class EmailForm extends Component {
                 </div>
               </Form>
             )}
-          />
+          </Formik>
         </div>
       </div>
     );

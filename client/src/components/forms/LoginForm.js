@@ -66,7 +66,8 @@ class LoginForm extends Component {
               setSubmitting(false);
             }, 2000);
           }}
-          render={({ errors, status, touched, isSubmitting }) => (
+        >
+          {({ errors, status, touched, isSubmitting }) => (
             <Form className="d-block mx-auto px-2">
               <span className="text-danger">{this.state.loginError}</span>
               <div className="form-row">
@@ -123,7 +124,7 @@ class LoginForm extends Component {
               </div>
             </Form>
           )}
-        />
+        </Formik>
         <hr />
         <LoginStrategies />
       </>
