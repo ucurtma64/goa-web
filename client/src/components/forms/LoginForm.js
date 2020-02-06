@@ -6,7 +6,6 @@ import * as Yup from "yup";
 import axios from "axios";
 import $ from "jquery";
 import { fetchUser } from "actions";
-import LoginStrategies from "components/other/LoginStrategies";
 
 class LoginForm extends Component {
   state = {
@@ -125,8 +124,6 @@ class LoginForm extends Component {
             </Form>
           )}
         </Formik>
-        <hr />
-        <LoginStrategies />
       </>
     );
   }

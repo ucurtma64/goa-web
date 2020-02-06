@@ -7,15 +7,15 @@ class Footer extends Component {
         <div className="row">
           <small className="col text-left">
             <a className="mr-2" href="mailto:lixakyildiz@gmail.com">
-              Business Contact
+              Email Gönder
             </a>
             <a className="" href="#header">
-              Back to top
+              Yukarı Dön
             </a>
           </small>
           <small className="col text-right">
             <p className="">
-              &copy; Copyright {new Date().getFullYear()}, Guardians of Adelia
+              &copy; Copyright {new Date().getFullYear()}, Eren Akyıldız
             </p>
           </small>
         </div>

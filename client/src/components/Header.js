@@ -6,8 +6,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHome,
   faBook,
-  faStore,
-  faCoins,
   faUser,
   faSignOutAlt,
   faTools,
@@ -46,17 +44,7 @@ class Header extends Component {
       >
         <Link className="nav-link text-body" to="/">
           <FontAwesomeIcon className="mx-1" icon={faHome} />
-          Home
-        </Link>
-      </li>,
-      <li
-        className={this.state.active === 7 ? "nav-item active" : "nav-item"}
-        key="7"
-        onClick={() => this.handleClick(7)}
-      >
-        <Link className="nav-link text-body" to="/lore">
-          <FontAwesomeIcon className="mx-1" icon={faBook} />
-          Lore
+          Ana Sayfa
         </Link>
       </li>
     ];
@@ -85,7 +73,7 @@ class Header extends Component {
               onClick={this.showRegisterModal}
             >
               <FontAwesomeIcon className="mr-2" icon={faUserPlus} />
-              Register
+              Üye Ol
             </a>
           </li>,
           <li className="nav-item" key="10">
@@ -95,7 +83,7 @@ class Header extends Component {
               onClick={this.showLoginModal}
             >
               <FontAwesomeIcon className="mr-2" icon={faSignInAlt} />
-              Login
+              Giriş Yap
             </a>
           </li>
         ];
@@ -108,13 +96,13 @@ class Header extends Component {
           >
             <Link className="nav-link text-body" to="/profile">
               <FontAwesomeIcon className="mx-1" icon={faUser} />
-              Profile
+              Profil
             </Link>
           </li>,
           <li className="nav-item" key="2">
             <a className="nav-link text-body" href="/api/logout">
               <FontAwesomeIcon className="mx-1" icon={faSignOutAlt} />
-              Logout
+              Çıkış
             </a>
           </li>
         ];

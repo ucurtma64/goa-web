@@ -3,9 +3,22 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.2s ease-in-out;
   border: none;
+}
+
+.post-card {
+  min-height: 240px;
+
+  .card-title {
+    margin-bottom: 0;
+  }
+  .post-title {
+    font-size: 27px;
+  }
 
   img {
+    height: 240px;
     width: 40%;
+    min-width: 40%;
   }
 }
 

@@ -48,11 +48,11 @@ class LandingPage extends Component {
                 width="160"
                 height="160"
               />
-              <h2 className="pt-4">Ucurtma</h2>
+              <h2 className="pt-4">Uçurtma</h2>
               <p className="pt-2">
-                asdasdasdass adaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaa
-                aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa
-                aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa
+                Merhaba, ben Eren Akyıldız.
+                <br />
+                Blog yazılarımın olduğu siteye hoşgeldiniz, keyifli okumalar.
               </p>
             </div>
           </div>

@@ -32,7 +32,7 @@ class PostCard extends Component {
     const postLink = "post/" + this.props._id;
 
     return (
-      <div className="card mb-4 flex-row">
+      <div className="post-card card mb-4 flex-row">
         {this.renderImage()}
 
         <div className="card-body">
@@ -47,7 +47,7 @@ class PostCard extends Component {
               </span>
               <span className="mx-2">
                 <FontAwesomeIcon className="mr-2" icon={faCalendar} />
-                {this.props.date}
+                {new Date(this.props.date).toDateString()}
               </span>
             </small>
           </div>

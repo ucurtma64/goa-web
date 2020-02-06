@@ -7,7 +7,6 @@ import axios from "axios";
 import $ from "jquery";
 import { emailRegex, usernameRegex, passwordRegex } from "assets/regex";
 import { fetchUser } from "actions";
-import LoginStrategies from "components/other/LoginStrategies";
 
 class RegisterForm extends Component {
   state = {
@@ -205,8 +204,6 @@ class RegisterForm extends Component {
             </Form>
           )}
         </Formik>
-        <hr />
-        <LoginStrategies />
       </>
     );
   }

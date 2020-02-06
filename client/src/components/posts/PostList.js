@@ -13,7 +13,7 @@ class PostsList extends Component {
     totalPages: 0,
     currentPosts: [],
     currentPage: null,
-    pageLimit: 2,
+    pageLimit: 3,
     pageNeighbours: 1
   };
 
@@ -74,21 +74,21 @@ class PostsList extends Component {
             />
           ))}
         </div>
-        <div className="w-100 d-flex flex-row flex-wrap align-items-center justify-content-between">
-          <div className="d-flex flex-row mb-2 align-items-center">
+        <div className="w-100 d-flex align-items-center justify-content-between">
+          <div className="d-flex mb-2 align-items-center">
             <div className={headerClass}>
-              <strong>{totalPosts}</strong> Posts
+              <strong>{totalPosts}</strong> Blog Yazısı
             </div>
 
             {currentPage && (
               <span className="current-page d-inline-block h-100 pl-2">
-                Page <span className="font-weight-bold">{currentPage}</span> /{" "}
+                Sayfa <span className="font-weight-bold">{currentPage}</span> /{" "}
                 <span className="font-weight-bold">{totalPages}</span>
               </span>
             )}
           </div>
 
-          <div className="d-flex flex-row align-items-center">
+          <div className="align-items-center">
             <Pagination
               totalRecords={totalPosts}
               pageLimit={pageLimit}
@@ -105,13 +105,13 @@ class PostsList extends Component {
     return (
       <div className="row">
         <div className="col-lg-8">
-          <h1 className="text-center mb-2 font-weight-bold">Latest Posts</h1>
+          <h1 className="text-center pb-4 font-weight-bold">Son Yazılar</h1>
 
           {this.renderPosts()}
         </div>
 
         <div className="col-lg-4">
-          <h1 className="text-center mb-2 font-weight-bold">
+          <h1 className="text-center pb-4 font-weight-bold">
             <FontAwesomeIcon icon={faTwitter} />
           </h1>
           <article className="h-75">
@@ -119,7 +119,7 @@ class PostsList extends Component {
               sourceType="profile"
               screenName="UCURTMAM"
               options={{ height: 640 }}
-              lang="en"
+              lang="tr"
             />
           </article>
         </div>

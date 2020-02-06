@@ -4,10 +4,7 @@ const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
 const keys = require("./config/keys");
-require("./models/CreditSelection");
-require("./models/Order");
 require("./models/Post");
-require("./models/Product");
 require("./models/User"); //add use schema before using it in ./services/passport.js
 require("./models/UserVerify");
 require("./services/passport"); //not assigned to a variable since we need this to run only once
@@ -40,15 +37,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 require("./routes/authRoutes/authRoute")(app);
-require("./routes/authRoutes/authRouteFacebook")(app);
-require("./routes/authRoutes/authRouteGithub")(app);
-require("./routes/authRoutes/authRouteGoogle")(app);
 require("./routes/authRoutes/authRouteLocal")(app);
-require("./routes/authRoutes/authRouteTwitter")(app);
-require("./routes/billingRoutes")(app);
-require("./routes/mojangRoutes")(app);
 require("./routes/postRoutes")(app);
-require("./routes/productRoutes")(app);
 require("./routes/profileRoutes")(app);
 
 const path = require("path");
@@ -62,6 +52,3 @@ app.get("/*", function(req, res) {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
-
-//utils
-require("./utils/initProducts")();
