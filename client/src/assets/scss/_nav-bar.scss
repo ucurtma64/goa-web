@@ -1,7 +1,5 @@
 .navbar {
-  background: linear-gradient(180deg, #5e4e47 0%, #726058 100%);
-  box-shadow: 0 0.2rem 1.2rem #1d1916;
-  border-bottom: 0.2rem solid #3f3530;
+  background: #fff;
 }
 
 .navbar img {
@@ -10,25 +8,24 @@
 
 .nav-item,
 .nav-tabs .nav-link {
-  background: #726058;
-  border: 1.5px solid #3f3530;
+  background: #fff;
+  border-bottom: 1.5px solid #1a1a1a;
   box-sizing: border-box;
-  border-radius: 3px;
   margin: 5px;
 }
 
 .nav-tabs .nav-link:hover,
 .nav-tabs .nav-link:focus {
   border-color: #e2ded3;
-  color: #e2ded3;
+  color: #1a1a1a;
 }
 
 .nav-item.active,
 .nav-tabs .nav-link.active {
   border-width: 2px;
-  border-color: #3f3530;
-  background: #5e4e47;
-  color: #e2ded3;
+  border-color: #1a1a1a;
+  background: #fff;
+  color: #1a1a1a;
 }
 
 .nav-item > .nav-link {
@@ -45,12 +42,6 @@
 }
 
 @media only screen and (min-width: 992px) {
-  .navbar-brand {
-    position: absolute;
-    transform: translate(-50%);
-    left: 50%;
-  }
-
   .navbar-left-buttons {
     margin-left: 4rem;
   }
@@ -66,17 +57,17 @@
   .nav-item.active,
   .nav-tabs .nav-link.active {
     border-color: #e2ded3;
-    color: #e2ded3;
+    color: #1a1a1a;
   }
 
   .nav-tabs .nav-link:hover,
   .nav-tabs .nav-link:focus {
     border-color: #e2ded3;
-    color: #e2ded3;
+    color: #1a1a1a;
   }
 
   .nav-tabs .nav-link.active:hover,
   .nav-tabs .nav-link.active:focus {
-    color: #e2ded3;
+    color: #1a1a1a;
   }
 }

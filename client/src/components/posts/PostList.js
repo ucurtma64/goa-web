@@ -117,7 +117,7 @@ class PostsList extends Component {
           <article className="h-75">
             <TwitterTimelineEmbed
               sourceType="profile"
-              screenName="loykAd"
+              screenName="UCURTMAM"
               options={{ height: 640 }}
               lang="en"
             />

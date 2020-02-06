@@ -29,49 +29,36 @@ class LandingPage extends Component {
     return (
       <div>
         <div
-          className="container-fluid intro"
+          className="container"
           style={{
             paddingTop: "4rem",
-            paddingBottom: "12rem",
-            backgroundImage:
-              "url('https://i.ibb.co/h91KmMf/Optimized-2019-11-06-18-23-12.jpg')",
+            paddingBottom: "4rem",
+            backgroundColor: "#fff",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
             backgroundPosition: "bottom"
           }}
         >
           <div className="row">
-            <div className="col text-center">
+            <div className="col text-center p-4">
               <img
-                className="img-fluid"
-                src="https://i.ibb.co/SmnMm5L/logo.png"
-                alt="logo"
+                className="rounded-circle"
+                src="https://inteng-storage.s3.amazonaws.com/img/iea/bM6A1p3X67/sizes/kite-drone_resize_md.jpg"
+                alt=""
+                width="160"
+                height="160"
               />
+              <h2 className="pt-4">Ucurtma</h2>
+              <p className="pt-2">
+                asdasdasdass adaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaa aaaaaaaaaaaaa
+                aaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa
+                aaaaaaaaaaaaa aaaaaaaaaaaaa aaaaaaaaaaaaa
+              </p>
             </div>
-          </div>
-
-          <div className="row mt-5">
-            <div className="col text-center">
-              <button
-                className="btn landing-btn font-weight-bold"
-                title="Click to copy server adress!"
-                data-toggle="tooltip"
-                data-placement="right"
-                onClick={() =>
-                  this.copyToClipboard("play.guardiansofadelia.com")
-                }
-              >
-                START YOUR JOURNEY
-              </button>
-            </div>
-          </div>
-
-          <div className="row mb-5">
-            <p className="col text-center">play.guardiansofadelia.com</p>
           </div>
         </div>
 
-        <div className="container mt-4">
+        <div className="container">
           <PostsHome />
         </div>
       </div>

@@ -6,7 +6,13 @@ import { faPencilAlt, faCalendar } from "@fortawesome/free-solid-svg-icons";
 class PostCard extends Component {
   renderImage() {
     if (this.props.image) {
-      return <img className="card-img-top" src={this.props.image} alt="" />;
+      return (
+        <img
+          className="fluid-image rounded-left"
+          src={this.props.image}
+          alt=""
+        />
+      );
     }
   }
 
@@ -26,16 +32,14 @@ class PostCard extends Component {
     const postLink = "post/" + this.props._id;
 
     return (
-      <div className="card mb-4">
+      <div className="card mb-4 flex-row">
         {this.renderImage()}
 
         <div className="card-body">
           <div className="card-title text-capitalize">
-            <h3>
-              <u>
-                <Link to={postLink}>{this.props.title}</Link>
-              </u>
-            </h3>
+            <div className="font-weight-bold">
+              <Link to={postLink}>{this.props.title}</Link>
+            </div>
             <small>
               <span className="mx-2">
                 <FontAwesomeIcon className="mr-2" icon={faPencilAlt} />

@@ -42,21 +42,3 @@
 .show > .btn.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem #e2ded3;
 }
-
-.landing-btn {
-  background: linear-gradient(180deg, #5e4e47 0%, #3a302c 100%);
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  padding-right: 2.4rem;
-  padding-left: 2.4rem;
-  border: 0.15rem solid #746058;
-  box-shadow: 0 0 0 0.25rem #3a302c;
-  width: 16rem;
-  font-size: 15px;
-  color: #e2ded3;
-}
-
-.landing-btn:hover {
-  border-color: #746058;
-  background: linear-gradient(180deg, #66544d 0%, #493c37 100%);
-}

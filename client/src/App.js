@@ -19,7 +19,6 @@ const LoginPage = lazy(() => import("./views/auth/LoginPage"));
 const RegisterPage = lazy(() => import("./views/auth/RegisterPage"));
 const VerifyPage = lazy(() => import("./views/auth/VerifyPage"));
 const LorePage = lazy(() => import("./views/LorePage"));
-const StorePage = lazy(() => import("./views/StorePage"));
 const ProfilePage = lazy(() => import("./views/ProfilePage"));
 const AddCreditPage = lazy(() => import("./views/credits/AddCreditPage"));
 const AddCreditCallbackPage = lazy(() =>
@@ -67,7 +66,6 @@ class App extends Component {
               <Route exact path="/register" component={RegisterPage} />
               <Route path="/register/verify" component={VerifyPage} />
               <Route path="/lore" component={LorePage} />
-              <Route exact path="/store" component={StorePage} />
               <Route exact path="/profile" component={ProfilePage} />
               <Route exact path="/addcredit" component={AddCreditPage} />
               <Route
