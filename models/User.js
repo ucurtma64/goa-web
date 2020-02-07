@@ -6,8 +6,7 @@ const userSchema = new Schema({
   email: { type: String, index: true, unique: true, sparse: true },
   username: String,
   password: { type: String, select: false },
-  role: { type: String, default: "user" },
-  verified: Boolean
+  role: { type: String, default: "user" }
 });
 
 userSchema.methods.verifyPassword = async function(password) {

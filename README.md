@@ -1,3 +1,3 @@
-# GoA-web
+# Ucurtmam blog
 
-App name: Guardians of Adelia
+A simple blog web application with react and node.js

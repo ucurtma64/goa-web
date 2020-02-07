@@ -147,22 +147,22 @@ class Header extends Component {
           <div class="col pt-5 text-right">
             <a
               className="d-inline-block p-3"
-              href="#"
-              onClick={this.showLoginModal}
+              href="https://twitter.com/UCURTMAM"
+              target="_blank"
             >
               <FontAwesomeIcon className="mr-2" icon={faFacebook} />
             </a>
             <a
               className="d-inline-block p-3"
-              href="#"
-              onClick={this.showLoginModal}
+              href="https://twitter.com/UCURTMAM"
+              target="_blank"
             >
               <FontAwesomeIcon className="mr-2" icon={faTwitter} />
             </a>
             <a
               className="d-inline-block p-3"
-              href="#"
-              onClick={this.showLoginModal}
+              href="https://www.instagram.com/ucurtmam"
+              target="_blank"
             >
               <FontAwesomeIcon className="mr-2" icon={faInstagram} />
             </a>

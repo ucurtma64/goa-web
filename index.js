@@ -6,7 +6,6 @@ const bodyParser = require("body-parser");
 const keys = require("./config/keys");
 require("./models/Post");
 require("./models/User"); //add use schema before using it in ./services/passport.js
-require("./models/UserVerify");
 require("./services/passport"); //not assigned to a variable since we need this to run only once
 if (!(process.env.NODE_ENV === "production")) {
   require("./webhooks/ngrok"); //use ngrok in development

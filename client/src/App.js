@@ -17,7 +17,6 @@ const AdminDashboard = lazy(() => import("./views/admin/AdminDashboard"));
 const LandingPage = lazy(() => import("./views/LandingPage"));
 const LoginPage = lazy(() => import("./views/auth/LoginPage"));
 const RegisterPage = lazy(() => import("./views/auth/RegisterPage"));
-const VerifyPage = lazy(() => import("./views/auth/VerifyPage"));
 const LorePage = lazy(() => import("./views/LorePage"));
 const ProfilePage = lazy(() => import("./views/ProfilePage"));
 const AddCreditPage = lazy(() => import("./views/credits/AddCreditPage"));
@@ -34,24 +33,6 @@ class App extends Component {
     this.props.fetchUser();
   }
 
-  componentDidUpdate() {
-    if (this.props.auth) {
-      if (!this.props.auth.verified) {
-        this.props.notifyTopBar(
-          true,
-          "warning",
-          <>
-            Confirm your email address to access all features. A confirmation
-            message was sent to {this.props.auth.email}{" "}
-            <Link className="mx-2 text-dark" to="/register/verify">
-              <u>Help?</u>
-            </Link>
-          </>
-        );
-      }
-    }
-  }
-
   render() {
     return (
       <BrowserRouter>
@@ -64,7 +45,6 @@ class App extends Component {
               <Route exact path="/" component={LandingPage} />
               <Route path="/login" component={LoginPage} />
               <Route exact path="/register" component={RegisterPage} />
-              <Route path="/register/verify" component={VerifyPage} />
               <Route path="/lore" component={LorePage} />
               <Route exact path="/profile" component={ProfilePage} />
               <Route exact path="/addcredit" component={AddCreditPage} />
